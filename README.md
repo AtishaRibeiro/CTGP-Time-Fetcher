@@ -12,6 +12,7 @@ Times are all obtained from http://www.chadsoft.co.uk/time-trials/
 
 `GhostFetcher.py` can be used seperately as well to get all ghosts from specified countries starting from a given date.
 The country codes can be found at the beginning of the file, in `COUNTRY_FLAGS`.
+A text file is produced containing all the found times, including a link to the ghost.
 
 Example:
 ```python
