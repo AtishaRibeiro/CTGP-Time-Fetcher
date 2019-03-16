@@ -173,7 +173,9 @@ class Ghost:
     def __le__(self, other):
         return self.time.ms_total <= other.time.ms_total
 
-    def __str__(self):
+    def to_str(self, markdown=False):
+        if markdown:
+            return "{} {}: [{}]({})".format(self.country, self.name, str(self.time), self.ghost)
         return "{} {}: {} ({})".format(self.country, self.name, str(self.time), self.ghost)
 
     def to_dict(self):
@@ -256,4 +258,4 @@ if __name__ == "__main__":
             file.write(track + ":\n")
 
             for ghost in new_ghosts[track]:
-                file.write('\t' + str(ghost) + '\n')
+                file.write('\t' + ghost.to_str() + '\n')

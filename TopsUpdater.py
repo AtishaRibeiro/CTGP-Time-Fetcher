@@ -74,6 +74,8 @@ class Tops:
             json.dump(data, outfile, indent=4)
 
     def add_time(self, new_time, track):
+        """Attempts to add 'new_time' to the top10, only adds if it belongs there"""
+
         # action: 0->not added, 1->time improved, 2->new player, 3->new 1st place, 4->1st place tie
         action = 0
         times = sorted(self.tracks[track])
@@ -112,15 +114,30 @@ class Tops:
             new_tops.append(time)
 
         self.tracks[track] = sorted(new_tops)
-        print([str(x) for x in self.tracks[track]])
         return action
 
     def update_tops(self, cmp_date):
+        """Looks for times that were set starting from 'cmp_date'"""
         gf = GhostFetcher()
         new_times = gf.get_ghosts(self.countries, cmp_date)
 
         for track, time in new_times.items():
+            #ignore these categories, they aren't really useful
+            if track in ["GCN Waluigi Stadium (Glitch)", "Coconut Mall (Shortcut)", "N64 Bowser's Castle (Alternate)"]: continue
             self.add_time(time, track)
+
+    def get_top_10(self, track):
+        """Returns top10 of the given track"""
+        times = sorted(self.tracks[track])
+        top10 = [(1, times[0])]
+
+        position = 1
+        for i in range(1, len(times)):
+            if times[i-1] != times[i]:
+                position += 1
+            top10.append((position, times[i]))
+
+        return top10
 
 
 if __name__ == "__main__":

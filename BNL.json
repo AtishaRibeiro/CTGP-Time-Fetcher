@@ -1306,7 +1306,7 @@
                 "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "Name": "Shiro",
                 "Time": "00:59.908",
-                "Ghost": "www.chadsoft.co.uk/time-trials/rkgd/14/47/09BB230A946685184EE0980EDD998E55E924.html"
+                "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/14/47/09BB230A946685184EE0980EDD998E55E924.html"
             }
         ],
         "GBA Shy Guy Beach": [
@@ -1990,7 +1990,7 @@
                 "Time": "02:33.401",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=508"
             }
-        ]
+        ],
         "Mushroom Gorge (Glitch)": [
             {
                 "Country": "\ud83c\udde7\ud83c\uddea",
@@ -2183,7 +2183,7 @@
                 "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/B5/CA/BD617B999007FE8C5D13D261075199C3A666.html"
             }
         ],
-        "Bowser's Castle (Glitch)": [
+        "Bowser's Castle (Shortcut)": [
             {
                 "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "Name": "Thomas",
@@ -2515,7 +2515,7 @@
                 "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/53/15/6CB6DF0DCC0B2E6137C615745922BC6E34B7.html"
             }
         ],
-        "GCN DK Mountain (Glitch)": [
+        "GCN DK Mountain (Shortcut)": [
             {
                 "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "Name": "Thomas",
@@ -2621,7 +2621,7 @@
                 "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/95/A7/C2670D7DBB40C823BB510CE6EB01055B8195.html"
             }
         ],
-        "GBA Bowser's Castle 3 (Glitch)": [
+        "GBA Bowser's Castle 3 (Shortcut)": [
             {
                 "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "Name": "Thomas",
