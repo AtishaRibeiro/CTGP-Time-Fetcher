@@ -184,7 +184,7 @@ class Ghost:
             "Ghost": self.ghost
         }
 
-class DataFetcher:
+class GhostFetcher:
     """Class used to fetch data from the undocumented API at http://tt.chadsoft.co.uk"""
 
     def __init__(self):
@@ -209,7 +209,7 @@ class DataFetcher:
             track_name = track["name"]
             try:
                 category = track["categoryId"]
-                track_name = track_name + (category == 1)*" (Glitch)" + (category == 16)*" (Alternate)"
+                track_name = track_name + (category == 1)*" (Glitch)" + (category == 16)*" (Shortcut)"
             except KeyError:
                 pass
 
@@ -245,11 +245,11 @@ class DataFetcher:
 
 if __name__ == "__main__":
     # country numbers from COUNTRY_FLAGS
-    countries_to_check = [67]
-    date_str = "2019-03-01"
+    countries_to_check = [67, 88, 94]
+    date_str = "2019-03-13"
     date = datetime.strptime(date_str, "%Y-%m-%d")
-    df = DataFetcher()
-    new_ghosts = df.get_ghosts(countries_to_check, date)
+    gf = GhostFetcher()
+    new_ghosts = gf.get_ghosts(countries_to_check, date)
 
     with open("ghosts(" + date_str + ").txt", 'w') as file:
         for track in new_ghosts:
