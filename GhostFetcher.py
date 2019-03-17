@@ -1,6 +1,7 @@
 import json
 import urllib.request
 import codecs
+import asyncio
 from datetime import datetime
 
 # based on http://www.chadsoft.co.uk/img/flags_32.png
@@ -131,6 +132,36 @@ COUNTRY_FLAGS = {
     177: '🇯🇴', # Jordan
 }
 
+# maps the ctgp id of a player to a name
+PLAYER_NAMES = {
+    "3AB8188FCD29476E": "Thomas",
+    "041537D963CC8023": "Olifré",
+    "4516B56851B02E77": "Olifré",
+    "E1C66E97144FCC06": "Christan",
+    "E1DCACA4DBD2BD98": "Tom",
+    "F8AB088AFDDA7189": "Korra",
+    "F8AC68D93F4B3B58": "Shiro",
+    "CA8F043A3D42FB75": "Dane",
+    "AF29D4AFF12749A9": "Leops",
+    "24906213005B3619": "Dats",
+    "125619EC5FBF4DB5": "Loaf",
+    "DB503BD3D6030657": "Jeff",
+    "D4609DB8549BBAF2": "Enzo",
+    "6EE7F206748EF16F": "Sander",
+    "C618D6AF6C5CE085": "Miist",
+    "821E1146C7A4F5B3": "Kuigl",
+    "DF050A811583E0BC": "Weexy",
+    "2287EDEF056C2A77": "Nemesis",
+    "F6E83B580EE66237": "Apolo",
+    "21CEB9A1B8D3CAC5": "Daan",
+    "E4FC925132F85873": "The M",
+    "F9CB581AF48F0129": "The M",
+    "C48B6FC37FAE104D": "Leon",
+    "32F7E9E4BFD3A779": "Aiko",
+    "9DBAF5D14A2226F9": "Mario"
+}   
+
+
 class FinishTime:
     """Class used to represent finish time of ghosts"""
 
@@ -194,7 +225,7 @@ class GhostFetcher:
         self.leaderboards = "/original-track-leaderboards.json"
         self.ghost_url = "http://www.chadsoft.co.uk/time-trials"
 
-    def get_ghosts(self, countries, cmp_date):
+    async def get_ghosts(self, countries, cmp_date):
         """Looks for times that were set by players from 'countries' starting from cmp_date"""
 
         new_ghosts = dict()
@@ -231,9 +262,15 @@ class GhostFetcher:
                         if ghost["country"] in countries:
                             ghost_time = datetime.strptime(ghost["dateSet"], "%Y-%m-%dT%H:%M:%SZ")
                             if ghost_time >= cmp_date:
+
+                                #change name if player is in PLAYER_NAMES
+                                player_name = ghost["player"]
+                                if ghost["playerId"] in PLAYER_NAMES:
+                                    player_name = PLAYER_NAMES[ghost["playerId"]]
+
                                 ghost_Ghost = Ghost({
                                     "Country": COUNTRY_FLAGS[ghost["country"]],
-                                    "Name": ghost["player"],
+                                    "Name": player_name,
                                     "Time": ghost["finishTimeSimple"],
                                     "Ghost": self.ghost_url + ghost["href"][:-3] + "html"})
 
@@ -248,7 +285,7 @@ class GhostFetcher:
 if __name__ == "__main__":
     # country numbers from COUNTRY_FLAGS
     countries_to_check = [67, 88, 94]
-    date_str = "2019-03-13"
+    date_str = "2019-03-01"
     date = datetime.strptime(date_str, "%Y-%m-%d")
     gf = GhostFetcher()
     new_ghosts = gf.get_ghosts(countries_to_check, date)

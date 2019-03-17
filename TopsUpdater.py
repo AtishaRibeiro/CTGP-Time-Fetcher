@@ -1,49 +1,12 @@
 import json
 import csv
+import asyncio
 from datetime import datetime
 from GhostFetcher import GhostFetcher
 from GhostFetcher import Ghost
 
 class Tops:
-
-    """Commented constructor used to get the BNL times from csv file (hardcoded!)"""
-
-    # def __init__(self, filename):
-    #     self.countries = ['🇧🇪','🇳🇱','🇱🇺'];
-    #     self.tracks = dict()
-
-    #     with open(filename) as csv_file:
-    #         csv_reader = csv.reader(csv_file, delimiter=',')
-    #         line_count = 0
-    #         tracks = list()
-    #         track_nr = 0
-    #         for row in csv_reader:
-    #             print(row)
-    #             try:
-    #                 dummy = int(row[0])
-
-    #                 for i in range(len(tracks)):
-    #                     if len(row[i*5+3]) == 0:
-    #                         entry = Ghost({
-    #                             "Country": "row[i*5+1]",
-    #                             "Name": "Dummy",
-    #                             "Time": "01:00.000",
-    #                             "Ghost": row[i*5+4]})
-    #                         self.tracks[tracks[i]].append(entry)
-    #                     else:
-    #                         entry = Ghost({
-    #                             "Country": row[i*5+1],
-    #                             "Name": row[i*5+2],
-    #                             "Time": row[i*5+3],
-    #                             "Ghost": row[i*5+4]})
-    #                         self.tracks[tracks[i]].append(entry)
-
-    #             except ValueError:
-    #                 tracks = row
-    #                 for track in tracks:
-    #                     self.tracks[track] = list()
-
-    #             line_count += 1
+    """Class that handles the topX of a region"""
 
     def __init__(self, filename):
         with open(filename) as file:
@@ -58,6 +21,8 @@ class Tops:
                     self.tracks[track].append(Ghost(time))
 
     def write_json(self, filename):
+        """write the contents of self.tracks to (filename)"""
+
         data = {}
         data["Info"] = {
             "Countries": self.countries,
@@ -116,10 +81,11 @@ class Tops:
         self.tracks[track] = sorted(new_tops)
         return action
 
-    def update_tops(self, cmp_date):
+    async def update_tops(self, cmp_date):
         """Looks for times that were set starting from 'cmp_date'"""
+
         gf = GhostFetcher()
-        new_times = gf.get_ghosts(self.countries, cmp_date)
+        new_times = await gf.get_ghosts(self.countries, cmp_date)
         # returns a list with info about the times that were added
         time_info = list()
 
@@ -134,6 +100,7 @@ class Tops:
 
     def get_top_10(self, track):
         """Returns top10 of the given track"""
+
         times = sorted(self.tracks[track])
         top10 = [(1, times[0])]
 

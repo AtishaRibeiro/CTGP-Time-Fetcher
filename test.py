@@ -62,18 +62,27 @@ TRACK_ABBREVIATIONS = {
 }
 
 class Bot(discord.Client):
+    """Bot that handles the BNL Tops"""
 
     def __init__(self):
         super().__init__()
 
         self.bnl = Tops("BNL.json")
-        self.bg_task = self.loop.create_task(self.auto_update(10))
+        self.bg_task = self.loop.create_task(self.auto_update(1200))
+        #self.last_updated = datetime.datetime.utcnow()
+        self.last_updated = datetime.datetime.strptime("2019-03-01", "%Y-%m-%d")
     
     async def on_ready(self):
+        """not used for now"""
         pass
 
     async def on_message(self, msg):
+        """analyze all messages sent"""
+
         if msg.author == self.user:
+            return
+
+        if msg.channel.id != config.CHANNEL:
             return
 
         contents = msg.content
@@ -87,6 +96,8 @@ class Bot(discord.Client):
             return
 
     async def tops(self, msg, args):
+        """tops command"""
+
         full_track = TRACK_ABBREVIATIONS[args.upper()] 
         tops = self.bnl.get_top_10(full_track)
 
@@ -95,16 +106,26 @@ class Bot(discord.Client):
         for pos, time in tops:
             message += "{}. {}\n".format(pos, time.to_str(markdown=True))
 
-        await msg.channel.send(embed=self.create_tops_embed(tops, full_track))
+        await msg.channel.send(embed=self.create_tops_embed(full_track))
 
     async def auto_update(self, loop_duration):
+        """attempts to update the tops every (loop_duration) seconds"""
+
         await self.wait_until_ready()
         channel = self.get_channel(config.CHANNEL)
 
         while not self.is_closed():
-            print("started task")
-            #times = self.bnl.update_tops()
-            times = [("Koopa Cape", Ghost({"Country": '🇧🇪', "Name": "Olifré", "Time": "02:17.999", "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/AF/6E/DBD745DB99D8853C2E21BB83AB13820A35BC.html"}), 3)]
+            print("updating")
+            #times = [("Koopa Cape", Ghost({"Country": '🇧🇪', "Name": "Olifré", "Time": "02:17.999", "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/AF/6E/DBD745DB99D8853C2E21BB83AB13820A35BC.html"}), 3)]
+            times = await self.bnl.update_tops(self.last_updated)
+            self.last_updated = datetime.datetime.utcnow()
+            print("finished updating")
+
+
+            if len(times) != 0:
+                #write to a new file so that changes can be reverted if necessary
+                filename = "updated_tops/{}-{}-{}_{}:{}:{}.json".format(self.last_updated.year, self.last_updated.month, self.last_updated.day, self.last_updated.hour, self.last_updated.minute, self.last_updated.second)
+                self.bnl.update_tops(filename)
 
             for time_info in times:
                 await channel.send(embed=(self.create_update_embed(time_info)))
@@ -112,6 +133,8 @@ class Bot(discord.Client):
             await asyncio.sleep(loop_duration)
 
     def create_tops_embed(self, track):
+        """formats the tops message"""
+
         embed = discord.Embed(title="**Top10 {}**".format(track), colour=0x4ccfff)
 
         message = ""
@@ -126,6 +149,8 @@ class Bot(discord.Client):
         return embed
 
     def create_update_embed(self, time_info):
+        """formats the update message"""
+
         time = time_info[1]
 
         title = "{} ".format(time.name)
@@ -149,7 +174,7 @@ class Bot(discord.Client):
 
     def extract_mii(self, link):
         """Extracts the url to the mii image file"""
-        print("hello there")
+
         html = urllib.request.urlopen(link)
         soup = BS(html, features="html5lib")
         parent_div = soup.findAll("div", class_="_1c5")[0]
