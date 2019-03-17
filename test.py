@@ -1,57 +1,59 @@
 import discord
-import token
+import config
+import asyncio
+import datetime
 from discord.ext import commands
 from TopsUpdater import Tops
 
 TRACK_ABBREVIATIONS = {
     "LC":       "Luigi Circuit",
     "MMM":      "Moo Moo Meadows",
-    "MG ng":    "Mushroom Gorge",
+    "MG NG":    "Mushroom Gorge",
     "MG":       "Mushroom Gorge (Glitch)",
     "TF":       "Toad's Factory",
-    "MC ng":    "Mario Circuit",
+    "MC NG":    "Mario Circuit",
     "MC":       "Mario Circuit (Glitch)",
-    "CM ng":    "Coconut Mall",
+    "CM NG":    "Coconut Mall",
     "CM":       "Coconut Mall (Glitch)",
     "DKS":      "DK Summit",
-    "WGM ng":   "Wario's Gold Mine",
+    "WGM NG":   "Wario's Gold Mine",
     "WGM":      "Wario's Gold Mine (Glitch)",
     "DC":       "Daisy Circuit",
     "KC":       "Koopa Cape",
-    "MT ng":    "Maple Treeway",
+    "MT NG":    "Maple Treeway",
     "MT":       "Maple Treeway (Glitch)",
-    "GV ng":    "Grumble Volcano",
-    "GV alt":   "Grumble Volcano (Shortcut)",
+    "GV NG":    "Grumble Volcano",
+    "GV ALT":   "Grumble Volcano (Shortcut)",
     "GV":       "Grumble Volcano (Glitch)",
     "DDR":      "Dry Dry Ruins",
     "MH":       "Moonview Highway",
-    "BC ng":    "Bowser's Castle",
+    "BC NG":    "Bowser's Castle",
     "BC":       "Bowser's Castle (Glitch)",
     "RR":       "Rainbow Road",
-    "rPB ng":   "GCN Peach Beach",
-    "rPB":      "GCN Peach Beach (Glitch)",
-    "rYF":      "DS Yoshi Falls",
-    "rGV2 ng":  "SNES Ghost Valley 2",
-    "rGV2":     "SNES Ghost Valley 2 (Glitch)",
-    "rMR":      "N64 Mario Raceway",
-    "rSL ng":   "N64 Sherbet Land",
-    "rSL":      "N64 Sherbet Land (Glitch)",
-    "rSGB":     "GBA Shy Guy Beach",
-    "rDS":      "DS Delfino Square",
-    "rWS":      "GCN Waluigi Stadium",
-    "rDH ng":   "DS Desert Hills",
-    "rDH":      "DS Desert Hills (Glitch)",
-    "rBC3 ng":  "GBA Bowser Castle 3",
-    "rBC3":     "GBA Bowser Castle 3 (Shortcut)",
-    "rDKJP ng": "N64 DK Jungle Parkway",
-    "rDKJP alt":"N64 DK Jungle Parkway (Shortcut)",
-    "rDKJP":    "N64 DK Jungle Parkway (Glitch)",
-    "rMC":      "GCN Mario Circuit",
-    "rMC3":     "SNES Mario Circuit 3",
-    "rPG":      "DS Peach Gardens",
-    "rDKM ng":  "GCN DK Mountain",
-    "rDKM":     "GCN DK Mountain (Shortcut)",
-    "rBC":      "N64 Bowser's Castle"
+    "RPB NG":   "GCN Peach Beach",
+    "RPB":      "GCN Peach Beach (Glitch)",
+    "RYF":      "DS Yoshi Falls",
+    "RGV2 NG":  "SNES Ghost Valley 2",
+    "RGV2":     "SNES Ghost Valley 2 (Glitch)",
+    "RMR":      "N64 Mario Raceway",
+    "RSL ng":   "N64 Sherbet Land",
+    "RSL":      "N64 Sherbet Land (Glitch)",
+    "RSGB":     "GBA Shy Guy Beach",
+    "RDS":      "DS Delfino Square",
+    "RWS":      "GCN Waluigi Stadium",
+    "RDH NG":   "DS Desert Hills",
+    "RDH":      "DS Desert Hills (Glitch)",
+    "RBC3 NG":  "GBA Bowser Castle 3",
+    "RBC3":     "GBA Bowser Castle 3 (Shortcut)",
+    "RDKJP NG": "N64 DK Jungle Parkway",
+    "RDKJP ALT":"N64 DK Jungle Parkway (Shortcut)",
+    "RDKJP":    "N64 DK Jungle Parkway (Glitch)",
+    "RMC":      "GCN Mario Circuit",
+    "RMC3":     "SNES Mario Circuit 3",
+    "RPG":      "DS Peach Gardens",
+    "RDKM NG":  "GCN DK Mountain",
+    "RDKM":     "GCN DK Mountain (Shortcut)",
+    "RBC":      "N64 Bowser's Castle"
 }
 
 def create_tops_embed(tops, track):
@@ -68,39 +70,42 @@ def create_tops_embed(tops, track):
     embed.add_field(name="\u200B", value=message, inline=True)
     return embed
 
+bot = commands.Bot(command_prefix='$')
+
 class Messages(commands.Cog):
 
     def __init__(self, bot):
         self.bot = bot
         self.bnl = Tops("BNL.json")
+        self.bg_task = discord.Client.loop.create_task(self.update_times(5))
 
+    @commands.Cog.listener()
     async def on_ready(self):
-        print("Logged in as")
-        print(self.bot.user.name)
-        print(self.bot.user.id)
+        for guild in self.bot.guilds:
+            print(guild.name)
     
     @commands.command()
-    async def tops(self, ctx, track, category=None):
-        print(track)
-        if category:
-            track += ' ' + category
-
-        full_track = TRACK_ABBREVIATIONS[track] 
+    async def tops(self, ctx, *, track):
+        full_track = TRACK_ABBREVIATIONS[track.upper()] 
         tops = self.bnl.get_top_10(full_track)
 
-        message = "Top10 {}\n".format(full_track)
-        print(message)
-        print(tops)
+        message = "TOP10 {}\n".format(full_track)
 
         for pos, time in tops:
             message += "{}. {}\n".format(pos, time.to_str(markdown=True))
 
         await ctx.send(embed=create_tops_embed(tops, full_track))
 
-    async def tops(self, ctx, track, category=None):
+    async def update_times(self, sleep_duration):
+        loop = asyncio.get_running_loop()
+        end_time = loop.time() + 5.0
+        while True:
+            print(datetime.datetime.now())
+            if (loop.time() + 1.0) >= end_time:
+                break
+            await asyncio.sleep(sleep_duration)             
 
 if __name__ == "__main__":
-    bot = commands.Bot(command_prefix='$')
     bot.add_cog(Messages(bot))
-    token = TOKEN
+    token = config.TOKEN
     bot.run(token)
