@@ -70,8 +70,6 @@ def create_tops_embed(tops, track):
     embed.add_field(name="\u200B", value=message, inline=True)
     return embed
 
-bot = commands.Bot(command_prefix='$')
-
 class Messages(commands.Cog):
 
     def __init__(self, bot):
@@ -94,18 +92,10 @@ class Messages(commands.Cog):
         for pos, time in tops:
             message += "{}. {}\n".format(pos, time.to_str(markdown=True))
 
-        await ctx.send(embed=create_tops_embed(tops, full_track))
-
-    async def update_times(self, sleep_duration):
-        loop = asyncio.get_running_loop()
-        end_time = loop.time() + 5.0
-        while True:
-            print(datetime.datetime.now())
-            if (loop.time() + 1.0) >= end_time:
-                break
-            await asyncio.sleep(sleep_duration)             
+        await ctx.send(embed=create_tops_embed(tops, full_track))          
 
 if __name__ == "__main__":
+    bot = commands.Bot(command_prefix='$')
     bot.add_cog(Messages(bot))
     token = config.TOKEN
     bot.run(token)
