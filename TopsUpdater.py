@@ -120,11 +120,17 @@ class Tops:
         """Looks for times that were set starting from 'cmp_date'"""
         gf = GhostFetcher()
         new_times = gf.get_ghosts(self.countries, cmp_date)
+        # returns a list with info about the times that were added
+        time_info = list()
 
         for track, time in new_times.items():
             #ignore these categories, they aren't really useful
             if track in ["GCN Waluigi Stadium (Glitch)", "Coconut Mall (Shortcut)", "N64 Bowser's Castle (Alternate)"]: continue
-            self.add_time(time, track)
+            action = self.add_time(time, track)
+            time_info.append((track, time, action))
+
+        return time_info
+
 
     def get_top_10(self, track):
         """Returns top10 of the given track"""
