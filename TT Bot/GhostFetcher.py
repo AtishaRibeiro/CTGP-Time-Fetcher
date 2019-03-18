@@ -315,7 +315,7 @@ if __name__ == "__main__":
     date_str = "2019-03-01"
     date = datetime.strptime(date_str, "%Y-%m-%d")
     gf = GhostFetcher(countries_to_check)
-    new_ghosts = await gf.get_ghosts(date)
+    new_ghosts = gf.get_ghosts(date)
 
     with open("ghosts(" + date_str + ").txt", 'w') as file:
         for track in new_ghosts:
