@@ -84,10 +84,10 @@ class Tops:
         self.tracks[track] = sorted(new_tops)
         return action
 
-    async def update_tops(self, cmp_date):
+    async def update_tops(self, cmp_date, client):
         """Looks for times that were set starting from 'cmp_date'"""
 
-        gf = GhostFetcher(self.countries)
+        gf = GhostFetcher(self.countries, client)
         new_times = await gf.get_ghosts(cmp_date)
         # returns a list with info about the times that were added
         time_info = list()

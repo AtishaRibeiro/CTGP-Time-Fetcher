@@ -2,6 +2,7 @@ import discord
 import Config
 import asyncio
 import datetime
+import aiohttp
 from discord.ext import commands
 from TopsUpdater import Tops
 from GhostFetcher import Ghost
@@ -70,6 +71,7 @@ class Bot(discord.Client):
         self.bnl = Tops("BNL.json")
         self.bg_task = self.loop.create_task(self.auto_update(3600))
         self.last_updated = datetime.datetime.utcnow()
+        self.client = aiohttp.ClientSession()
     
     async def on_ready(self):
         print("logged in")
@@ -149,7 +151,7 @@ class Bot(discord.Client):
         while not self.is_closed():
             await self.change_presence(activity=discord.Game(name="Checking Database"), status=discord.Status.idle)
             print("updating")
-            times, changed = await self.bnl.update_tops(self.last_updated)
+            times, changed = await self.bnl.update_tops(self.last_updated, self.client)
             #times = [("Koopa Cape", Ghost({"Country": '🇧🇪', "Name": "Olifré", "Time": "02:18.469", "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/AF/6E/DBD745DB99D8853C2E21BB83AB13820A35BC.html"}), 3)]
             #self.bnl.add_time(times[0][1], times[0][0])
             #print(times)

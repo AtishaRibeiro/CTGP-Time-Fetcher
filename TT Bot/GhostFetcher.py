@@ -222,15 +222,15 @@ class Ghost:
 class GhostFetcher:
     """Class used to fetch data from the undocumented API at http://tt.chadsoft.co.uk"""
 
-    def __init__(self, countries):
+    def __init__(self, countries, client):
         self.base_url = "http://tt.chadsoft.co.uk"
         self.leaderboards = "/original-track-leaderboards.json"
         self.ghost_url = "http://www.chadsoft.co.uk/time-trials"
         self.countries = countries
-        self.client = aiohttp.ClientSession()
+        self.client = client
 
     def __del__(self):
-        self.client.close()
+        await self.client.close()
 
     async def get_json(self, url):
         async with self.client.get(url) as response:
