@@ -97,8 +97,7 @@ class Tops:
             if track in ["GCN Waluigi Stadium (Glitch)", "Coconut Mall (Shortcut)", "N64 Bowser's Castle (Alternate)"]: continue
             for time in new_times[track]:
                 action = self.add_time(time, track)
-                if action != 0:
-                    time_info.append((track, time, action))
+                time_info.append((track, time, action))
 
         return time_info
 

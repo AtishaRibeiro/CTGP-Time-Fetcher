@@ -41,7 +41,7 @@ TRACK_ABBREVIATIONS = {
     "RGV2 NG":  "SNES Ghost Valley 2",
     "RGV2":     "SNES Ghost Valley 2 (Glitch)",
     "RMR":      "N64 Mario Raceway",
-    "RSL ng":   "N64 Sherbet Land",
+    "RSL NG":   "N64 Sherbet Land",
     "RSL":      "N64 Sherbet Land (Glitch)",
     "RSGB":     "GBA Shy Guy Beach",
     "RDS":      "DS Delfino Square",
@@ -205,7 +205,7 @@ class Bot(discord.Client):
         time = time_info[1]
 
         title = "{} ".format(time.name)
-        if time_info[2] == 1:
+        if time_info[2] == 0 or time_info[2] == 1:
             title += "improved his time! Keep it up, proud of you"
         elif time_info[2] == 2:
             title += "enters the top 10! Welcome!"
