@@ -81,8 +81,8 @@ class Bot(discord.Client):
         if msg.author == self.user:
             return
 
-        #if msg.channel.id != Config.CHANNEL:
-        #    return
+        if msg.channel.id != Config.CHANNEL:
+            return
 
         contents = msg.content
         if contents[0] == COMMAND_PREFIX:
