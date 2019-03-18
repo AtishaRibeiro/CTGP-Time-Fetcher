@@ -92,14 +92,17 @@ class Tops:
         # returns a list with info about the times that were added
         time_info = list()
 
+        changed = False
         for track in new_times:
             #ignore these categories, they aren't really useful
             if track in ["GCN Waluigi Stadium (Glitch)", "Coconut Mall (Shortcut)", "N64 Bowser's Castle (Alternate)"]: continue
             for time in new_times[track]:
                 action = self.add_time(time, track)
+                if action != 0:
+                    changed = True
                 time_info.append((track, time, action))
 
-        return time_info
+        return time_info, changed
 
 
     def get_top_10(self, track):

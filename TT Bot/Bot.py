@@ -149,14 +149,14 @@ class Bot(discord.Client):
         while not self.is_closed():
             await self.change_presence(activity=discord.Game(name="Checking Database"), status=discord.Status.idle)
             print("updating")
-            times = await self.bnl.update_tops(self.last_updated)
+            times, changed = await self.bnl.update_tops(self.last_updated)
             #times = [("Koopa Cape", Ghost({"Country": '🇧🇪', "Name": "Olifré", "Time": "02:18.469", "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/AF/6E/DBD745DB99D8853C2E21BB83AB13820A35BC.html"}), 3)]
             #self.bnl.add_time(times[0][1], times[0][0])
             #print(times)
             self.last_updated = datetime.datetime.utcnow()
             print("finished updating")
 
-            if len(times) != 0:
+            if changed:
                 #write to a new file so that changes can be reverted if necessary
                 filename = "updated_tops/{}-{}-{}_{}:{}:{}.json".format(self.last_updated.year, self.last_updated.month, self.last_updated.day, self.last_updated.hour, self.last_updated.minute, self.last_updated.second)
                 self.bnl.write_json(filename)
