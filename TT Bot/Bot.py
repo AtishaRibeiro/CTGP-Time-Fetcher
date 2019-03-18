@@ -72,7 +72,7 @@ class Bot(discord.Client):
         self.last_updated = datetime.datetime.utcnow()
     
     async def on_ready(self):
-        """not used for now"""
+        print("logged in")
         pass
 
     async def on_message(self, msg):
@@ -81,8 +81,8 @@ class Bot(discord.Client):
         if msg.author == self.user:
             return
 
-        if msg.channel.id != Config.CHANNEL:
-            return
+        #if msg.channel.id != Config.CHANNEL:
+        #    return
 
         contents = msg.content
         if contents[0] == COMMAND_PREFIX:
@@ -160,6 +160,7 @@ class Bot(discord.Client):
                 #write to a new file so that changes can be reverted if necessary
                 filename = "updated_tops/{}-{}-{}_{}:{}:{}.json".format(self.last_updated.year, self.last_updated.month, self.last_updated.day, self.last_updated.hour, self.last_updated.minute, self.last_updated.second)
                 self.bnl.write_json(filename)
+                self.bnl.write_json("./BNL.json")
 
             for time_info in times:
                 await channel.send(embed=(self.create_update_embed(time_info)))
