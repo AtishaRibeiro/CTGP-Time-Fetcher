@@ -43,7 +43,11 @@ class Tops:
 
         # action: 0->not added, 1->time improved, 2->new player, 3->new 1st place, 4->1st place tie
         action = 0
-        times = sorted(self.tracks[track])
+        try:
+            times = sorted(self.tracks[track])
+        except KeyError:
+            # error gets thrown when the track is not kept track of (pun not intended)
+            return action
 
         # check if the time belongs in the top10
         if new_time <= times[-1]:
@@ -64,7 +68,7 @@ class Tops:
 
         if new_time < times[0]:
             action = 3
-        elif new_time == times[0]:
+        elif new_time == times[0] and action is not 1:
             action = 4
         times.insert(0, new_time)
 
@@ -84,16 +88,18 @@ class Tops:
     async def update_tops(self, cmp_date):
         """Looks for times that were set starting from 'cmp_date'"""
 
-        gf = GhostFetcher()
-        new_times = await gf.get_ghosts(self.countries, cmp_date)
+        gf = GhostFetcher(self.countries)
+        new_times = await gf.get_ghosts(cmp_date)
         # returns a list with info about the times that were added
         time_info = list()
 
-        for track, time in new_times.items():
+        for track in new_times:
             #ignore these categories, they aren't really useful
             if track in ["GCN Waluigi Stadium (Glitch)", "Coconut Mall (Shortcut)", "N64 Bowser's Castle (Alternate)"]: continue
-            action = self.add_time(time, track)
-            time_info.append((track, time, action))
+            for time in new_times[track]:
+                action = self.add_time(time, track)
+                if action != 0:
+                    time_info.append((track, time, action))
 
         return time_info
 

@@ -68,9 +68,9 @@ class Bot(discord.Client):
         super().__init__()
 
         self.bnl = Tops("BNL.json")
-        self.bg_task = self.loop.create_task(self.auto_update(1200))
+        self.bg_task = self.loop.create_task(self.auto_update(3600))
         #self.last_updated = datetime.datetime.utcnow()
-        self.last_updated = datetime.datetime.strptime("2019-03-01", "%Y-%m-%d")
+        self.last_updated = datetime.datetime.strptime("2019-02-17", "%Y-%m-%d")
     
     async def on_ready(self):
         """not used for now"""
@@ -98,7 +98,7 @@ class Bot(discord.Client):
     async def tops(self, msg, args):
         """tops command"""
 
-        full_track = TRACK_ABBREVIATIONS[args.upper()] 
+        full_track = TRACK_ABBREVIATIONS[args.upper()]
         tops = self.bnl.get_top_10(full_track)
 
         message = "TOP10 {}\n".format(full_track)
@@ -106,7 +106,7 @@ class Bot(discord.Client):
         for pos, time in tops:
             message += "{}. {}\n".format(pos, time.to_str(markdown=True))
 
-        await msg.channel.send(embed=self.create_tops_embed(full_track))
+        await msg.channel.send(embed=self.create_tops_embed(full_track, tops))
 
     async def auto_update(self, loop_duration):
         """attempts to update the tops every (loop_duration) seconds"""
@@ -115,9 +115,12 @@ class Bot(discord.Client):
         channel = self.get_channel(config.CHANNEL)
 
         while not self.is_closed():
+            await self.change_presence(activity=discord.Game(name="Checking Database"), status=discord.Status.idle)
             print("updating")
-            #times = [("Koopa Cape", Ghost({"Country": '🇧🇪', "Name": "Olifré", "Time": "02:17.999", "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/AF/6E/DBD745DB99D8853C2E21BB83AB13820A35BC.html"}), 3)]
             times = await self.bnl.update_tops(self.last_updated)
+            #times = [("Koopa Cape", Ghost({"Country": '🇧🇪', "Name": "Olifré", "Time": "02:18.469", "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/AF/6E/DBD745DB99D8853C2E21BB83AB13820A35BC.html"}), 3)]
+            #self.bnl.add_time(times[0][1], times[0][0])
+            #print(times)
             self.last_updated = datetime.datetime.utcnow()
             print("finished updating")
 
@@ -125,26 +128,28 @@ class Bot(discord.Client):
             if len(times) != 0:
                 #write to a new file so that changes can be reverted if necessary
                 filename = "updated_tops/{}-{}-{}_{}:{}:{}.json".format(self.last_updated.year, self.last_updated.month, self.last_updated.day, self.last_updated.hour, self.last_updated.minute, self.last_updated.second)
-                self.bnl.update_tops(filename)
+                self.bnl.write_json(filename)
 
             for time_info in times:
                 await channel.send(embed=(self.create_update_embed(time_info)))
 
+            await self.change_presence(activity=None, status=discord.Status.online)
             await asyncio.sleep(loop_duration)
 
-    def create_tops_embed(self, track):
+    def create_tops_embed(self, track, tops):
         """formats the tops message"""
 
         embed = discord.Embed(title="**Top10 {}**".format(track), colour=0x4ccfff)
 
         message = ""
-        for pos, time in self.tops:
+        for pos, time in tops:
             pos_str = str(pos)
             if len(pos_str) == 1:
                 pos_str = '\u200B ' + pos_str
 
             message += "{}. {} {}: [{}]({})\n".format(pos_str, time.country, time.name, time.time, time.ghost)
 
+        print(message)
         embed.add_field(name="\u200B", value=message, inline=True)
         return embed
 
@@ -164,7 +169,14 @@ class Bot(discord.Client):
             title += "ties for 1st place! What are the chances?"
 
         field_title = "*{}*".format(time_info[0])
-        message = "{} {}: [{}]({})\n".format(time.country, time.name, time.time, time.ghost)
+
+        # some easter eggs ;-)
+        time_str = str(time.time)
+        if time_str[-2:] == "69":
+            time_str = time_str[:-2] + ":six::nine:"
+        if time_str[-3:] == "420":
+            time_str += " :fire::fire:"
+        message = "{} {}: [{}]({})\n".format(time.country, time.name, time_str, time.ghost)
 
 
         embed = discord.Embed(title=title, colour=0x8eff56)
