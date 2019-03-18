@@ -1,5 +1,6 @@
-# CTGP-Time-Fetcher
-Fetches times from the CTGP-R ghost database
+# TT Bot
+Bot that interacts with the CTGP-R Database in various ways.
+Currently configured to track the BNL tops.
 
 ### About
 
@@ -8,10 +9,11 @@ Tops are read from and written to a json file (see `BNL.json` for an example.)
 Times are all obtained from http://www.chadsoft.co.uk/time-trials/
 
 
-### Using `GhostFetcher.py`
+### Using `GhostFetcherSolo.py`
 
-`GhostFetcher.py` can be used seperately as well to get all ghosts from specified countries starting from a given date.
+`GhostFetcherSolo.py` can be used seperately as well to get all ghosts from specified countries starting from a given date.
 The country codes can be found at the beginning of the file, in `COUNTRY_FLAGS`.
+To link a fixed playername to a playerId, add to `PLAYER_NAMES`.
 A text file is produced containing all the found times, including a link to the ghost.
 
 Example:
