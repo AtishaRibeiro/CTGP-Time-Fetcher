@@ -229,9 +229,6 @@ class GhostFetcher:
         self.countries = countries
         self.client = client
 
-    def __del__(self):
-        await self.client.close()
-
     async def get_json(self, url):
         async with self.client.get(url) as response:
             if response.status != 200:
