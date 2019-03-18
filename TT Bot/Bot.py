@@ -68,9 +68,8 @@ class Bot(discord.Client):
         super().__init__()
 
         self.bnl = Tops("BNL.json")
-        self.bg_task = self.loop.create_task(self.auto_update(600))
-        #self.last_updated = datetime.datetime.utcnow()
-        self.last_updated = datetime.datetime.strptime("2019-02-16", "%Y-%m-%d")
+        self.bg_task = self.loop.create_task(self.auto_update(3600))
+        self.last_updated = datetime.datetime.utcnow()
     
     async def on_ready(self):
         """not used for now"""
