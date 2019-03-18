@@ -47,7 +47,7 @@ TRACK_ABBREVIATIONS = {
     "RDS":      "DS Delfino Square",
     "RWS":      "GCN Waluigi Stadium",
     "RDH NG":   "DS Desert Hills",
-    "RDH":      "DS Desert Hills (Glitch)",
+    "RDH":      "DS Desert Hills (Shortcut)",
     "RBC3 NG":  "GBA Bowser Castle 3",
     "RBC3":     "GBA Bowser Castle 3 (Shortcut)",
     "RDKJP NG": "N64 DK Jungle Parkway",
