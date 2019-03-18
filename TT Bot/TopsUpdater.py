@@ -61,7 +61,6 @@ class Tops:
                 if new_time <= time:
                     action = 1
                     times.remove(time)
-                    print("name found")
                 else:
                     return 0
                 break

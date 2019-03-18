@@ -1,5 +1,5 @@
 import discord
-import config
+import Config
 import asyncio
 import datetime
 from discord.ext import commands
@@ -8,7 +8,7 @@ from GhostFetcher import Ghost
 from bs4 import BeautifulSoup as BS
 import urllib
 
-COMMAND_PREFIX = '$'
+COMMAND_PREFIX = '!'
 
 TRACK_ABBREVIATIONS = {
     "LC":       "Luigi Circuit",
@@ -68,9 +68,9 @@ class Bot(discord.Client):
         super().__init__()
 
         self.bnl = Tops("BNL.json")
-        self.bg_task = self.loop.create_task(self.auto_update(3600))
+        self.bg_task = self.loop.create_task(self.auto_update(600))
         #self.last_updated = datetime.datetime.utcnow()
-        self.last_updated = datetime.datetime.strptime("2019-02-17", "%Y-%m-%d")
+        self.last_updated = datetime.datetime.strptime("2019-02-16", "%Y-%m-%d")
     
     async def on_ready(self):
         """not used for now"""
@@ -82,37 +82,70 @@ class Bot(discord.Client):
         if msg.author == self.user:
             return
 
-        if msg.channel.id != config.CHANNEL:
+        if msg.channel.id != Config.CHANNEL:
             return
 
         contents = msg.content
-        if contents[0] == '$':
+        if contents[0] == COMMAND_PREFIX:
             split_msg = contents[1:].split(None, 1)
 
             # check all available commands
-            if split_msg[0] == "tops":
-                await self.tops(msg, split_msg[1])
+            if len(split_msg) > 1:
+                if split_msg[1] == "help":
+                    await self.command_info(msg, split_msg[0])
+                elif split_msg[0] == "tops":
+                    await self.tops(msg, split_msg[1])
+            elif split_msg[0] == "help":
+                await self.help(msg)
         else:
             return
 
     async def tops(self, msg, args):
         """tops command"""
 
-        full_track = TRACK_ABBREVIATIONS[args.upper()]
-        tops = self.bnl.get_top_10(full_track)
+        try:
+            full_track = TRACK_ABBREVIATIONS[args.upper()]
+            tops = self.bnl.get_top_10(full_track)
 
-        message = "TOP10 {}\n".format(full_track)
+            message = "TOP10 {}\n".format(full_track)
 
-        for pos, time in tops:
-            message += "{}. {}\n".format(pos, time.to_str(markdown=True))
+            for pos, time in tops:
+                message += "{}. {}\n".format(pos, time.to_str(markdown=True))
 
-        await msg.channel.send(embed=self.create_tops_embed(full_track, tops))
+            await msg.channel.send(embed=self.create_tops_embed(full_track, tops))
+        except KeyError:
+            await msg.channel.send("Sorry, I don't know that track :disappointed:")
+
+    async def help(self, msg):
+        """help command"""
+
+        embed = discord.Embed(title="**TT Bot commands**", colour=0x990000)
+
+        message = """`!help`, `!tops`\n
+                        To get more info on a command add `help`. E.g.: `!tops help`"""
+
+        embed.add_field(name="I currently have these commands:", value=message, inline=False)
+        embed.set_thumbnail(url="https://cdn.discordapp.com/avatars/556563172186914827/b483a54cb374449b6006954a8c469faa.png?size=128")
+
+        await msg.channel.send(embed=embed)
+
+    async def command_info(self, msg, command):
+        """Provides info on a command"""
+
+        message = ""
+        if command == "help":
+            await msg.channel.send(":thinking:")
+        elif command == "tops":
+            embed = discord.Embed(title="**!tops track category**", colour=0x990000)
+            embed.add_field(name="track", value="track abbreviation, e.g.: `LC`, `rYF`", inline=False)
+            embed.add_field(name="category", value="`ng` (no-glitch), `alt` (alternative).\n*Only add category if there are more than 1*", inline=False)
+            await msg.channel.send(embed=embed)
 
     async def auto_update(self, loop_duration):
         """attempts to update the tops every (loop_duration) seconds"""
 
         await self.wait_until_ready()
-        channel = self.get_channel(config.CHANNEL)
+        channel = self.get_channel(Config.CHANNEL)
 
         while not self.is_closed():
             await self.change_presence(activity=discord.Game(name="Checking Database"), status=discord.Status.idle)
@@ -123,7 +156,6 @@ class Bot(discord.Client):
             #print(times)
             self.last_updated = datetime.datetime.utcnow()
             print("finished updating")
-
 
             if len(times) != 0:
                 #write to a new file so that changes can be reverted if necessary
@@ -141,16 +173,30 @@ class Bot(discord.Client):
 
         embed = discord.Embed(title="**Top10 {}**".format(track), colour=0x4ccfff)
 
-        message = ""
+        """ Split the tops into the first 5, and everything else.
+        This is done so that if the length of the 2 combined is more than 1024 characters (the field character limit),
+        it can be broken down into 2 seperate fields."""
+        message1 = ""
+        message2 = ""
+        index = 0
         for pos, time in tops:
             pos_str = str(pos)
             if len(pos_str) == 1:
+                #alignment
                 pos_str = '\u200B ' + pos_str
+            if index < 5:
+                message1 += "{}. {} {}: [{}]({})\n".format(pos_str, time.country, time.name, time.time, time.ghost)
+            else:
+                message2 += "{}. {} {}: [{}]({})\n".format(pos_str, time.country, time.name, time.time, time.ghost)
 
-            message += "{}. {} {}: [{}]({})\n".format(pos_str, time.country, time.name, time.time, time.ghost)
+            index += 1
 
-        print(message)
-        embed.add_field(name="\u200B", value=message, inline=True)
+        if len(message1) + len(message2) > 1024:
+            embed.add_field(name="\u200B", value=message1, inline=False)
+            embed.add_field(name="\u200B", value=message2, inline=False)
+        else:
+            embed.add_field(name="\u200B", value=message1 + message2)
+
         return embed
 
     def create_update_embed(self, time_info):
@@ -201,6 +247,6 @@ class Bot(discord.Client):
 
 
 if __name__ == "__main__":
-    token = config.TOKEN
+    token = Config.TOKEN
     bot = Bot()
     bot.run(token)

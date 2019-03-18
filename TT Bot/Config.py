@@ -1,0 +1,2 @@
+TOKEN = "Insert Token Here"
+CHANNEL = 451826714239303680

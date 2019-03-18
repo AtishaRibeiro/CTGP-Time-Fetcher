@@ -1,8 +1,6 @@
 import json
 import urllib.request
 import codecs
-import asyncio
-import aiohttp
 from datetime import datetime
 
 # based on http://www.chadsoft.co.uk/img/flags_32.png
@@ -161,8 +159,7 @@ PLAYER_NAMES = {
     "32F7E9E4BFD3A779": "Aiko",
     "9DBAF5D14A2226F9": "Mario",
     "30CD4A1D750A6750": "Jeroen"
-}   
-
+} 
 
 class FinishTime:
     """Class used to represent finish time of ghosts"""
@@ -222,31 +219,20 @@ class Ghost:
 class GhostFetcher:
     """Class used to fetch data from the undocumented API at http://tt.chadsoft.co.uk"""
 
-    def __init__(self, countries):
+    def __init__(self):
         self.base_url = "http://tt.chadsoft.co.uk"
         self.leaderboards = "/original-track-leaderboards.json"
         self.ghost_url = "http://www.chadsoft.co.uk/time-trials"
-        self.countries = countries
-        self.client = aiohttp.ClientSession()
 
-    async def get_json(self, url):
-        async with self.client.get(url) as response:
-            if response.status != 200:
-                return None
-            else:
-                return await response.read()
-
-    async def get_ghosts(self, cmp_date):
+    def get_ghosts(self, countries, cmp_date):
         """Looks for times that were set by players from 'countries' starting from cmp_date"""
 
         new_ghosts = dict()
 
         # get info on all tracks
-        data_raw = await self.get_json(self.base_url + self.leaderboards)
-        if data_raw is None:
-            print("Failed to access database")
-            return new_ghosts
-        data = json.loads(data_raw.decode("utf-8-sig"))
+        data = None
+        with urllib.request.urlopen(self.base_url + self.leaderboards) as url:
+            data = json.loads(url.read().decode("utf-8-sig"))
 
         # loop over every track
         for track in data["leaderboards"]:
@@ -259,60 +245,48 @@ class GhostFetcher:
             except KeyError:
                 pass
 
-            print("Reading " + track_name)
+            print(track_name)
             new_ghosts[track_name] = list()
             track_link = track["_links"]["item"]["href"]
 
             # get data from current track
-            track_ghosts_raw = await self.get_json(self.base_url + track_link)
-            if track_ghosts_raw is None:
-                print("Failed to read " + track_name)
-                continue
-            track_ghosts = json.loads(track_ghosts_raw.decode("utf-8-sig"))
+            track_ghosts = None
+            with urllib.request.urlopen(self.base_url + track_link) as track_url:
+                track_ghosts = json.loads(track_url.read().decode("utf-8-sig"))
 
+            # loop over all ghosts to find the ones that match the given criteria
             for ghost in track_ghosts["ghosts"]:
-                result = await self.analyse_ghost(ghost, cmp_date)
-                if result is not None:
-                    new_ghosts[track_name].append(result)
+                try:
+                    if ghost["playersFastest"] == True:
+                        if ghost["country"] in countries:
+                            ghost_time = datetime.strptime(ghost["dateSet"], "%Y-%m-%dT%H:%M:%SZ")
+                            if ghost_time >= cmp_date:
+                                #change name if player is in PLAYER_NAMES
+                                player_name = ghost["player"]
+                                if ghost["playerId"] in PLAYER_NAMES:
+                                    player_name = PLAYER_NAMES[ghost["playerId"]]
+
+                                ghost_obj = Ghost({
+                                    "Country": COUNTRY_FLAGS[ghost["country"]],
+                                    "Name": player_name,
+                                    "Time": ghost["finishTimeSimple"],
+                                    "Ghost": self.ghost_url + ghost["href"][:-3] + "html"})
+
+                                new_ghosts[track_name].append(ghost_obj)
+
+                except KeyError:
+                    # some players don't have a country set so these will throw a KeyError for ghost["Country"]
+                    continue
 
         return new_ghosts
-
-    async def analyse_ghost(self, ghost, cmp_date):
-        """check if a ghost matches the criteria"""
-
-        ghost_obj = None
-
-        try:
-            if ghost["playersFastest"] == True:
-                if ghost["country"] in self.countries:
-                    ghost_time = datetime.strptime(ghost["dateSet"], "%Y-%m-%dT%H:%M:%SZ")
-                    if ghost_time >= cmp_date:
-
-                        #change name if player is in PLAYER_NAMES
-                        player_name = ghost["player"]
-                        if ghost["playerId"] in PLAYER_NAMES:
-                            player_name = PLAYER_NAMES[ghost["playerId"]]
-
-                        ghost_obj = Ghost({
-                            "Country": COUNTRY_FLAGS[ghost["country"]],
-                            "Name": player_name,
-                            "Time": ghost["finishTimeSimple"],
-                            "Ghost": self.ghost_url + ghost["href"][:-3] + "html"})
-
-        except KeyError:
-            # some players don't have a country set so these will throw a KeyError for ghost["Country"]
-            pass
-
-        return ghost_obj
-
 
 if __name__ == "__main__":
     # country numbers from COUNTRY_FLAGS
     countries_to_check = [67, 88, 94]
-    date_str = "2019-03-01"
+    date_str = "2019-03-13"
     date = datetime.strptime(date_str, "%Y-%m-%d")
-    gf = GhostFetcher(countries_to_check)
-    new_ghosts = gf.get_ghosts(date)
+    gf = GhostFetcher()
+    new_ghosts = gf.get_ghosts(countries_to_check, date)
 
     with open("ghosts(" + date_str + ").txt", 'w') as file:
         for track in new_ghosts:
