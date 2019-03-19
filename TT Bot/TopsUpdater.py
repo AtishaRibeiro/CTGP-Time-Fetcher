@@ -1,6 +1,7 @@
 import json
 import csv
 import asyncio
+from DB import DB
 from datetime import datetime
 from GhostFetcher import GhostFetcher
 from GhostFetcher import Ghost
@@ -8,17 +9,21 @@ from GhostFetcher import Ghost
 class Tops:
     """Class that handles the topX of a region"""
 
-    def __init__(self, filename):
-        with open(filename) as file:
-            data = json.load(file)
-            self.countries = data["Info"]["Countries"]
+    # def __init__(self, filename):
+    #     with open(filename) as file:
+    #         data = json.load(file)
+    #         self.countries = data["Info"]["Countries"]
 
-            self.tracks = dict()
-            for track in data["Tracks"]:
-                self.tracks[track] = list()
-            for track, times in data["Tracks"].items():
-                for time in times:
-                    self.tracks[track].append(Ghost(time))
+    #         self.tracks = dict()
+    #         for track in data["Tracks"]:
+    #             self.tracks[track] = list()
+    #         for track, times in data["Tracks"].items():
+    #             for time in times:
+    #                 self.tracks[track].append(Ghost(time))
+
+    def __init__(self):
+        self.countries = [67, 88, 94]
+        self.DB = DB("tt_bot_db.db")
 
     def write_json(self, filename):
         """write the contents of self.tracks to (filename)"""
@@ -44,7 +49,7 @@ class Tops:
         # action: 0->not added, 1->time improved, 2->new player, 3->new 1st place, 4->1st place tie
         action = 0
         try:
-            times = sorted(self.tracks[track])
+            times = sorted(self.DB.get_top10(track))
         except KeyError:
             # error gets thrown when the track is not kept track of (pun not intended)
             return action
@@ -61,6 +66,7 @@ class Tops:
                 if new_time <= time:
                     action = 1
                     times.remove(time)
+                    DB.del_top_entry(time["Ghost"])
                 else:
                     return 0
                 break
@@ -72,14 +78,11 @@ class Tops:
         times.insert(0, new_time)
 
         # remove times that fall out of the top10
-        new_tops = [times[0]]
-        places = 0
-        for time in times[1:]:
-            if time != new_tops[-1]:
-                places += 1
-            if places > 10:
-                break
-            new_tops.append(time)
+        # check the count in case of a tie at tenth place
+        amount = times.count(max(times))
+        for i in range(len(times)-1, len(times)-amount-1, -1):
+            DB.del_top_entry(times[i]["Ghost"])
+            del times[i]
 
         self.tracks[track] = sorted(new_tops)
         return action
@@ -87,7 +90,7 @@ class Tops:
     async def update_tops(self, cmp_date, client):
         """Looks for times that were set starting from 'cmp_date'"""
 
-        gf = GhostFetcher(self.countries, client)
+        gf = GhostFetcher(self.countries, client, self.DB)
         new_times = await gf.get_ghosts(cmp_date)
         # returns a list with info about the times that were added
         time_info = list()
@@ -108,7 +111,7 @@ class Tops:
     def get_top_10(self, track):
         """Returns top10 of the given track"""
 
-        times = sorted(self.tracks[track])
+        times = sorted(self.DB.get10(track))
         top10 = [(1, times[0])]
 
         position = 1
@@ -121,5 +124,6 @@ class Tops:
 
 
 if __name__ == "__main__":
-    tops = Tops("BeNeLux-Leaderboards-No-Glitch.csv")
-    tops.write_json("BNL.json")
+    #tops = Tops("BeNeLux-Leaderboards-No-Glitch.csv")
+    #tops.write_json("BNL.json")
+    pass

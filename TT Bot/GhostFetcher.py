@@ -185,11 +185,11 @@ class FinishTime:
 class Ghost:
     """Class used to represent a ghost"""
 
-    def __init__(self, dict):
-        self.country = dict["Country"]
-        self.name = dict["Name"]
-        self.time = FinishTime(dict["Time"])
-        self.ghost = dict["Ghost"]
+    def __init__(self, country, name, time, ghost):
+        self.country = country
+        self.name = name
+        self.time = FinishTime(time)
+        self.ghost = ghost
 
     def __lt__(self, other):
         return self.time.ms_total < other.time.ms_total
@@ -211,23 +211,16 @@ class Ghost:
             return "{} {}: [{}]({})".format(self.country, self.name, str(self.time), self.ghost)
         return "{} {}: {} ({})".format(self.country, self.name, str(self.time), self.ghost)
 
-    def to_dict(self):
-        return {
-            "Country": self.country,
-            "Name":  self.name,
-            "Time": str(self.time),
-            "Ghost": self.ghost
-        }
-
 class GhostFetcher:
     """Class used to fetch data from the undocumented API at http://tt.chadsoft.co.uk"""
 
-    def __init__(self, countries, client):
+    def __init__(self, countries, client, database):
         self.base_url = "http://tt.chadsoft.co.uk"
         self.leaderboards = "/original-track-leaderboards.json"
         self.ghost_url = "http://www.chadsoft.co.uk/time-trials"
         self.countries = countries
         self.client = client
+        self.DB = database
 
     async def get_json(self, url):
         async with self.client.get(url) as response:
@@ -271,13 +264,13 @@ class GhostFetcher:
             track_ghosts = json.loads(track_ghosts_raw.decode("utf-8-sig"))
 
             for ghost in track_ghosts["ghosts"]:
-                result = await self.analyse_ghost(ghost, cmp_date)
+                result = await self.analyse_ghost(track, ghost)
                 if result is not None:
                     new_ghosts[track_name].append(result)
 
         return new_ghosts
 
-    async def analyse_ghost(self, ghost, cmp_date):
+    async def analyse_ghost(self, track, ghost):
         """check if a ghost matches the criteria"""
 
         ghost_obj = None
@@ -285,38 +278,20 @@ class GhostFetcher:
         try:
             if ghost["playersFastest"] == True:
                 if ghost["country"] in self.countries:
-                    ghost_time = datetime.strptime(ghost["dateSet"], "%Y-%m-%dT%H:%M:%SZ")
-                    if ghost_time >= cmp_date:
-
-                        #change name if player is in PLAYER_NAMES
+                    player_id = ghost["playerId"]
+                    ghost_hash = ghost["hash"]
+                    #check if the ghost is already in our database
+                    if self.DB.get_pb(player_id, track) != ghost_hash:
                         player_name = ghost["player"]
-                        if ghost["playerId"] in PLAYER_NAMES:
-                            player_name = PLAYER_NAMES[ghost["playerId"]]
+                        #change name if player is in PLAYER_NAMES
+                        if player_id in PLAYER_NAMES:
+                            player_name = PLAYER_NAMES[player_id]
 
-                        ghost_obj = Ghost({
-                            "Country": COUNTRY_FLAGS[ghost["country"]],
-                            "Name": player_name,
-                            "Time": ghost["finishTimeSimple"],
-                            "Ghost": self.ghost_url + ghost["href"][:-3] + "html"})
+                        ghost_obj = Ghost(COUNTRY_FLAGS[ghost["country"]], player_name, ghost["finishTimeSimple"], self.ghost_url + ghost["href"][:-3] + "html")
+                        self.DB.insert_pb(player_id, track, ghost_hash)
 
         except KeyError:
             # some players don't have a country set so these will throw a KeyError for ghost["Country"]
             pass
 
         return ghost_obj
-
-
-if __name__ == "__main__":
-    # country numbers from COUNTRY_FLAGS
-    countries_to_check = [67, 88, 94]
-    date_str = "2019-03-01"
-    date = datetime.strptime(date_str, "%Y-%m-%d")
-    gf = GhostFetcher(countries_to_check)
-    new_ghosts = gf.get_ghosts(date)
-
-    with open("ghosts(" + date_str + ").txt", 'w') as file:
-        for track in new_ghosts:
-            file.write(track + ":\n")
-
-            for ghost in new_ghosts[track]:
-                file.write('\t' + ghost.to_str() + '\n')
