@@ -48,10 +48,10 @@ class Tops:
 
         # action: 0->not added, 1->time improved, 2->new player, 3->new 1st place, 4->1st place tie
         action = 0
-        try:
-            times = sorted(self.DB.get_top10(track))
-        except KeyError:
-            # error gets thrown when the track is not kept track of (pun not intended)
+        times = sorted([Ghost(x[0], x[1], x[2], x[3]) for x in self.DB.get_top10(track)])
+
+        if len(times) == 0:
+            # return when the track is not kept track of (pun not intended)
             return action
 
         # check if the time belongs in the top10
@@ -66,7 +66,7 @@ class Tops:
                 if new_time <= time:
                     action = 1
                     times.remove(time)
-                    DB.del_top_entry(time["Ghost"])
+                    self.DB.del_top_entry(time.ghost, track)
                 else:
                     return 0
                 break
@@ -75,23 +75,25 @@ class Tops:
             action = 3
         elif new_time == times[0] and action is not 1:
             action = 4
+
         times.insert(0, new_time)
 
         # remove times that fall out of the top10
         # check the count in case of a tie at tenth place
-        amount = times.count(max(times))
-        for i in range(len(times)-1, len(times)-amount-1, -1):
-            DB.del_top_entry(times[i]["Ghost"])
-            del times[i]
+        if len(set(times)) > 10:
+            amount = times.count(max(times))
+            for i in range(len(times)-1, len(times)-amount-1, -1):
+                self.DB.del_top_entry(times[i].ghost, track)
 
-        self.tracks[track] = sorted(new_tops)
+        self.DB.insert_top_entry(track, new_time.country, new_time.name, str(new_time.time), new_time.ghost)
+
         return action
 
-    async def update_tops(self, cmp_date, client):
-        """Looks for times that were set starting from 'cmp_date'"""
+    async def update_tops(self, client):
+        """Looks for new times"""
 
         gf = GhostFetcher(self.countries, client, self.DB)
-        new_times = await gf.get_ghosts(cmp_date)
+        new_times = await gf.get_ghosts()
         # returns a list with info about the times that were added
         time_info = list()
 
@@ -111,7 +113,7 @@ class Tops:
     def get_top_10(self, track):
         """Returns top10 of the given track"""
 
-        times = sorted(self.DB.get10(track))
+        times = sorted([Ghost(x[0], x[1], x[2], x[3]) for x in self.DB.get_top10(track)])
         top10 = [(1, times[0])]
 
         position = 1

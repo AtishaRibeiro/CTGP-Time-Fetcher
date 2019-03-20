@@ -565,7 +565,7 @@
                 "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/7E/08/C87913B0403DC450C07BCB784BA919ED74E8.html"
             }
         ],
-        "DK Snowboard's Cross": [
+        "DK Summit": [
             {
                 "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "Name": "Thomas",
@@ -1383,7 +1383,7 @@
                 "Ghost": "https://www.ninrankings.org/mkwii/profil.php?id=197189235"
             }
         ],
-        "GBA Bowser's Castle 3": [
+        "GBA Bowser Castle 3": [
             {
                 "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "Name": "Christan",
@@ -1902,13 +1902,13 @@
                 "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "Name": "Dane",
                 "Time": "01:31.875",
-                "Ghost": "http://www.maschell.de/ghostdatabase/ghostviewer.php?id=40463"
+                "Ghost": "http://www.maschell.de/ghostdatabase/ghostviewer.php?id=57681"
             },
             {
                 "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "Name": "Shiro",
                 "Time": "01:31.947",
-                "Ghost": "www.chadsoft.co.uk/time-trials/rkgd/18/EF/339C63C244F4EAF16597912B509ABA505AA2.html"
+                "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/18/EF/339C63C244F4EAF16597912B509ABA505AA2.html"
             },
             {
                 "Country": "\ud83c\udde7\ud83c\uddea",
@@ -1920,7 +1920,7 @@
                 "Country": "\ud83c\uddf1\ud83c\uddfa",
                 "Name": "Kim",
                 "Time": "01:32.427",
-                "Ghost": "ninrankings.org/mkwii/profil.php?id=197189235"
+                "Ghost": "http://ninrankings.org/mkwii/profil.php?id=197189235"
             },
             {
                 "Country": "\ud83c\uddf1\ud83c\uddfa",
@@ -2651,7 +2651,7 @@
                 "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/95/A7/C2670D7DBB40C823BB510CE6EB01055B8195.html"
             }
         ],
-        "GBA Bowser's Castle 3 (Shortcut)": [
+        "GBA Bowser Castle 3 (Shortcut)": [
             {
                 "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "Name": "Thomas",

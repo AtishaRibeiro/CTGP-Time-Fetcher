@@ -29,12 +29,12 @@ TRACK_ABBREVIATIONS = {
     "MT NG":    "Maple Treeway",
     "MT":       "Maple Treeway (Glitch)",
     "GV NG":    "Grumble Volcano",
-    "GV ALT":   "Grumble Volcano (Shortcut)",
+    "GV ALT":   "Grumble Volcano (Shortcut)", #
     "GV":       "Grumble Volcano (Glitch)",
     "DDR":      "Dry Dry Ruins",
     "MH":       "Moonview Highway",
     "BC NG":    "Bowser's Castle",
-    "BC":       "Bowser's Castle (Glitch)",
+    "BC":       "Bowser's Castle (Shortcut)",
     "RR":       "Rainbow Road",
     "RPB NG":   "GCN Peach Beach",
     "RPB":      "GCN Peach Beach (Glitch)",
@@ -52,7 +52,7 @@ TRACK_ABBREVIATIONS = {
     "RBC3 NG":  "GBA Bowser Castle 3",
     "RBC3":     "GBA Bowser Castle 3 (Shortcut)",
     "RDKJP NG": "N64 DK Jungle Parkway",
-    "RDKJP ALT":"N64 DK Jungle Parkway (Shortcut)",
+    "RDKJP ALT":"N64 DK Jungle Parkway (Shortcut)", #
     "RDKJP":    "N64 DK Jungle Parkway (Glitch)",
     "RMC":      "GCN Mario Circuit",
     "RMC3":     "SNES Mario Circuit 3",
@@ -68,7 +68,7 @@ class Bot(discord.Client):
     def __init__(self):
         super().__init__()
 
-        self.bnl = Tops("BNL.json")
+        self.bnl = Tops()
         self.bg_task = self.loop.create_task(self.auto_update(3600))
         self.last_updated = datetime.datetime.utcnow()
         self.client = aiohttp.ClientSession()
@@ -107,14 +107,8 @@ class Bot(discord.Client):
         try:
             full_track = TRACK_ABBREVIATIONS[args.upper()]
             tops = self.bnl.get_top_10(full_track)
-
-            message = "TOP10 {}\n".format(full_track)
-
-            for pos, time in tops:
-                message += "{}. {}\n".format(pos, time.to_str(markdown=True))
-
             await msg.channel.send(embed=self.create_tops_embed(full_track, tops))
-        except KeyError:
+        except (KeyError, IndexError):
             await msg.channel.send("Sorry, I don't know that track :disappointed:")
 
     async def help(self, msg):
@@ -151,18 +145,12 @@ class Bot(discord.Client):
         while not self.is_closed():
             await self.change_presence(activity=discord.Game(name="Checking Database"), status=discord.Status.idle)
             print("updating")
-            times, changed = await self.bnl.update_tops(self.last_updated, self.client)
-            #times = [("Koopa Cape", Ghost({"Country": '🇧🇪', "Name": "Olifré", "Time": "02:18.469", "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/AF/6E/DBD745DB99D8853C2E21BB83AB13820A35BC.html"}), 3)]
+            times, changed = await self.bnl.update_tops(self.client)
+            #times = [("Koopa Cape", Ghost('🇧🇪', "Olifré", "02:18.400", "http://www.chadsoft.co.uk/time-trials/rkgd/AF/6E/DBD745DB99D8853C2E21BB83AB13820A35BC.html"), 3)]
             #self.bnl.add_time(times[0][1], times[0][0])
             #print(times)
             self.last_updated = datetime.datetime.utcnow()
             print("finished updating")
-
-            if changed:
-                #write to a new file so that changes can be reverted if necessary
-                filename = "updated_tops/{}-{}-{}_{}:{}:{}.json".format(self.last_updated.year, self.last_updated.month, self.last_updated.day, self.last_updated.hour, self.last_updated.minute, self.last_updated.second)
-                self.bnl.write_json(filename)
-                self.bnl.write_json("./BNL.json")
 
             for time_info in times:
                 await channel.send(embed=(self.create_update_embed(time_info)))

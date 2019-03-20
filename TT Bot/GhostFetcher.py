@@ -206,6 +206,9 @@ class Ghost:
     def __le__(self, other):
         return self.time.ms_total <= other.time.ms_total
 
+    def __hash__(self):
+        return self.time.ms_total
+
     def to_str(self, markdown=False):
         if markdown:
             return "{} {}: [{}]({})".format(self.country, self.name, str(self.time), self.ghost)
@@ -229,8 +232,8 @@ class GhostFetcher:
             else:
                 return await response.read()
 
-    async def get_ghosts(self, cmp_date):
-        """Looks for times that were set by players from 'countries' starting from cmp_date"""
+    async def get_ghosts(self):
+        """Looks for times that were set by players from 'countries'"""
 
         new_ghosts = dict()
 
@@ -264,7 +267,7 @@ class GhostFetcher:
             track_ghosts = json.loads(track_ghosts_raw.decode("utf-8-sig"))
 
             for ghost in track_ghosts["ghosts"]:
-                result = await self.analyse_ghost(track, ghost)
+                result = await self.analyse_ghost(track_name, ghost)
                 if result is not None:
                     new_ghosts[track_name].append(result)
 
@@ -279,17 +282,15 @@ class GhostFetcher:
             if ghost["playersFastest"] == True:
                 if ghost["country"] in self.countries:
                     player_id = ghost["playerId"]
-                    ghost_hash = ghost["hash"]
                     #check if the ghost is already in our database
-                    if self.DB.get_pb(player_id, track) != ghost_hash:
+                    if self.DB.insert_pb(player_id, track, ghost["hash"]):
                         player_name = ghost["player"]
                         #change name if player is in PLAYER_NAMES
                         if player_id in PLAYER_NAMES:
                             player_name = PLAYER_NAMES[player_id]
 
                         ghost_obj = Ghost(COUNTRY_FLAGS[ghost["country"]], player_name, ghost["finishTimeSimple"], self.ghost_url + ghost["href"][:-3] + "html")
-                        self.DB.insert_pb(player_id, track, ghost_hash)
-
+                        
         except KeyError:
             # some players don't have a country set so these will throw a KeyError for ghost["Country"]
             pass
