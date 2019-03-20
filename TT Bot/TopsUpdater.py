@@ -9,21 +9,9 @@ from GhostFetcher import Ghost
 class Tops:
     """Class that handles the topX of a region"""
 
-    # def __init__(self, filename):
-    #     with open(filename) as file:
-    #         data = json.load(file)
-    #         self.countries = data["Info"]["Countries"]
-
-    #         self.tracks = dict()
-    #         for track in data["Tracks"]:
-    #             self.tracks[track] = list()
-    #         for track, times in data["Tracks"].items():
-    #             for time in times:
-    #                 self.tracks[track].append(Ghost(time))
-
-    def __init__(self):
+    def __init__(self, db):
         self.countries = [67, 88, 94]
-        self.DB = DB("tt_bot_db.db")
+        self.DB = db
 
     def write_json(self, filename):
         """write the contents of self.tracks to (filename)"""

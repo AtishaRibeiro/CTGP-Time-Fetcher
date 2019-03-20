@@ -3,6 +3,7 @@ import Config
 import asyncio
 import datetime
 import aiohttp
+from DB import DB
 from discord.ext import commands
 from TopsUpdater import Tops
 from GhostFetcher import Ghost
@@ -11,64 +12,14 @@ import urllib
 
 COMMAND_PREFIX = '!'
 
-TRACK_ABBREVIATIONS = {
-    "LC":       "Luigi Circuit",
-    "MMM":      "Moo Moo Meadows",
-    "MG NG":    "Mushroom Gorge",
-    "MG":       "Mushroom Gorge (Glitch)",
-    "TF":       "Toad's Factory",
-    "MC NG":    "Mario Circuit",
-    "MC":       "Mario Circuit (Glitch)",
-    "CM NG":    "Coconut Mall",
-    "CM":       "Coconut Mall (Glitch)",
-    "DKS":      "DK Summit",
-    "WGM NG":   "Wario's Gold Mine",
-    "WGM":      "Wario's Gold Mine (Glitch)",
-    "DC":       "Daisy Circuit",
-    "KC":       "Koopa Cape",
-    "MT NG":    "Maple Treeway",
-    "MT":       "Maple Treeway (Glitch)",
-    "GV NG":    "Grumble Volcano",
-    "GV ALT":   "Grumble Volcano (Shortcut)", #
-    "GV":       "Grumble Volcano (Glitch)",
-    "DDR":      "Dry Dry Ruins",
-    "MH":       "Moonview Highway",
-    "BC NG":    "Bowser's Castle",
-    "BC":       "Bowser's Castle (Shortcut)",
-    "RR":       "Rainbow Road",
-    "RPB NG":   "GCN Peach Beach",
-    "RPB":      "GCN Peach Beach (Glitch)",
-    "RYF":      "DS Yoshi Falls",
-    "RGV2 NG":  "SNES Ghost Valley 2",
-    "RGV2":     "SNES Ghost Valley 2 (Glitch)",
-    "RMR":      "N64 Mario Raceway",
-    "RSL NG":   "N64 Sherbet Land",
-    "RSL":      "N64 Sherbet Land (Glitch)",
-    "RSGB":     "GBA Shy Guy Beach",
-    "RDS":      "DS Delfino Square",
-    "RWS":      "GCN Waluigi Stadium",
-    "RDH NG":   "DS Desert Hills",
-    "RDH":      "DS Desert Hills (Shortcut)",
-    "RBC3 NG":  "GBA Bowser Castle 3",
-    "RBC3":     "GBA Bowser Castle 3 (Shortcut)",
-    "RDKJP NG": "N64 DK Jungle Parkway",
-    "RDKJP ALT":"N64 DK Jungle Parkway (Shortcut)", #
-    "RDKJP":    "N64 DK Jungle Parkway (Glitch)",
-    "RMC":      "GCN Mario Circuit",
-    "RMC3":     "SNES Mario Circuit 3",
-    "RPG":      "DS Peach Gardens",
-    "RDKM NG":  "GCN DK Mountain",
-    "RDKM":     "GCN DK Mountain (Shortcut)",
-    "RBC":      "N64 Bowser's Castle"
-}
-
 class Bot(discord.Client):
-    """Bot that handles the BNL Tops"""
+    """Bot that handles the BNL Tops and more"""
 
     def __init__(self):
         super().__init__()
 
-        self.bnl = Tops()
+        self.DB = DB("tt_bot_db.db")
+        self.bnl = Tops(self.DB)
         self.bg_task = self.loop.create_task(self.auto_update(3600))
         self.last_updated = datetime.datetime.utcnow()
         self.client = aiohttp.ClientSession()
@@ -89,15 +40,21 @@ class Bot(discord.Client):
         contents = msg.content
         if contents[0] == COMMAND_PREFIX:
             split_msg = contents[1:].split(None, 1)
+            command = split_msg[0]
+            args = split_msg[1]
 
             # check all available commands
             if len(split_msg) > 1:
-                if split_msg[1] == "help":
+                if args == "help":
                     await self.command_info(msg, split_msg[0])
-                elif split_msg[0] == "tops":
-                    await self.tops(msg, split_msg[1])
-            elif split_msg[0] == "help":
+                elif command == "tops":
+                    await self.tops(msg, args)
+                elif command == "count":
+                    await self.count(msg, args)
+            elif command == "help":
                 await self.help(msg)
+            elif command == "links":
+                await self.links(msg)
         else:
             return
 
@@ -105,7 +62,7 @@ class Bot(discord.Client):
         """tops command"""
 
         try:
-            full_track = TRACK_ABBREVIATIONS[args.upper()]
+            full_track = self.DB.get_track_name(args.upper())
             tops = self.bnl.get_top_10(full_track)
             await msg.channel.send(embed=self.create_tops_embed(full_track, tops))
         except (KeyError, IndexError):
@@ -116,12 +73,37 @@ class Bot(discord.Client):
 
         embed = discord.Embed(title="**TT Bot commands**", colour=0x990000)
 
-        message = """`!help`, `!tops`\n
-                        To get more info on a command add `help`. E.g.: `!tops help`"""
+        message = "`!help`, `!tops`, `!count`, `!links`\n" \
+                    "To get more info on a command add `help`. E.g.: `!tops help`"
 
         embed.add_field(name="I currently have these commands:", value=message, inline=False)
         embed.set_thumbnail(url="https://cdn.discordapp.com/avatars/556563172186914827/b483a54cb374449b6006954a8c469faa.png?size=128")
 
+        await msg.channel.send(embed=embed)
+
+    async def links(self, msg):
+        """links command"""
+
+        embed = discord.Embed(title="**Useful Links**", colour=0x990000)
+
+        message = "- [CTGP-R Database](http://www.chadsoft.co.uk/time-trials/) regular and custom track leaderboards\n" \
+                    "- [MKLeaderboards](https://www.mkleaderboards.com/mkw) various top 10's\n" \
+                    "- [MKW WR history](https://mkwrs.com/mkwii/) all current and past world records\n" \
+                    "- [Player Page](http://www.mariokart64.com/mkw/wrc.php) mkwii player page\n" \
+                    "- [CTGP Records Channel](https://www.youtube.com/channel/UCxCPLtXIg43HRP6QZN8gyYQ/featured) video uploads of world records"
+
+        embed.add_field(name="\u200B", value=message)
+        await msg.channel.send(embed=embed)
+
+    async def count(self, msg, player):
+        """provides the amount of times a player appears in the leaderboards"""
+
+        embed = discord.Embed(title="**BNL Leaderboard appearances**", colour=0xffffff)
+        total_count, ng_count, glitch_count, alt_count = self.DB.get_player_count(player)
+
+        message = "**{}/32** *no-glitch*\n**{}/14** *glitch*\n**{}/2** *alternate*".format(ng_count, glitch_count, alt_count)
+
+        embed.add_field(name="{} appears {} time(s) in the leaderboards".format(player, total_count), value=message)
         await msg.channel.send(embed=embed)
 
     async def command_info(self, msg, command):
@@ -133,7 +115,13 @@ class Bot(discord.Client):
         elif command == "tops":
             embed = discord.Embed(title="**!tops track category**", colour=0x990000)
             embed.add_field(name="track", value="track abbreviation, e.g.: `LC`, `rYF`", inline=False)
-            embed.add_field(name="category", value="`ng` (no-glitch), `alt` (alternative).\n*Only add category if there are more than 1*", inline=False)
+            embed.add_field(name="category", value="`ng` (no-glitch), `alt` (alternative).\n*Only add category if there is more than 1*", inline=False)
+            await msg.channel.send(embed=embed)
+        elif command == "links":
+            await msg.channel.send(":expressionless: Just type `!links`")
+        elif command == "count":
+            embed = discord.Emed(title="**!count player**", colour=0x990000)
+            embed.add_field(name="player", value="player name, e.g.: `Olifré`")
             await msg.channel.send(embed=embed)
 
     async def auto_update(self, loop_duration):
