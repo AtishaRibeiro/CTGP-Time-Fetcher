@@ -4,9 +4,8 @@ import asyncio
 import datetime
 import aiohttp
 from DB import DB
-from discord.ext import commands
 from TopsUpdater import Tops
-from GhostFetcher import Ghost
+from GhostFetcher import Ghost, FinishTime
 from bs4 import BeautifulSoup as BS
 import urllib
 
@@ -41,16 +40,17 @@ class Bot(discord.Client):
         if contents[0] == COMMAND_PREFIX:
             split_msg = contents[1:].split(None, 1)
             command = split_msg[0]
-            args = split_msg[1]
 
             # check all available commands
             if len(split_msg) > 1:
-                if args == "help":
+                if split_msg[1] == "help":
                     await self.command_info(msg, split_msg[0])
                 elif command == "tops":
-                    await self.tops(msg, args)
+                    await self.tops(msg, split_msg[1])
                 elif command == "count":
-                    await self.count(msg, args)
+                    await self.count(msg, split_msg[1])
+                elif command == "pb":
+                    await self.pb(msg, split_msg[1].split())
             elif command == "help":
                 await self.help(msg)
             elif command == "links":
@@ -62,10 +62,10 @@ class Bot(discord.Client):
         """tops command"""
 
         try:
-            full_track = self.DB.get_track_name(args.upper())
+            full_track = self.DB.get_track_name(args.upper())[0]
             tops = self.bnl.get_top_10(full_track)
             await msg.channel.send(embed=self.create_tops_embed(full_track, tops))
-        except (KeyError, IndexError):
+        except TypeError:
             await msg.channel.send("Sorry, I don't know that track :disappointed:")
 
     async def help(self, msg):
@@ -73,7 +73,7 @@ class Bot(discord.Client):
 
         embed = discord.Embed(title="**TT Bot commands**", colour=0x990000)
 
-        message = "`!help`, `!tops`, `!count`, `!links`\n" \
+        message = "`!help`, `!tops`, `!count`, `!pb`, `!links`\n" \
                     "To get more info on a command add `help`. E.g.: `!tops help`"
 
         embed.add_field(name="I currently have these commands:", value=message, inline=False)
@@ -90,7 +90,8 @@ class Bot(discord.Client):
                     "- [MKLeaderboards](https://www.mkleaderboards.com/mkw) various top 10's\n" \
                     "- [MKW WR history](https://mkwrs.com/mkwii/) all current and past world records\n" \
                     "- [Player Page](http://www.mariokart64.com/mkw/wrc.php) mkwii player page\n" \
-                    "- [CTGP Records Channel](https://www.youtube.com/channel/UCxCPLtXIg43HRP6QZN8gyYQ/featured) video uploads of world records"
+                    "- [CTGP Records Channel](https://www.youtube.com/channel/UCxCPLtXIg43HRP6QZN8gyYQ/featured) video uploads of world records\n" \
+                    "- [Tas WR's](http://mkwtas.com/) all current TAS world records"
 
         embed.add_field(name="\u200B", value=message)
         await msg.channel.send(embed=embed)
@@ -103,8 +104,69 @@ class Bot(discord.Client):
 
         message = "**{}/32** *no-glitch*\n**{}/14** *glitch*\n**{}/2** *alternate*".format(ng_count, glitch_count, alt_count)
 
-        embed.add_field(name="{} appears {} time(s) in the leaderboards".format(player, total_count), value=message)
+        embed.add_field(name="`{}` appears **{}** time(s) in the leaderboards".format(player, total_count), value=message)
         await msg.channel.send(embed=embed)
+
+    async def pb(self, msg, args):
+        """gives the personal best for a player"""
+
+        track = ""
+        player = ""
+        if args[-1] == "ng" or args[-1] == "alt":
+            track = ' '.join(args[-2:])
+            player = ' '.join(args[:-2])
+        else:
+            track = args[-1]
+            player = ' '.join(args[:-1])
+
+        track = self.DB.get_track_name(track.upper())
+        if track is None:
+            await msg.channel.send("Sorry, I don't know that track :disappointed:")
+            return
+
+        player_ids = self.DB.get_player_id(player)
+        ghost_hash = ""
+        time = ""
+        if len(player_ids) == 0:
+            await msg.channel.send("Sorry, I don't know that player :disappointed:")
+            return
+        elif len(player_ids) == 1:
+            pb = self.DB.get_player_pb(player_ids[0][0], track[0])
+            if pb is None:
+                await msg.channel.send("I couldn't find a time for that track on CTGP-R.")
+                return
+            ghost_hash = pb[0]
+            time = pb[1]
+        else:
+            # in case a player has more than 1 ID, figure out which one has the fastest time
+            fastest = FinishTime("99:99.999")
+            found_pb = False
+            for player_id in player_ids:
+                pb = self.DB.get_player_pb(player_id[0], track[0])
+                print(pb)
+                if pb is None:
+                    continue
+                else:
+                    found_pb = True
+                finish_time = FinishTime(pb[1])
+                if finish_time.ms_total < fastest.ms_total:
+                    fastest = finish_time
+                    ghost_hash = pb[0]
+            if not found_pb:
+                await msg.channel.send("I couldn't find a time for that track on CTGP-R.")
+                return
+            time = str(fastest)
+
+        ghost_link = "http://www.chadsoft.co.uk/time-trials/rkgd/{}/{}/{}.html".format(ghost_hash[:2], ghost_hash[2:4], ghost_hash[4:])
+
+        player = player + "'" + (player[-1] != 's' and player[-1] != 'x') * "s"
+
+        embed = discord.Embed(title="**{} personal best**".format(player), colour=0x8eff56)
+        embed.add_field(name=track[0], value="[{}]({})".format(self.easter_egg(time), ghost_link))
+        embed.set_thumbnail(url=self.extract_mii(ghost_link))
+
+        await msg.channel.send(embed=embed)
+
 
     async def command_info(self, msg, command):
         """Provides info on a command"""
@@ -120,8 +182,13 @@ class Bot(discord.Client):
         elif command == "links":
             await msg.channel.send(":expressionless: Just type `!links`")
         elif command == "count":
-            embed = discord.Emed(title="**!count player**", colour=0x990000)
+            embed = discord.Embed(title="**!count player**", colour=0x990000)
             embed.add_field(name="player", value="player name, e.g.: `Olifré`")
+            await msg.channel.send(embed=embed)
+        elif command == 'pb':
+            embed = discord.Embed(title="**!pb player track**", colour=0x990000)
+            embed.add_field(name="player", value="player name, e.g.: `Olifré`", inline=False)
+            embed.add_field(name="track", value="track abbreviation, e.g.: `LC`, `rYF`", inline=False)
             await msg.channel.send(embed=embed)
 
     async def auto_update(self, loop_duration):
@@ -134,9 +201,9 @@ class Bot(discord.Client):
             await self.change_presence(activity=discord.Game(name="Checking Database"), status=discord.Status.idle)
             print("updating")
             times, changed = await self.bnl.update_tops(self.client)
-            #times = [("Koopa Cape", Ghost('🇧🇪', "Olifré", "02:18.400", "http://www.chadsoft.co.uk/time-trials/rkgd/AF/6E/DBD745DB99D8853C2E21BB83AB13820A35BC.html"), 3)]
-            #self.bnl.add_time(times[0][1], times[0][0])
-            #print(times)
+            # times = [("Koopa Cape", Ghost('🇧🇪', "Olifré", "02:18.400", "http://www.chadsoft.co.uk/time-trials/rkgd/AF/6E/DBD745DB99D8853C2E21BB83AB13820A35BC.html"), 3)]
+            # self.bnl.add_time(times[0][1], times[0][0])
+            # print(times)
             self.last_updated = datetime.datetime.utcnow()
             print("finished updating")
 
@@ -194,12 +261,7 @@ class Bot(discord.Client):
 
         field_title = "*{}*".format(time_info[0])
 
-        # some easter eggs ;-)
-        time_str = str(time.time)
-        if time_str[-2:] == "69":
-            time_str = time_str[:-2] + ":six::nine:"
-        if time_str[-3:] == "420":
-            time_str += " :fire::fire:"
+        time_str = self.easter_egg(str(time.time))
         message = "{} {}: [{}]({})\n".format(time.country, time.name, time_str, time.ghost)
 
 
@@ -222,6 +284,15 @@ class Bot(discord.Client):
         mii = div_str[start:end]
 
         return "http://www.chadsoft.co.uk" + mii
+
+    def easter_egg(self, time_str):
+        """A little easter egg ;-)"""
+        if time_str[-2:] == "69":
+            time_str = time_str[:-2] + ":six::nine:"
+        if time_str[-3:] == "420":
+            time_str += " :fire::fire:"
+
+        return time_str
 
 
 if __name__ == "__main__":

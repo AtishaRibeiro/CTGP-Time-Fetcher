@@ -133,37 +133,6 @@ COUNTRY_FLAGS = {
     177: '🇯🇴', # Jordan
 }
 
-# maps the ctgp id of a player to a name
-PLAYER_NAMES = {
-    "3AB8188FCD29476E": "Thomas",
-    "041537D963CC8023": "Olifré",
-    "4516B56851B02E77": "Olifré",
-    "E1C66E97144FCC06": "Christan",
-    "E1DCACA4DBD2BD98": "Tom",
-    "F8AB088AFDDA7189": "Korra",
-    "F8AC68D93F4B3B58": "Shiro",
-    "CA8F043A3D42FB75": "Dane",
-    "AF29D4AFF12749A9": "Leops",
-    "24906213005B3619": "Dats",
-    "125619EC5FBF4DB5": "Loaf",
-    "DB503BD3D6030657": "Jeff",
-    "D4609DB8549BBAF2": "Enzo",
-    "6EE7F206748EF16F": "Sander",
-    "C618D6AF6C5CE085": "Miist",
-    "821E1146C7A4F5B3": "Kuigl",
-    "DF050A811583E0BC": "Weexy",
-    "2287EDEF056C2A77": "Nemesis",
-    "F6E83B580EE66237": "Apolo",
-    "21CEB9A1B8D3CAC5": "Daan",
-    "E4FC925132F85873": "The M",
-    "F9CB581AF48F0129": "The M",
-    "C48B6FC37FAE104D": "Leon",
-    "32F7E9E4BFD3A779": "Aiko",
-    "9DBAF5D14A2226F9": "Mario",
-    "30CD4A1D750A6750": "Jeroen"
-}   
-
-
 class FinishTime:
     """Class used to represent finish time of ghosts"""
 
@@ -283,11 +252,13 @@ class GhostFetcher:
                 if ghost["country"] in self.countries:
                     player_id = ghost["playerId"]
                     #check if the ghost is already in our database
-                    if self.DB.insert_pb(player_id, track, ghost["hash"]):
-                        player_name = ghost["player"]
-                        #change name if player is in PLAYER_NAMES
-                        if player_id in PLAYER_NAMES:
-                            player_name = PLAYER_NAMES[player_id]
+                    if self.DB.insert_pb(player_id, track, ghost["hash"], ghost["finishTimeSimple"]):
+                        #change name if player is in database
+                        player_name = self.DB.get_player_name(player_id)
+                        if player_name is None:
+                            player_name = ghost["player"]
+                        else:
+                            player_name = player_name[0]
 
                         ghost_obj = Ghost(COUNTRY_FLAGS[ghost["country"]], player_name, ghost["finishTimeSimple"], self.ghost_url + ghost["href"][:-3] + "html")
                         

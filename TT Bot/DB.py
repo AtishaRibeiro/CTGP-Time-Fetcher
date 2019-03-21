@@ -41,9 +41,9 @@ TRACKS = [
     ("RDH",      "DS Desert Hills (Shortcut)", 1),
     ("RBC3 NG",  "GBA Bowser Castle 3", 0),
     ("RBC3",     "GBA Bowser Castle 3 (Shortcut)", 1),
-    ("RDKJP NG", "N64 DK Jungle Parkway", 0),
-    ("RDKJP ALT","N64 DK Jungle Parkway (Shortcut)", 2), #
-    ("RDKJP",    "N64 DK Jungle Parkway (Glitch)", 1),
+    ("RDKJP NG", "N64 DK's Jungle Parkway", 0),
+    ("RDKJP ALT","N64 DK's Jungle Parkway (Shortcut)", 2), #
+    ("RDKJP",    "N64 DK's Jungle Parkway (Glitch)", 1),
     ("RMC",      "GCN Mario Circuit", 0),
     ("RMC3",     "SNES Mario Circuit 3", 0),
     ("RPG",      "DS Peach Gardens", 0),
@@ -51,6 +51,39 @@ TRACKS = [
     ("RDKM",     "GCN DK Mountain (Shortcut)", 1),
     ("RBC",      "N64 Bowser's Castle", 0),
 ]
+
+# maps the ctgp id of a player to a name
+PLAYER_NAMES = [
+    ("3AB8188FCD29476E", "Thomas"),
+    ("041537D963CC8023", "Olifré"),
+    ("4516B56851B02E77", "Olifré"),
+    ("E1C66E97144FCC06", "Christan"),
+    ("E1DCACA4DBD2BD98", "Tom"),
+    ("F8AB088AFDDA7189", "Korra"),
+    ("F8AC68D93F4B3B58", "Shiro"),
+    ("CA8F043A3D42FB75", "Dane"),
+    ("AF29D4AFF12749A9", "Leops"),
+    ("24906213005B3619", "Dats"),
+    ("125619EC5FBF4DB5", "Loaf"),
+    ("DB503BD3D6030657", "Jeff"),
+    ("D4609DB8549BBAF2", "Enzo"),
+    ("A26C245D836EDDCB", "Enzo"),
+    ("6EE7F206748EF16F", "Sander"),
+    ("C618D6AF6C5CE085", "Miist"),
+    ("821E1146C7A4F5B3", "Kuigl"),
+    ("DF050A811583E0BC", "Weexy"),
+    ("2287EDEF056C2A77", "Nemesis"),
+    ("F6E83B580EE66237", "Apolo"),
+    ("21CEB9A1B8D3CAC5", "Daan"),
+    ("E4FC925132F85873", "The M"),
+    ("F9CB581AF48F0129", "The M"),
+    ("C48B6FC37FAE104D", "Leon"),
+    ("32F7E9E4BFD3A779", "Aiko"),
+    ("9DBAF5D14A2226F9", "Mario"),
+    ("30CD4A1D750A6750", "Jeroen"),
+    ("E4E6C6650E76DB78", "Degausser")
+]
+
 
 class DB:
 
@@ -65,9 +98,11 @@ class DB:
         # create tracks table
         curs.execute("create table if not exists tracks(abbrv text, track_name text primary key, category int)")
         # create personal best table
-        curs.execute("create table if not exists personal_bests(player_id text, track text, ghost_hash text, primary key(player_id, track), foreign key(track) references tracks(track_name))")
+        curs.execute("create table if not exists personal_bests(player_id text, track text, ghost_hash text, time text, primary key(player_id, track), foreign key(track) references tracks(track_name))")
         # create top10 table
         curs.execute("create table if not exists top10(track text, country text, name text, time text, ghost text, primary key(track, ghost), foreign key(track) references tracks(track_name))")
+        # create player table
+        curs.execute("create table if not exists players(player_id text primary key, player_name)")
 
         with open("BNL.json") as file:
             data = json.load(file)
@@ -80,6 +115,9 @@ class DB:
         for track in TRACKS:
             curs.execute("insert or replace into tracks values(?, ?, ?)", track)
 
+        for player in PLAYER_NAMES:
+            curs.execute("insert or replace into players values(?, ?)", player)
+
         self.conn.commit()
 
     def get_ghost_hash(self, player_id, track_name):
@@ -87,16 +125,16 @@ class DB:
         curs.execute("select ghost_hash from personal_bests where player_id = ? and track = ?", [player_id, track_name])
         return curs.fetchone()[0]
 
-    def insert_pb(self, player_id, track_name, ghost_hash):
+    def insert_pb(self, player_id, track_name, ghost_hash, time):
         curs = self.cursor()
 
         #if the ghost is already in the table
         if curs.execute("select exists(select 1 from personal_bests where ghost_hash = ?)", [ghost_hash]).fetchone()[0]:
             return False
 
-        curs.execute("insert or replace into personal_bests values(?, ?, ?)", [player_id, track_name, ghost_hash])
+        curs.execute("insert or replace into personal_bests values(?, ?, ?, ?)", [player_id, track_name, ghost_hash, time])
         self.conn.commit()
-        print("inserted {} - {} - {}".format(player_id, track_name, ghost_hash))
+        print("inserted {} - {} - {} - {}".format(player_id, track_name, ghost_hash, time))
         return True
 
     def get_top10(self, track_name):
@@ -117,7 +155,12 @@ class DB:
     def get_track_name(self, abbrv):
         curs = self.cursor()
         curs.execute("select track_name from tracks where abbrv = ?", [abbrv])
-        return curs.fetchone()[0]
+        return curs.fetchone()
+
+    def set_player(self, player_id, player_name):
+        curs = self.cursor()
+        curs.execute("insert or replace into players values(?, ?)", [player_id, player_name])
+        self.conn.commit()
 
     def get_player_count(self, player_name):
         curs = self.cursor()
@@ -138,6 +181,21 @@ class DB:
                 alt_count += 1
 
         return total_count, ng_count, glitch_count, alt_count
+
+    def get_player_name(self, player_id):
+        curs = self.cursor()
+        curs.execute("select player_name from players where player_id = ?", [player_id])
+        return curs.fetchone()
+
+    def get_player_id(self, player_name):
+        curs = self.cursor()
+        curs.execute("select player_id from players where player_name = ?", [player_name])
+        return curs.fetchall()
+
+    def get_player_pb(self, player_id, track):
+        curs = self.cursor()
+        curs.execute("select ghost_hash, time from personal_bests where player_id = ? and track = ?", [player_id, track])
+        return curs.fetchone()
 
 
 if __name__ == "__main__":

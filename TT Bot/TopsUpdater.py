@@ -59,10 +59,13 @@ class Tops:
                     return 0
                 break
 
-        if new_time < times[0]:
+        if len(times) != 0:
+            if new_time < times[0]:
+                action = 3
+            elif new_time == times[0] and action is not 1:
+                action = 4
+        else:
             action = 3
-        elif new_time == times[0] and action is not 1:
-            action = 4
 
         times.insert(0, new_time)
 
