@@ -22,6 +22,8 @@ class Bot(discord.Client):
         self.bg_task = self.loop.create_task(self.auto_update(3600))
         self.last_updated = datetime.datetime.utcnow()
         self.client = aiohttp.ClientSession()
+        # True if auto_update has to show all times, False if it only has to show top10 times
+        self.show_all = True
     
     async def on_ready(self):
         print("logged in")
@@ -51,12 +53,31 @@ class Bot(discord.Client):
                     await self.count(msg, split_msg[1])
                 elif command == "pb":
                     await self.pb(msg, split_msg[1].split())
+                elif command == "show_all":
+                    if msg.author.id == 137320598341681153:
+                        await self.set_show_all(msg, split_msg[1])
+                elif command == "add_player":
+                    if msg.author.id == 137320598341681153:
+                        await self.add_player(msg, split_msg[1].split())
+
             elif command == "help":
                 await self.help(msg)
             elif command == "links":
                 await self.links(msg)
         else:
             return
+
+    async def set_show_all(self, msg, arg):
+        if arg == "true":
+            self.show_all = True
+            await msg.channel.send("Set `show_all` to True")
+        elif arg == "false":
+            self.show_all = False
+            await msg.channel.send("Set `show_all` to False")
+
+    async def add_player(self, msg, args):
+        self.DB.set_player(args[0], args[1])
+        await msg.channel.send("Player added")
 
     async def tops(self, msg, args):
         """tops command"""
@@ -65,7 +86,7 @@ class Bot(discord.Client):
             full_track = self.DB.get_track_name(args.upper())[0]
             tops = self.bnl.get_top_10(full_track)
             await msg.channel.send(embed=self.create_tops_embed(full_track, tops))
-        except TypeError:
+        except (IndexError, TypeError):
             await msg.channel.send("Sorry, I don't know that track :disappointed:")
 
     async def help(self, msg):
@@ -91,7 +112,7 @@ class Bot(discord.Client):
                     "- [MKW WR history](https://mkwrs.com/mkwii/) all current and past world records\n" \
                     "- [Player Page](http://www.mariokart64.com/mkw/wrc.php) mkwii player page\n" \
                     "- [CTGP Records Channel](https://www.youtube.com/channel/UCxCPLtXIg43HRP6QZN8gyYQ/featured) video uploads of world records\n" \
-                    "- [Tas WR's](http://mkwtas.com/) all current TAS world records"
+                    "- [TAS WR's](http://mkwtas.com/) all current TAS world records"
 
         embed.add_field(name="\u200B", value=message)
         await msg.channel.send(embed=embed)
@@ -143,7 +164,6 @@ class Bot(discord.Client):
             found_pb = False
             for player_id in player_ids:
                 pb = self.DB.get_player_pb(player_id[0], track[0])
-                print(pb)
                 if pb is None:
                     continue
                 else:
@@ -201,13 +221,15 @@ class Bot(discord.Client):
             await self.change_presence(activity=discord.Game(name="Checking Database"), status=discord.Status.idle)
             print("updating")
             times, changed = await self.bnl.update_tops(self.client)
-            # times = [("Koopa Cape", Ghost('🇧🇪', "Olifré", "02:18.400", "http://www.chadsoft.co.uk/time-trials/rkgd/AF/6E/DBD745DB99D8853C2E21BB83AB13820A35BC.html"), 3)]
+            # times = [("Koopa Cape", Ghost('🇧🇪', "Sergio", "02:21.927", "http://www.chadsoft.co.uk/time-trials/rkgd/E4/7B/97C4E27C6AA1A5ECC33DF5F70501CD33F925.html"), 1)]
             # self.bnl.add_time(times[0][1], times[0][0])
             # print(times)
             self.last_updated = datetime.datetime.utcnow()
             print("finished updating")
 
             for time_info in times:
+                if not self.show_all and time_info[2] == 0:
+                    continue
                 await channel.send(embed=(self.create_update_embed(time_info)))
 
             await self.change_presence(activity=None, status=discord.Status.online)

@@ -38,9 +38,9 @@ class Tops:
         action = 0
         times = sorted([Ghost(x[0], x[1], x[2], x[3]) for x in self.DB.get_top10(track)])
 
-        if len(times) == 0:
-            # return when the track is not kept track of (pun not intended)
-            return action
+        if times is None or len(times) == 0:
+            self.DB.insert_top_entry(track, new_time.country, new_time.name, str(new_time.time), new_time.ghost)
+            return 3
 
         # check if the time belongs in the top10
         if new_time <= times[-1]:
@@ -59,7 +59,7 @@ class Tops:
                     return 0
                 break
 
-        if len(times) != 0:
+        if len(times) > 0:
             if new_time < times[0]:
                 action = 3
             elif new_time == times[0] and action is not 1:
@@ -67,13 +67,14 @@ class Tops:
         else:
             action = 3
 
-        times.insert(0, new_time)
+        times.append(new_time)
+        times = sorted(times)
 
         # remove times that fall out of the top10
         # check the count in case of a tie at tenth place
         if len(set(times)) > 10:
             amount = times.count(max(times))
-            for i in range(len(times)-1, len(times)-amount-1, -1):
+            for i in range(len(times)-amount, len(times)):
                 self.DB.del_top_entry(times[i].ghost, track)
 
         self.DB.insert_top_entry(track, new_time.country, new_time.name, str(new_time.time), new_time.ghost)

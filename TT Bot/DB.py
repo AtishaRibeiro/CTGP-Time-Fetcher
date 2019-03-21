@@ -63,6 +63,7 @@ PLAYER_NAMES = [
     ("F8AC68D93F4B3B58", "Shiro"),
     ("CA8F043A3D42FB75", "Dane"),
     ("AF29D4AFF12749A9", "Leops"),
+    ("912BB947AF9F02FC", "Leops"),
     ("24906213005B3619", "Dats"),
     ("125619EC5FBF4DB5", "Loaf"),
     ("DB503BD3D6030657", "Jeff"),
@@ -81,7 +82,9 @@ PLAYER_NAMES = [
     ("32F7E9E4BFD3A779", "Aiko"),
     ("9DBAF5D14A2226F9", "Mario"),
     ("30CD4A1D750A6750", "Jeroen"),
-    ("E4E6C6650E76DB78", "Degausser")
+    ("E4E6C6650E76DB78", "Degausser"),
+    ("62EA84C35DB17FE1", "Degausser"),
+    ("3FC71238A1992027", "Piloco")
 ]
 
 
@@ -144,6 +147,7 @@ class DB:
 
     def del_top_entry(self, ghost, track):
         curs = self.cursor()
+        print("delete {} on {}".format(ghost, track))
         curs.execute("delete from top10 where ghost = ? and track = ?" , [ghost, track])
         self.conn.commit()
 
