@@ -215,7 +215,7 @@ class Bot(discord.Client):
         """attempts to update the tops every (loop_duration) seconds"""
 
         await self.wait_until_ready()
-        channel = self.get_channel(Config.CHANNEL)
+        channel = self.get_channel(Config.UPDATE_CHANNEL)
 
         while not self.is_closed():
             await self.change_presence(activity=discord.Game(name="Checking Database"), status=discord.Status.idle)

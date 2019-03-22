@@ -171,19 +171,23 @@ class DB:
         curs = self.cursor()
         curs.execute("select track from top10 where lower(name) = lower(?)", [player_name])
         tracks = curs.fetchall()
-        total_count = len(tracks)
+        total_count = 0
         ng_count = 0
         glitch_count = 0
         alt_count = 0
 
         for track in tracks:
-            category = curs.execute("select category from tracks where track_name = ?", track).fetchone()[0]
+            try:
+                category = curs.execute("select category from tracks where track_name = ?", track).fetchone()[0]
+            except TypeError:
+                continue
             if category == 0:
                 ng_count += 1
             elif category == 1:
                 glitch_count += 1
             elif category == 2:
                 alt_count += 1
+            total_count += 1
 
         return total_count, ng_count, glitch_count, alt_count
 
