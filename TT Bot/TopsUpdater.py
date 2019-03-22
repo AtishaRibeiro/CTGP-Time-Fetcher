@@ -35,18 +35,17 @@ class Tops:
         """Attempts to add 'new_time' to the top10, only adds if it belongs there"""
 
         # action: 0->not added, 1->time improved, 2->new player, 3->new 1st place, 4->1st place tie
-        action = 0
+        action = 2
         times = sorted([Ghost(x[0], x[1], x[2], x[3]) for x in self.DB.get_top10(track)])
 
         if times is None or len(times) == 0:
             self.DB.insert_top_entry(track, new_time.country, new_time.name, str(new_time.time), new_time.ghost)
             return 3
 
-        # check if the time belongs in the top10
-        if new_time <= times[-1]:
-            action = 2
-        else:
-            return 0
+        if len(set(times)) == 10:
+            # check if the time belongs in the top10
+            if new_time > times[-1]:
+                return 0
 
         # check if the player is already in the top10
         for time in times:

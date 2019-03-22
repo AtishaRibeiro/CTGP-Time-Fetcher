@@ -84,7 +84,8 @@ PLAYER_NAMES = [
     ("30CD4A1D750A6750", "Jeroen"),
     ("E4E6C6650E76DB78", "Degausser"),
     ("62EA84C35DB17FE1", "Degausser"),
-    ("3FC71238A1992027", "Piloco")
+    ("3FC71238A1992027", "Piloco"),
+    ("22C9D360387194B0", "Vincent")
 ]
 
 
