@@ -168,7 +168,7 @@ class DB:
 
     def get_player_count(self, player_name):
         curs = self.cursor()
-        curs.execute("select track from top10 where name = ?", [player_name])
+        curs.execute("select track from top10 where lower(name) = lower(?)", [player_name])
         tracks = curs.fetchall()
         total_count = len(tracks)
         ng_count = 0
@@ -193,7 +193,7 @@ class DB:
 
     def get_player_id(self, player_name):
         curs = self.cursor()
-        curs.execute("select player_id from players where player_name = ?", [player_name])
+        curs.execute("select player_id from players where lower(player_name) = lower(?)", [player_name])
         return curs.fetchall()
 
     def get_player_pb(self, player_id, track):
