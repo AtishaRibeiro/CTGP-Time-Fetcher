@@ -273,7 +273,7 @@ class Bot(discord.Client):
 
         title = "{} ".format(time.name)
         if time_info[2] == 0 or time_info[2] == 1:
-            title += "improved his time! Keep it up, proud of you"
+            title += "improved their time! Keep it up, proud of you"
         elif time_info[2] == 2:
             title += "enters the top 10! Welcome!"
         elif time_info[2] == 3:
