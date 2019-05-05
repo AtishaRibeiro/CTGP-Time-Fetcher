@@ -56,9 +56,9 @@ class Bot(discord.Client):
                 elif command == "show_all":
                     if msg.author.id == 137320598341681153:
                         await self.set_show_all(msg, split_msg[1])
-                elif command == "add_player":
+                elif command == "set_player":
                     if msg.author.id == 137320598341681153:
-                        await self.add_player(msg, split_msg[1].split())
+                        await self.set_player(msg, split_msg[1].split())
 
             elif command == "help":
                 await self.help(msg)
@@ -75,9 +75,9 @@ class Bot(discord.Client):
             self.show_all = False
             await msg.channel.send("Set `show_all` to False")
 
-    async def add_player(self, msg, args):
+    async def set_player(self, msg, args):
         self.DB.set_player(args[0], args[1])
-        await msg.channel.send("Player added")
+        await msg.channel.send("Player set")
 
     async def tops(self, msg, args):
         """tops command"""
@@ -121,11 +121,13 @@ class Bot(discord.Client):
         """provides the amount of times a player appears in the leaderboards"""
 
         embed = discord.Embed(title="**BNL Leaderboard appearances**", colour=0xffffff)
-        total_count, ng_count, glitch_count, alt_count = self.DB.get_player_count(player)
+        player_name, total_count, ng_count, glitch_count, alt_count = self.DB.get_player_count(player)
+        if player_name is None:
+            player_name = player
 
         message = "**{}/32** *no-glitch*\n**{}/14** *glitch*\n**{}/2** *alternate*".format(ng_count, glitch_count, alt_count)
 
-        embed.add_field(name="`{}` appears **{}** time(s) in the leaderboards".format(player, total_count), value=message)
+        embed.add_field(name="`{}` appears **{}** time(s) in the leaderboards".format(player_name, total_count), value=message)
         await msg.channel.send(embed=embed)
 
     async def pb(self, msg, args):
@@ -146,6 +148,7 @@ class Bot(discord.Client):
             return
 
         player_ids = self.DB.get_player_id(player)
+        player_name = ""
         ghost_hash = ""
         time = ""
         if len(player_ids) == 0:
@@ -156,8 +159,9 @@ class Bot(discord.Client):
             if pb is None:
                 await msg.channel.send("I couldn't find a time for that track on CTGP-R.")
                 return
-            ghost_hash = pb[0]
-            time = pb[1]
+            player_name = pb[0]
+            ghost_hash = pb[1]
+            time = pb[2]
         else:
             # in case a player has more than 1 ID, figure out which one has the fastest time
             fastest = FinishTime("99:99.999")
@@ -168,10 +172,11 @@ class Bot(discord.Client):
                     continue
                 else:
                     found_pb = True
-                finish_time = FinishTime(pb[1])
+                finish_time = FinishTime(pb[2])
                 if finish_time.ms_total < fastest.ms_total:
                     fastest = finish_time
-                    ghost_hash = pb[0]
+                    player_name = pb[0]
+                    ghost_hash = pb[1]
             if not found_pb:
                 await msg.channel.send("I couldn't find a time for that track on CTGP-R.")
                 return
@@ -179,9 +184,9 @@ class Bot(discord.Client):
 
         ghost_link = "http://www.chadsoft.co.uk/time-trials/rkgd/{}/{}/{}.html".format(ghost_hash[:2], ghost_hash[2:4], ghost_hash[4:])
 
-        player = player + "'" + (player[-1] != 's' and player[-1] != 'x') * "s"
+        player_name = player_name + "'" + (player_name[-1] != 's' and player_name[-1] != 'x') * "s"
 
-        embed = discord.Embed(title="**{} personal best**".format(player), colour=0x8eff56)
+        embed = discord.Embed(title="**{} personal best**".format(player_name), colour=0x8eff56)
         embed.add_field(name=track[0], value="[{}]({})".format(self.easter_egg(time), ghost_link))
         embed.set_thumbnail(url=self.extract_mii(ghost_link))
 

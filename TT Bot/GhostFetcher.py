@@ -144,7 +144,6 @@ class FinishTime:
             self.string = t_string
         except ValueError:
             print("Incorrect time format used: " + t_string)
-            exit()
 
         self.ms_total = self.miliseconds + (self.seconds * 1000) + (self.minutes * 60000)
 
@@ -253,13 +252,8 @@ class GhostFetcher:
                     player_id = ghost["playerId"]
                     #check if the ghost is already in our database
                     if self.DB.insert_pb(player_id, track, ghost["hash"], ghost["finishTimeSimple"]):
-                        #change name if player is in database
+                        self.DB.set_player_if_not_exists(player_id, ghost["player"])
                         player_name = self.DB.get_player_name(player_id)
-                        if player_name is None:
-                            player_name = ghost["player"]
-                        else:
-                            player_name = player_name[0]
-
                         ghost_obj = Ghost(COUNTRY_FLAGS[ghost["country"]], player_name, ghost["finishTimeSimple"], self.ghost_url + ghost["href"][:-3] + "html")
                         
         except KeyError:
