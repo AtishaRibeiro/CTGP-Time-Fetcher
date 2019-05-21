@@ -66,7 +66,7 @@ class DB:
         # create tracks table
         curs.execute("create table if not exists tracks(abbrv text, track_name text primary key, category int)")
         # create personal best table
-        curs.execute("create table if not exists personal_bests(player_id text, track text, ghost_hash text, time text, primary key(player_id, track), foreign key(track) references tracks(track_name))")
+        curs.execute("create table if not exists personal_bests(country text, player_id text, track text, ghost_hash text, time text, primary key(player_id, track), foreign key(track) references tracks(track_name))")
         # create top10 table
         curs.execute("create table if not exists top10(track text, country text, player_id text, time text, ghost text, primary key(track, ghost), foreign key(track) references tracks(track_name))")
         # create player table
@@ -74,7 +74,6 @@ class DB:
 
         with open("BNL.json") as file:
             data = json.load(file)
-            tracks = dict()
             for player in data["Players"]:
                 curs.execute("insert or replace into players values(?, ?)", [player[0], player[1]])
             for track in data["Tracks"]:
@@ -86,21 +85,35 @@ class DB:
 
         self.conn.commit()
 
+    def reset_track(self, track_name):
+        curs = self.cursor()
+        curs.execute("delete from top10 where track = ?", [track_name])
+
+        with open("BNL.json") as file:
+            data = json.load(file)
+            for ghost in data["Tracks"][track_name]:
+                curs.execute("insert or replace into top10 values(?, ?, ?, ?, ?)", [track_name, ghost["Country"], ghost["ID"], ghost["Time"], ghost["Ghost"]])
+
+        self.conn.commit()
+
+        curs.execute("select country, player_name, time, ghost_hash from players natural join (select country, player_id, time, ghost_hash from personal_bests where track = ?)", [track_name])
+        return curs.fetchall()
+
     def get_ghost_hash(self, player_id, track_name):
         curs = self.cursor()
         curs.execute("select ghost_hash from personal_bests where player_id = ? and track = ?", [player_id, track_name])
         return curs.fetchone()[0]
 
-    def insert_pb(self, player_id, track_name, ghost_hash, time):
+    def insert_pb(self, country, player_id, track_name, ghost_hash, time):
         curs = self.cursor()
 
         #if the ghost is already in the table
         if curs.execute("select exists(select 1 from personal_bests where ghost_hash = ?)", [ghost_hash]).fetchone()[0]:
             return False
 
-        curs.execute("insert or replace into personal_bests values(?, ?, ?, ?)", [player_id, track_name, ghost_hash, time])
+        curs.execute("insert or replace into personal_bests values(?, ?, ?, ?, ?)", [country, player_id, track_name, ghost_hash, time])
         self.conn.commit()
-        print("inserted {} - {} - {} - {}".format(player_id, track_name, ghost_hash, time))
+        print("inserted {} - {} - {} - {} - {}".format(country, player_id, track_name, ghost_hash, time))
         return True
 
     def get_top10(self, track_name):

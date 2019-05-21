@@ -250,11 +250,12 @@ class GhostFetcher:
             if ghost["playersFastest"] == True:
                 if ghost["country"] in self.countries:
                     player_id = ghost["playerId"]
+                    country_flag = COUNTRY_FLAGS[ghost["country"]]
                     #check if the ghost is already in our database
-                    if self.DB.insert_pb(player_id, track, ghost["hash"], ghost["finishTimeSimple"]):
+                    if self.DB.insert_pb(country_flag, player_id, track, ghost["hash"], ghost["finishTimeSimple"]):
                         self.DB.set_player_if_not_exists(player_id, ghost["player"])
                         player_name = self.DB.get_player_name(player_id)
-                        ghost_obj = Ghost(COUNTRY_FLAGS[ghost["country"]], player_name, ghost["finishTimeSimple"], self.ghost_url + ghost["href"][:-3] + "html")
+                        ghost_obj = Ghost(country_flag, player_name, ghost["finishTimeSimple"], self.ghost_url + ghost["href"][:-3] + "html")
                         
         except KeyError:
             # some players don't have a country set so these will throw a KeyError for ghost["Country"]
