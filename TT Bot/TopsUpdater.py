@@ -5,6 +5,7 @@ from DB import DB
 from datetime import datetime
 from GhostFetcher import GhostFetcher
 from GhostFetcher import Ghost
+import sys
 
 class Tops:
     """Class that handles the topX of a region"""
@@ -99,7 +100,6 @@ class Tops:
                 time_info.append((track, time, action))
 
         return time_info, changed
-
 
     def get_top_10(self, track):
         """Returns top10 of the given track"""

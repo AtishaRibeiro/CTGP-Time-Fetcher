@@ -8,6 +8,7 @@ from TopsUpdater import Tops
 from GhostFetcher import Ghost, FinishTime
 from bs4 import BeautifulSoup as BS
 import urllib
+import sys
 
 COMMAND_PREFIX = '!'
 
@@ -20,7 +21,6 @@ class Bot(discord.Client):
         self.DB = DB("tt_bot_db.db")
         self.bnl = Tops(self.DB)
         self.bg_task = self.loop.create_task(self.auto_update(3600))
-        self.last_updated = datetime.datetime.utcnow()
         self.client = aiohttp.ClientSession()
         # True if auto_update has to show all times, False if it only has to show top10 times
         self.show_all = True
@@ -54,18 +54,45 @@ class Bot(discord.Client):
                 elif command == "pb":
                     await self.pb(msg, split_msg[1].split())
                 elif command == "show_all":
-                    if msg.author.id == 137320598341681153:
+                    if self.check_role(msg):
                         await self.set_show_all(msg, split_msg[1])
                 elif command == "set_player":
-                    if msg.author.id == 137320598341681153:
+                    if self.check_role(msg):
                         await self.set_player(msg, split_msg[1].split())
+                elif command == "reset_track":
+                    await self.reset_track(msg, split_msg[1])
 
             elif command == "help":
                 await self.help(msg)
             elif command == "links":
                 await self.links(msg)
+            elif command == "reset":
+                if self.check_role(msg):
+                    await self.reset(msg)
+            elif command == "cancel":
+                if self.check_role(msg):
+                    await self.cancel(msg)
         else:
             return
+
+    def check_role(self, msg):
+        try:
+            for role in msg.author.roles:
+                if role >= msg.guild.get_role(Config.MODERATOR):
+                    return True
+        except TypeError as e:
+            return False
+        return False
+
+    async def reset(self, msg):
+        self.bg_task.cancel()
+        self.bg_task = self.loop.create_task(self.auto_update(3600))
+        await msg.channel.send("`reset`")
+
+    async def cancel(self, msg):
+        self.bg_task.cancel()
+        self.bg_task = self.loop.create_task(self.auto_update(3600, False))
+        await msg.channel.send("`cancelled`")
 
     async def set_show_all(self, msg, arg):
         if arg == "true":
@@ -77,7 +104,14 @@ class Bot(discord.Client):
 
     async def set_player(self, msg, args):
         self.DB.set_player(args[0], args[1])
-        await msg.channel.send("Player set")
+        await msg.channel.send("`Player set`")
+
+    async def reset_track(self, msg, track):
+        full_track = self.DB.get_track_name(track.upper())[0]
+        times = self.DB.reset_track(full_track)
+        for time in times:
+            self.bnl.add_time(Ghost(time[0], time[1], time[2], self.get_ghost_link(time[3])), full_track)
+        await msg.channel.send(f"`reset {full_track}`")
 
     async def tops(self, msg, args):
         """tops command"""
@@ -182,7 +216,7 @@ class Bot(discord.Client):
                 return
             time = str(fastest)
 
-        ghost_link = "http://www.chadsoft.co.uk/time-trials/rkgd/{}/{}/{}.html".format(ghost_hash[:2], ghost_hash[2:4], ghost_hash[4:])
+        ghost_link = self.get_ghost_link(ghost_hash)
 
         player_name = player_name + "'" + (player_name[-1] != 's' and player_name[-1] != 'x') * "s"
 
@@ -216,28 +250,29 @@ class Bot(discord.Client):
             embed.add_field(name="track", value="track abbreviation, e.g.: `LC`, `rYF`", inline=False)
             await msg.channel.send(embed=embed)
 
-    async def auto_update(self, loop_duration):
+    async def auto_update(self, loop_duration, start_immediately=True):
         """attempts to update the tops every (loop_duration) seconds"""
 
         await self.wait_until_ready()
         channel = self.get_channel(Config.UPDATE_CHANNEL)
 
         while not self.is_closed():
-            await self.change_presence(activity=discord.Game(name="Checking Database"), status=discord.Status.idle)
-            print("updating")
-            times, changed = await self.bnl.update_tops(self.client)
-            # times = [("Koopa Cape", Ghost('🇧🇪', "Sergio", "02:21.927", "http://www.chadsoft.co.uk/time-trials/rkgd/E4/7B/97C4E27C6AA1A5ECC33DF5F70501CD33F925.html"), 1)]
-            # self.bnl.add_time(times[0][1], times[0][0])
-            # print(times)
-            self.last_updated = datetime.datetime.utcnow()
-            print("finished updating")
+            if start_immediately:
+                await self.change_presence(activity=discord.Game(name="Checking Database"), status=discord.Status.idle)
+                print("updating")
+                times, changed = await self.bnl.update_tops(self.client)
+                # times = [("Koopa Cape", Ghost('🇧🇪', "Joris", "01:59.990", "http://www.chadsoft.co.uk/time-trials/rkgd/E4/7B/97C4E27C6AA1A5ECC33DF5F70501CD33F925.html"), 1)]
+                # self.bnl.add_time(times[0][1], times[0][0])
+                print("finished updating")
+                sys.stdout.flush()
 
-            for time_info in times:
-                if not self.show_all and time_info[2] == 0:
-                    continue
-                await channel.send(embed=(self.create_update_embed(time_info)))
+                for time_info in times:
+                    if not self.show_all and time_info[2] == 0:
+                        continue
+                    await channel.send(embed=(self.create_update_embed(time_info)))
 
             await self.change_presence(activity=None, status=discord.Status.online)
+            start_immediately = True
             await asyncio.sleep(loop_duration)
 
     def create_tops_embed(self, track, tops):
@@ -291,11 +326,18 @@ class Bot(discord.Client):
         time_str = self.easter_egg(str(time.time))
         message = "{} {}: [{}]({})\n".format(time.country, time.name, time_str, time.ghost)
 
+        colour = 0x8eff56
+        # make the embed colour yellow if it's a top10 time
+        if time_info[2] != 0:
+            colour = 0xffcc00
 
-        embed = discord.Embed(title=title, colour=0x8eff56)
+        embed = discord.Embed(title=title, colour=colour)
         embed.add_field(name=field_title, value=message)
         embed.set_thumbnail(url=self.extract_mii(time.ghost))
         return embed
+
+    def get_ghost_link(self, ghost_hash):
+        return "http://www.chadsoft.co.uk/time-trials/rkgd/{}/{}/{}.html".format(ghost_hash[:2], ghost_hash[2:4], ghost_hash[4:])
 
     def extract_mii(self, link):
         """Extracts the url to the mii image file"""
