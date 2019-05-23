@@ -78,7 +78,7 @@ class Bot(discord.Client):
     def check_role(self, msg):
         try:
             for role in msg.author.roles:
-                if role >= msg.guild.get_role(453635015608238090):
+                if role >= msg.guild.get_role(Config.MODERATOR):
                     return True
         except TypeError as e:
             return False
