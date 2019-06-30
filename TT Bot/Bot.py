@@ -47,7 +47,8 @@ class Bot(discord.Client):
             return
 
         if msg.channel.id == Config.DMCHANNEL:
-            await self.get_channel(Config.UPDATE_CHANNEL).send(f"```{msg.content}```")
+            await self.get_channel(Config.CHANNEL).send(f"```{msg.content}```")
+            return
 
         if msg.channel.id != Config.CHANNEL:
             return
