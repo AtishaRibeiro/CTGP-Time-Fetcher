@@ -239,26 +239,57 @@ class GhostFetcher:
                 if result is not None:
                     new_ghosts[track_name].append(result)
 
+        # look at hidden players (players that have the wrong country set)
+        for player_id, country in self.DB.get_hidden():
+            data_raw = await self.get_json(f"{self.base_url}/players/{player_id[:2]}/{player_id[2:]}.json")
+            if data_raw is None:
+                print("Failed to access database")
+                return new_ghosts
+            data = json.loads(data_raw.decode("utf-8-sig"))
+
+            for ghost in data["ghosts"]:
+                if not ghost["200cc"]:
+                    # construct track name based on category
+                    try:
+                        track_name = ghost["trackName"]
+                    except KeyError:
+                        # track that is not in ctgp anymore
+                        continue
+                    try:
+                        category = ghost["categoryId"]
+                        track_name = track_name + (category == 1)*" (Glitch)" + (category == 16)*" (Shortcut)"
+                    except KeyError:
+                        pass
+
+                    if self.DB.track_exists(track_name):
+                        result = await self.analyse_ghost(track_name, ghost, player_id, int(country))
+                        if result is not None:
+                            new_ghosts[track_name].append(result)
+
         return new_ghosts
 
-    async def analyse_ghost(self, track, ghost):
+    async def analyse_ghost(self, track, ghost, player_id=None, country=""):
         """check if a ghost matches the criteria"""
 
         ghost_obj = None
 
-        try:
-            if ghost["playersFastest"] == True:
-                if ghost["country"] in self.countries:
-                    player_id = ghost["playerId"]
-                    country_flag = COUNTRY_FLAGS[ghost["country"]]
-                    #check if the ghost is already in our database
-                    if self.DB.insert_pb(country_flag, player_id, track, ghost["hash"], ghost["finishTimeSimple"]):
+        if ghost["playersFastest"] == True:
+
+            try:
+                player_id = ghost["playerId"]
+                country = ghost["country"]
+            except KeyError:
+                if country == "":
+                    # some players don't have a country set so these will throw a KeyError for ghost["Country"]
+                    return ghost_obj
+
+            if country in self.countries:
+                country_flag = COUNTRY_FLAGS[country]
+                #check if the ghost is already in our database
+                if self.DB.insert_pb(country_flag, player_id, track, ghost["hash"], ghost["finishTimeSimple"]):
+                    if player_id is None:
                         self.DB.set_player_if_not_exists(player_id, ghost["player"])
-                        player_name = self.DB.get_player_name(player_id)
-                        ghost_obj = Ghost(country_flag, player_name, ghost["finishTimeSimple"], self.ghost_url + ghost["href"][:-3] + "html")
-                        
-        except KeyError:
-            # some players don't have a country set so these will throw a KeyError for ghost["Country"]
-            pass
+                    player_name = self.DB.get_player_name(player_id)
+                    ghost_obj = Ghost(country_flag, player_name, ghost["finishTimeSimple"], self.ghost_url + ghost["href"][:-3] + "html")
 
         return ghost_obj

@@ -4,11 +4,12 @@ import asyncio
 import datetime
 import aiohttp
 from DB import DB
-from TopsUpdater import Tops
+from TopsUpdater import Tops, ImprovementType
 from GhostFetcher import Ghost, FinishTime
 from bs4 import BeautifulSoup as BS
 import urllib
 import sys
+import logging
 
 COMMAND_PREFIX = '!'
 
@@ -24,6 +25,16 @@ class Bot(discord.Client):
         self.client = aiohttp.ClientSession()
         # True if auto_update has to show all times, False if it only has to show top10 times
         self.show_all = True
+
+        logging.basicConfig(filename="bot_log.log",
+                            filemode='a',
+                            format='%(asctime)s,%(msecs)d %(name)s %(levelname)s %(message)s',
+                            datefmt='%H:%M:%S',
+                            level=logging.ERROR)
+
+        logging.info("Runing Bot")
+
+        self.logger = logging.getLogger('Bot')
     
     async def on_ready(self):
         print("logged in")
@@ -34,6 +45,9 @@ class Bot(discord.Client):
 
         if msg.author == self.user:
             return
+
+        if msg.channel.id == Config.DMCHANNEL:
+            await self.get_channel(Config.UPDATE_CHANNEL).send(f"```{msg.content}```")
 
         if msg.channel.id != Config.CHANNEL:
             return
@@ -60,7 +74,14 @@ class Bot(discord.Client):
                     if self.check_role(msg):
                         await self.set_player(msg, split_msg[1].split())
                 elif command == "reset_track":
-                    await self.reset_track(msg, split_msg[1])
+                    if self.check_role(msg):
+                        await self.reset_track(msg, split_msg[1])
+                elif command == "add_hidden":
+                    if self.check_role(msg):
+                        await self.add_hidden(msg, split_msg[1].split())
+                elif command == "remove_time":
+                    if self.check_role(msg):
+                        await self.remove_time(msg, split_msg[1])
 
             elif command == "help":
                 await self.help(msg)
@@ -72,6 +93,9 @@ class Bot(discord.Client):
             elif command == "cancel":
                 if self.check_role(msg):
                     await self.cancel(msg)
+            elif command == "test":
+                if self.check_role(msg):
+                    await self.test(msg)
         else:
             return
 
@@ -112,6 +136,14 @@ class Bot(discord.Client):
         for time in times:
             self.bnl.add_time(Ghost(time[0], time[1], time[2], self.get_ghost_link(time[3])), full_track)
         await msg.channel.send(f"`reset {full_track}`")
+
+    async def add_hidden(self, msg, args):
+        self.DB.set_hidden(args[0], args[1])
+        await msg.channel.send("`added`")
+
+    async def remove_time(self, msg, ghost_hash):
+        self.DB.ban_time(ghost_hash)
+        await msg.channel.send("`removed`")
 
     async def tops(self, msg, args):
         """tops command"""
@@ -253,27 +285,34 @@ class Bot(discord.Client):
     async def auto_update(self, loop_duration, start_immediately=True):
         """attempts to update the tops every (loop_duration) seconds"""
 
-        await self.wait_until_ready()
-        channel = self.get_channel(Config.UPDATE_CHANNEL)
+        try:
 
-        while not self.is_closed():
-            if start_immediately:
-                await self.change_presence(activity=discord.Game(name="Checking Database"), status=discord.Status.idle)
-                print("updating")
-                times, changed = await self.bnl.update_tops(self.client)
-                # times = [("Koopa Cape", Ghost('🇧🇪', "Joris", "01:59.990", "http://www.chadsoft.co.uk/time-trials/rkgd/E4/7B/97C4E27C6AA1A5ECC33DF5F70501CD33F925.html"), 1)]
-                # self.bnl.add_time(times[0][1], times[0][0])
-                print("finished updating")
-                sys.stdout.flush()
+            await self.wait_until_ready()
+            channel = self.get_channel(Config.UPDATE_CHANNEL)
 
-                for time_info in times:
-                    if not self.show_all and time_info[2] == 0:
-                        continue
-                    await channel.send(embed=(self.create_update_embed(time_info)))
+            while not self.is_closed():
+                if start_immediately:
+                    await self.change_presence(activity=discord.Game(name="Checking Database"), status=discord.Status.idle)
 
-            await self.change_presence(activity=None, status=discord.Status.online)
-            start_immediately = True
-            await asyncio.sleep(loop_duration)
+                    try:
+                        print("updating")
+                        times, changed = await self.bnl.update_tops(self.client)
+                        print("finished updating")
+                        sys.stdout.flush()
+
+                        for time_info in times:
+                            if not self.show_all and time_info[2] == ImprovementType.none:
+                                continue
+                            await channel.send(embed=(self.create_update_embed(time_info)))
+                    except Exception as e:
+                        logging.exception("Exception occurred")
+
+                await self.change_presence(activity=None, status=discord.Status.online)
+                start_immediately = True
+                await asyncio.sleep(loop_duration)
+
+        except Exception as e:
+            logging.critical("Exception occurred", exc_info=True)
 
     def create_tops_embed(self, track, tops):
         """formats the tops message"""
@@ -311,24 +350,30 @@ class Bot(discord.Client):
 
         time = time_info[1]
 
+        medals = {1: "🥇", 2: "🥈", 3: "🥉", 4:""}
+
+        pritn("hallo")
         title = "{} ".format(time.name)
-        if time_info[2] == 0 or time_info[2] == 1:
+        improvement_type = time_info[2]
+        if improvement_type == 0 or improvement_type == 1:
             title += "improved their time! Keep it up, proud of you"
-        elif time_info[2] == 2:
+        elif improvement_type == 2:
             title += "enters the top 10! Welcome!"
-        elif time_info[2] == 3:
+        elif improvement_type == 3:
             title += "claims first place! All hail the new king"
-        elif time_info[2] == 4:
+        elif improvement_type == 4:
             title += "ties for 1st place! What are the chances?"
+        elif improvement_type == 5:
+            title += "improved their BNL record!"
 
         field_title = "*{}*".format(time_info[0])
 
         time_str = self.easter_egg(str(time.time))
-        message = "{} {}: [{}]({})\n".format(time.country, time.name, time_str, time.ghost)
+        message = "{} {}: [{}]({}) {}\n".format(time.country, time.name, time_str, time.ghost, medals[time_info[3]])
 
         colour = 0x8eff56
         # make the embed colour yellow if it's a top10 time
-        if time_info[2] != 0:
+        if improvement_type != 0:
             colour = 0xffcc00
 
         embed = discord.Embed(title=title, colour=colour)
@@ -342,26 +387,45 @@ class Bot(discord.Client):
     def extract_mii(self, link):
         """Extracts the url to the mii image file"""
 
-        html = urllib.request.urlopen(link)
-        soup = BS(html, features="html5lib")
-        parent_div = soup.findAll("div", class_="_1c5")[0]
-        child_div = parent_div.contents[1]
-        div_str = str(child_div)
+        try:
+            html = urllib.request.urlopen(link)
+            soup = BS(html, features="html5lib")
+            parent_div = soup.findAll("div", class_="_1c5")[0]
+            child_div = parent_div.contents[1]
+            div_str = str(child_div)
 
-        start = div_str.find("url('") + 5
-        end = div_str.find("')", start)
-        mii = div_str[start:end]
+            start = div_str.find("url('") + 5
+            end = div_str.find("')", start)
+            mii = div_str[start:end]
 
-        return "http://www.chadsoft.co.uk" + mii
+            return "http://www.chadsoft.co.uk" + mii
+        except urllib.error.HTTPError:
+            return ""
+        except urllib.error.URLError:
+            return ""
 
     def easter_egg(self, time_str):
         """A little easter egg ;-)"""
         if time_str[-2:] == "69":
-            time_str = time_str[:-2] + ":six::nine:"
+            time_str = time_str[:-2] + "6️⃣9️⃣"
         if time_str[-3:] == "420":
-            time_str += " :fire::fire:"
+            time_str += " 🔥🔥"
+        if time_str[-3:] == "666":
+            time_str += " 😈"
+        if time_str[-3:] == "777":
+            time_str = time_str[:-3] + "🎰"
 
         return time_str
+
+    async def test(self, msg):
+        """For testing purposes"""
+        channel = msg.channel
+        times = [("Koopa Cape", Ghost('🇧🇪', "Joris", "01:59.669", "http://www.chadsoft.co.uk/time-trials/rkgd/E4/7B/97C4E27C6AA1A5ECC33DF5F70501CD33F92.html"), ImprovementType.none, 1),
+                    ("Koopa Cape", Ghost('🇧🇪', "AHHa", "01:59.420", "http://www.chadsoft.co.uk/time-trials/rkgd/E4/7B/97C4E27C6AA1A5ECC33DF5F70501CD33F925.html"), ImprovementType.none, 2),
+                    ("Koopa Cape", Ghost('🇧🇪', "zzz", "01:59.666", "http://www.chadsoft.co.uk/time-trials/rkgd/E4/7B/97C4E27C6AA1A5ECC33DF5F70501CD33F925.html"), ImprovementType.none, 3),
+                     ("Koopa Cape", Ghost('🇧🇪', "boo", "99:59.777", "http://www.chadsoft.co.uk/time-trials/rkgd/E4/7B/97C4E27C6AA1A5ECC33DF5F70501CD33F925.html"), ImprovementType.none, 4) ]
+        for time in times:
+            await channel.send(embed=(self.create_update_embed(time)))
 
 
 if __name__ == "__main__":
