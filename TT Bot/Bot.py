@@ -353,9 +353,8 @@ class Bot(discord.Client):
 
         medals = {1: "🥇", 2: "🥈", 3: "🥉", 4:""}
 
-        pritn("hallo")
         title = "{} ".format(time.name)
-        improvement_type = time_info[2]
+        improvement_type = time_info[2].value
         if improvement_type == 0 or improvement_type == 1:
             title += "improved their time! Keep it up, proud of you"
         elif improvement_type == 2:
@@ -421,8 +420,8 @@ class Bot(discord.Client):
     async def test(self, msg):
         """For testing purposes"""
         channel = msg.channel
-        times = [("Koopa Cape", Ghost('🇧🇪', "Joris", "01:59.669", "http://www.chadsoft.co.uk/time-trials/rkgd/E4/7B/97C4E27C6AA1A5ECC33DF5F70501CD33F92.html"), ImprovementType.none, 1),
-                    ("Koopa Cape", Ghost('🇧🇪', "AHHa", "01:59.420", "http://www.chadsoft.co.uk/time-trials/rkgd/E4/7B/97C4E27C6AA1A5ECC33DF5F70501CD33F925.html"), ImprovementType.none, 2),
+        times = [("Koopa Cape", Ghost('🇧🇪', "Joris", "01:59.669", "http://www.chadsoft.co.uk/time-trials/rkgd/E4/7B/97C4E27C6AA1A5ECC33DF5F70501CD33F92.html"), ImprovementType.improvement_1st, 1),
+                    ("Koopa Cape", Ghost('🇧🇪', "AHHa", "01:59.420", "http://www.chadsoft.co.uk/time-trials/rkgd/E4/7B/97C4E27C6AA1A5ECC33DF5F70501CD33F925.html"), ImprovementType.tie_1st, 2),
                     ("Koopa Cape", Ghost('🇧🇪', "zzz", "01:59.666", "http://www.chadsoft.co.uk/time-trials/rkgd/E4/7B/97C4E27C6AA1A5ECC33DF5F70501CD33F925.html"), ImprovementType.none, 3),
                      ("Koopa Cape", Ghost('🇧🇪', "boo", "99:59.777", "http://www.chadsoft.co.uk/time-trials/rkgd/E4/7B/97C4E27C6AA1A5ECC33DF5F70501CD33F925.html"), ImprovementType.none, 4) ]
         for time in times:
