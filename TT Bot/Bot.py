@@ -353,7 +353,6 @@ class Bot(discord.Client):
 
         medals = {1: "🥇", 2: "🥈", 3: "🥉", 4:""}
 
-        pritn("hallo")
         title = "{} ".format(time.name)
         improvement_type = time_info[2]
         if improvement_type == 0 or improvement_type == 1:
