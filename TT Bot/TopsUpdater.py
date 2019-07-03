@@ -76,7 +76,8 @@ class Tops:
             if new_time < times[0]:
                 if times[0].name == new_time.name:
                     action = ImprovementType.improvement_1st
-                action = ImprovementType.new_1st
+                else:
+                    action = ImprovementType.new_1st
             elif new_time == times[0] and action is not ImprovementType.improvement:
                 action = ImprovementType.tie_1st
         else:

@@ -272,26 +272,26 @@ class DB:
             elif i == 5:
                 cup = "Flower Cup"
                 cups[cup] = [(track[1], top10)]
-            elif i == 11:
+            elif i == 12:
                 cup = "Star Cup"
                 cups[cup] = [(track[1], top10)]
-            elif i == 18:
+            elif i == 19:
                 cup = "Special Cup"
                 cups[cup] = [(track[1], top10)]
-            elif i == 23:
+            elif i == 24:
                 cup = "Shell Cup"
                 cups[cup] = [(track[1], top10)]
-            elif i == 29:
+            elif i == 30:
                 cup = "Banana Cup"
                 cups[cup] = [(track[1], top10)]
-            elif i == 34:
+            elif i == 35:
                 cup = "Leaf Cup"
                 cups[cup] = [(track[1], top10)]
-            elif i == 41:
+            elif i == 42:
                 cup = "Lightning Cup"
                 cups[cup] = [(track[1], top10)]
-            
-            cups[cup].append((track[1], top10))
+            else:
+                cups[cup].append((track[1], top10))
 
         return cups
 

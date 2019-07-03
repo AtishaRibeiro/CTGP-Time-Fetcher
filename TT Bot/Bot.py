@@ -371,7 +371,7 @@ class Bot(discord.Client):
                     if len(pos_str) == 1:
                         #alignment
                         pos_str = '\u200B ' + pos_str
-                    message += "{}. {} {}: [{}](dummy)\n".format(pos_str, time.country, time.name, time.time)
+                    message += "{}. {} {}: {}\n".format(pos_str, time.country, time.name, time.time)
 
                 embed.add_field(name=track[0], value=message, inline=True)
                 
