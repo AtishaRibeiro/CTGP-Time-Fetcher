@@ -149,6 +149,16 @@ class Bot(discord.Client):
     async def tops(self, msg, args):
         """tops command"""
 
+        if args.lower() == "all":
+            author = msg.author
+            dm_channel = author.dm_channel
+            if dm_channel is None:
+                await author.create_dm()
+                dm_channel = author.dm_channel
+
+            await self.create_tops_dm_embeds(dm_channel, self.DB.get_all_tops())
+            return
+
         try:
             full_track = self.DB.get_track_name(args.upper())[0]
             tops = self.bnl.get_top_10(full_track)
@@ -345,6 +355,27 @@ class Bot(discord.Client):
             embed.add_field(name="\u200B", value=message1 + message2)
 
         return embed
+
+    async def create_tops_dm_embeds(self, dm_channel, cups):
+        """formats embeds for dm message"""
+
+        for cup in cups:
+            embed = discord.Embed(title=cup, colour=0x333333)
+
+            for track in cups[cup]:
+                message = ""
+                print(track)
+                tops = self.bnl.get_top_10_no_db(track[1])
+                for pos, time in tops:
+                    pos_str = str(pos)
+                    if len(pos_str) == 1:
+                        #alignment
+                        pos_str = '\u200B ' + pos_str
+                    message += "{}. {} {}: [{}](dummy)\n".format(pos_str, time.country, time.name, time.time)
+
+                embed.add_field(name=track[0], value=message, inline=True)
+                
+            await dm_channel.send(embed=embed)
 
     def create_update_embed(self, time_info):
         """formats the update message"""

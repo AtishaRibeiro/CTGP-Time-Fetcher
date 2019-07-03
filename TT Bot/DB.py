@@ -258,6 +258,45 @@ class DB:
         ghost_hash = ghost_hash[:2] + ghost_hash[3:5] + ghost_hash[6:]
         return curs.execute("select exists(select 1 from banned_times where ghost_hash = ?)", [ghost_hash]).fetchone()[0]
 
+    @exception_catcher
+    def get_all_tops(self):
+        curs = self.cursor()
+        cups = dict()
+        cup = ""
+        for i in range(len(TRACKS)):
+            track = TRACKS[i]
+            top10 = self.get_top10(track[1])
+            if i == 0:
+                cup = "Mushroom Cup"
+                cups[cup] = [(track[1], top10)]
+            elif i == 5:
+                cup = "Flower Cup"
+                cups[cup] = [(track[1], top10)]
+            elif i == 11:
+                cup = "Star Cup"
+                cups[cup] = [(track[1], top10)]
+            elif i == 18:
+                cup = "Special Cup"
+                cups[cup] = [(track[1], top10)]
+            elif i == 23:
+                cup = "Shell Cup"
+                cups[cup] = [(track[1], top10)]
+            elif i == 29:
+                cup = "Banana Cup"
+                cups[cup] = [(track[1], top10)]
+            elif i == 34:
+                cup = "Leaf Cup"
+                cups[cup] = [(track[1], top10)]
+            elif i == 41:
+                cup = "Lightning Cup"
+                cups[cup] = [(track[1], top10)]
+            
+            cups[cup].append((track[1], top10))
+
+        return cups
+
+
+
 if __name__ == "__main__":
     database = DB("tt_bot_db.db")
     database.create_db()

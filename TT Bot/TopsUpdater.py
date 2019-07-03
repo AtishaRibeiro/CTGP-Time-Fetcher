@@ -65,7 +65,7 @@ class Tops:
         for time in times:
             if new_time.name == time.name:
                 if new_time <= time:
-                    action = 1
+                    action = ImprovementType.improvement
                     times.remove(time)
                     self.DB.del_top_entry(time.ghost, track)
                 else:
@@ -134,6 +134,20 @@ class Tops:
         """Returns top10 of the given track"""
 
         times = sorted([Ghost(x[0], x[1], x[2], x[3]) for x in self.DB.get_top10(track)])
+        top10 = [(1, times[0])]
+
+        position = 1
+        for i in range(1, len(times)):
+            if times[i-1] != times[i]:
+                position += 1
+            top10.append((position, times[i]))
+
+        return top10
+
+    def get_top_10_no_db(self, tops):
+        """Returns top10 of the given track"""
+
+        times = sorted([Ghost(x[0], x[1], x[2], x[3]) for x in tops])
         top10 = [(1, times[0])]
 
         position = 1
