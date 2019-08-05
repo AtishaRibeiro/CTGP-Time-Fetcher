@@ -105,6 +105,8 @@ class DB:
 
         with open("BNL.json") as file:
             data = json.load(file)
+            for player in data["Players"]:
+                    curs.execute("insert or replace into players values(?, ?)", [player[0], player[1]])
             for ghost in data["Tracks"][track_name]:
                 curs.execute("insert or replace into top10 values(?, ?, ?, ?, ?)", [track_name, ghost["Country"], ghost["ID"], ghost["Time"], ghost["Ghost"]])
 
@@ -248,7 +250,6 @@ class DB:
     @exception_catcher
     def ban_time(self, ghost_hash):
         curs = self.cursor()
-        curs.execute("delete from personal_bests where ghost_hash = ?", [ghost_hash])
         curs.execute("insert or replace into banned_times values(?)", [ghost_hash])
         self.conn.commit()
 
