@@ -248,6 +248,7 @@ class DB:
     @exception_catcher
     def ban_time(self, ghost_hash):
         curs = self.cursor()
+        curs.execute("delete from personal_bests where ghost_hash = ?", [ghost_hash])
         curs.execute("insert or replace into banned_times values(?)", [ghost_hash])
         self.conn.commit()
 

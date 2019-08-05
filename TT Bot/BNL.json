@@ -70,7 +70,14 @@
         ["26", "Kjeld"],
         ["27", "Kev"],
         ["28", "Spear"],
-        ["29", "Gigagia"]
+        ["29", "Gigagia"],
+        ["30", "Sulkun"],
+        ["31", "Tony"],
+        ["32", "Kardo"],
+        ["33", "Tim"],
+        ["34", "Yote"],
+        ["35", "Robert"],
+        ["36", "Gogoku"]
     ],
     "Tracks": {
         "Luigi Circuit": [
@@ -104,6 +111,13 @@
                 "Time": "01:09.576",
                 "Ghost": "http://www.maschell.de/ghostdatabase/ghostviewer.php?id=57662"
             },
+            ,
+            {
+                "Country": "\ud83c\uddf3\ud83c\uddf1",
+                "ID": "30",
+                "Time": "01:09.643",
+                "Ghost": "http://web.archive.org/web/20170921221840/http://www.forums.mkboards.com/threads/netherlands-top-10.18179/"
+            },
             {
                 "Country": "\ud83c\udde7\ud83c\uddea",
                 "ID": "1",
@@ -127,12 +141,6 @@
                 "ID": "4",
                 "Time": "01:09.782",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=32"
-            },
-            {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
-                "ID": "5",
-                "Time": "01:09.791",
-                "Ghost": "http://www.maschell.de/ghostdatabase/ghostviewer.php?id=13671"
             }
         ],
         "Mario Circuit": [
@@ -247,16 +255,16 @@
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=508"
             },
             {
+                "Country": "\ud83c\uddf3\ud83c\uddf1",
+                "ID": "33",
+                "Time": "01:30.748",
+                "Ghost": "http://web.archive.org/web/20170921221840/http://www.forums.mkboards.com/threads/netherlands-top-10.18179/"
+            },
+            {
                 "Country": "\ud83c\uddf1\ud83c\uddfa",
                 "ID": "7",
                 "Time": "01:30.776",
                 "Ghost": "http://www.maschell.de/ghostdatabase/ghostviewer.php?id=53716"
-            },
-            {
-                "Country": "\ud83c\uddf1\ud83c\uddfa",
-                "ID": "821E1146C7A4F5B3",
-                "Time": "01:30.789",
-                "Ghost": "http://www.maschell.de/ghostdatabase/ghostviewer.php?id=5036"
             }
         ],
         "Dry Dry Ruins": [
@@ -371,16 +379,16 @@
                 "Ghost": "http://www.maschell.de/ghostdatabase/ghostviewer.php?id=55230"
             },
             {
+                "Country": "\ud83c\uddf3\ud83c\uddf1",
+                "ID": "AF29D4AFF12749A9",
+                "Time": "01:16.996",
+                "Ghost": "http://web.archive.org/web/20170921221840/http://www.forums.mkboards.com/threads/netherlands-top-10.18179/"
+            },
+            {
                 "Country": "\ud83c\uddf1\ud83c\uddfa",
                 "ID": "821E1146C7A4F5B3",
                 "Time": "01:16.997",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=448"
-            },
-            {
-                "Country": "\ud83c\udde7\ud83c\uddea",
-                "ID": "8",
-                "Time": "01:17.057",
-                "Ghost": "http://ninrankings.org/mkwii/profil.php?id=211210295"
             }
         ],
         "Coconut Mall": [
@@ -561,6 +569,12 @@
                 "ID": "8",
                 "Time": "01:44.821",
                 "Ghost": "http://ninrankings.org/mkwii/profil.php?id=211210295"
+            },
+            {
+                "Country": "\ud83c\uddf3\ud83c\uddf1",
+                "ID": "35",
+                "Time": "01:44.990",
+                "Ghost": "http://web.archive.org/web/20170921221840/http://www.forums.mkboards.com/threads/netherlands-top-10.18179/"
             }
         ],
         "Mushroom Gorge": [
@@ -601,6 +615,12 @@
                 "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/A4/C1/2A132C6CC46861FB3E39498A73BFF6014F3B.html"
             },
             {
+                "Country": "\ud83c\uddf3\ud83c\uddf1",
+                "ID": "912BB947AF9F02FC",
+                "Time": "01:43.914",
+                "Ghost": "http://web.archive.org/web/20170921221840/http://www.forums.mkboards.com/threads/netherlands-top-10.18179/"
+            },
+            {
                 "Country": "\ud83c\uddf1\ud83c\uddfa",
                 "ID": "821E1146C7A4F5B3",
                 "Time": "01:43.916",
@@ -617,12 +637,6 @@
                 "ID": "11",
                 "Time": "01:43.952",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=1169"
-            },
-            {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
-                "ID": "F8AC68D93F4B3B58",
-                "Time": "01:43.985",
-                "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/7E/08/C87913B0403DC450C07BCB784BA919ED74E8.html"
             }
         ],
         "DK Summit": [
@@ -678,13 +692,13 @@
                 "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "15",
                 "Time": "01:50.943",
-                "Ghost": "http://www.maschell.de/ghostdatabase/profil.php?id=1364927832"
+                "Ghost": "http://www.maschell.de/ghostdatabase/ghostviewer.php?id=20316"
             },
             {
-                "Country": "\ud83c\uddf1\ud83c\uddfa",
-                "ID": "16",
-                "Time": "01:51.616",
-                "Ghost": "http://ninrankings.org/mkwii/profil.php?id=135031609"
+                "Country": "\ud83c\uddf3\ud83c\uddf1",
+                "ID": "A430FE7CC18AAD11",
+                "Time": "01:51.512",
+                "Ghost": "http://web.archive.org/web/20170921221840/http://www.forums.mkboards.com/threads/netherlands-top-10.18179/"
             }
         ],
         "Maple Treeway": [
@@ -764,6 +778,12 @@
             },
             {
                 "Country": "\ud83c\uddf3\ud83c\uddf1",
+                "ID": "2287EDEF056C2A77",
+                "Time": "02:22.893",
+                "Ghost": "http://web.archive.org/web/20170921221840/http://www.forums.mkboards.com/threads/netherlands-top-10.18179/"
+            },
+            {
+                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "CA8F043A3D42FB75",
                 "Time": "02:23.105",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=1086"
@@ -803,12 +823,6 @@
                 "ID": "7",
                 "Time": "02:24.250",
                 "Ghost": "http://ninrankings.org/mkwii/profil.php?id=344923713"
-            },
-            {
-                "Country": "\ud83c\udde7\ud83c\uddea",
-                "ID": "11",
-                "Time": "02:24.368",
-                "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=1169"
             }
         ],
         "Toad's Factory": [
@@ -1035,6 +1049,12 @@
                 "Ghost": "http://ninrankings.org/mkwii/profil.php?id=211210295"
             },
             {
+                "Country": "\ud83c\uddf3\ud83c\uddf1",
+                "ID": "36",
+                "Time": "02:29.904",
+                "Ghost": "http://web.archive.org/web/20170921221840/http://www.forums.mkboards.com/threads/netherlands-top-10.18179/"
+            },
+            {
                 "Country": "\ud83c\udde7\ud83c\uddea",
                 "ID": "041537D963CC8023",
                 "Time": "02:29.917",
@@ -1063,12 +1083,6 @@
                 "ID": "821E1146C7A4F5B3",
                 "Time": "02:30.476",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=448"
-            },
-            {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
-                "ID": "2",
-                "Time": "02:30.539",
-                "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=758"
             }
         ],
         "GCN Peach Beach": [
@@ -1679,16 +1693,16 @@
                 "Ghost": "http://www.maschell.de/ghostdatabase/ghostviewer.php?id=65420"
             },
             {
+                "Country": "\ud83c\uddf3\ud83c\uddf1",
+                "ID": "912BB947AF9F02FC",
+                "Time": "02:06.278",
+                "Ghost": "http://web.archive.org/web/20170921221840/http://www.forums.mkboards.com/threads/netherlands-top-10.18179/"
+            }
+            {
                 "Country": "\ud83c\uddf1\ud83c\uddfa",
                 "ID": "821E1146C7A4F5B3",
                 "Time": "02:06.285",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=448"
-            },
-            {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
-                "ID": "2",
-                "Time": "02:06.339",
-                "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=758"
             }
         ],
         "N64 DK's Jungle Parkway": [
@@ -2146,9 +2160,15 @@
             },
             {
                 "Country": "\ud83c\uddf3\ud83c\uddf1",
+                "ID": "6EE7F206748EF16F",
+                "Time": "01:01.752",
+                "Ghost": "http://www.maschell.de/ghostdatabase/ghostviewer.php?id=53291"
+            }
+            {
+                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "D4609DB8549BBAF2",
                 "Time": "01:03.813",
-                "Ghost": "http://www.chadsoft.co.uk/time-trials/players/A2/6C245D836EDDCB.html"
+                "Ghost": "http://web.archive.org/web/20170921221840/http://www.forums.mkboards.com/threads/netherlands-top-10.18179/"
             },
             {
                 "Country": "\ud83c\uddf1\ud83c\uddfa",
@@ -2185,12 +2205,6 @@
                 "ID": "3",
                 "Time": "01:09.319",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=508"
-            },
-            {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
-                "ID": "6EE7F206748EF16F",
-                "Time": "01:10.332",
-                "Ghost": "http://www.maschell.de/ghostdatabase/ghostviewer.php?id=53291"
             }
         ],
         "Maple Treeway (Glitch)": [
@@ -2223,6 +2237,12 @@
                 "ID": "3FC71238A1992027",
                 "Time": "02:07.279",
                 "Ghost": "http://www.maschell.de/ghostdatabase/ghostviewer.php?id=33119"
+            },
+            {
+                "Country": "\ud83c\uddf3\ud83c\uddf1",
+                "ID": "33",
+                "Time": "02:08.667",
+                "Ghost": "http://web.archive.org/web/20170921221840/http://www.forums.mkboards.com/threads/netherlands-top-10.18179/"
             },
             {
                 "Country": "\ud83c\udde7\ud83c\uddea",
@@ -2361,22 +2381,22 @@
                 "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/63/86/2050FF8CA8DAE3476F40BABA0DEFC325D1CC.html"
             },
             {
+                "Country": "\ud83c\uddf3\ud83c\uddf1",
+                "ID": "32",
+                "Time": "00:43.170",
+                "Ghost": "http://web.archive.org/web/20170921221840/http://www.forums.mkboards.com/threads/netherlands-top-10.18179/"
+            },
+            {
+                "Country": "\ud83c\uddf3\ud83c\uddf1",
+                "ID": "31",
+                "Time": "00:46.120",
+                "Ghost": "http://web.archive.org/web/20170921221840/http://www.forums.mkboards.com/threads/netherlands-top-10.18179/"
+            },
+            {
                 "Country": "\ud83c\uddf1\ud83c\uddfa",
                 "ID": "12",
                 "Time": "00:46.822",
                 "Ghost": "http://ninrankings.org/mkwii/profil.php?id=134251107"
-            },
-            {
-                "Country": "\ud83c\uddf1\ud83c\uddfa",
-                "ID": "16",
-                "Time": "00:47.498",
-                "Ghost": "http://ninrankings.org/mkwii/profil.php?id=135031609"
-            },
-            {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
-                "ID": "25",
-                "Time": "00:47.499",
-                "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=880"
             }
         ],
         "Grumble Volcano (Glitch)": [
@@ -2435,18 +2455,24 @@
                 "Ghost": "http://www.maschell.de/ghostdatabase/ghostviewer.php?id=61733"
             },
             {
-                "Country": "\ud83c\uddf1\ud83c\uddfa",
-                "ID": "27",
-                "Time": "00:22.264",
-                "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=173"
+                "Country": "\ud83c\uddf3\ud83c\uddf1",
+                "ID": "34",
+                "Time": "00:21.877",
+                "Ghost": "http://web.archive.org/web/20170921221840/http://www.forums.mkboards.com/threads/netherlands-top-10.18179/"
             }
         ],
         "Wario's Gold Mine (Glitch)": [
             {
                 "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "3AB8188FCD29476E",
-                "Time": "00:34.948",
-                "Ghost": "http://ninrankings.org/ghostdatabase/ghostviewer.php?id=57978"
+                "Time": "00:34.741",
+                "Ghost": "http://web.archive.org/web/20170921221840/http://www.forums.mkboards.com/threads/netherlands-top-10.18179/"
+            },
+            {
+                "Country": "\ud83c\uddf3\ud83c\uddf1",
+                "ID": "30",
+                "Time": "00:38.440",
+                "Ghost": "http://web.archive.org/web/20170921221840/http://www.forums.mkboards.com/threads/netherlands-top-10.18179/"
             },
             {
                 "Country": "\ud83c\udde7\ud83c\uddea",
@@ -2495,12 +2521,6 @@
                 "ID": "24906213005B3619",
                 "Time": "00:46.138",
                 "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/76/66/5826D8B7CA5CBB8A864EC84B9F51A137D9F7.html"
-            },
-            {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
-                "ID": "A430FE7CC18AAD11",
-                "Time": "00:46.816",
-                "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=247"
             }
         ],
         "GCN Peach Beach (Glitch)": [
@@ -2521,6 +2541,12 @@
                 "ID": "041537D963CC8023",
                 "Time": "01:08.372",
                 "Ghost": "http://www.maschell.de/ghostdatabase/ghostviewer.php?id=38236"
+            },
+            {
+                "Country": "\ud83c\uddf3\ud83c\uddf1",
+                "ID": "6EE7F206748EF16F",
+                "Time": "01:11.168",
+                "Ghost": "http://web.archive.org/web/20170921221840/http://www.forums.mkboards.com/threads/netherlands-top-10.18179/"
             },
             {
                 "Country": "\ud83c\uddf3\ud83c\uddf1",
@@ -2646,7 +2672,7 @@
                 "Country": "\ud83c\udde7\ud83c\uddea",
                 "ID": "29",
                 "Time": "02:09.271",
-                "Ghost": "???"
+                "Ghost": ""
             },
             {
                 "Country": "\ud83c\uddf3\ud83c\uddf1",
