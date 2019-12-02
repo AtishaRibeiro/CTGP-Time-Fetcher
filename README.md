@@ -2,27 +2,26 @@
 Bot that interacts with the CTGP-R Database in various ways.
 Currently configured to track the BNL tops.
 
-### About
+### Usage
 
-Originally meant to automatically update the BNL tops, but can be easily used for other countries.
-Tops are read from and written to a json file (see `BNL.json` for an example.)
-Times are all obtained from http://www.chadsoft.co.uk/time-trials/
+For using the bot only the `TT Bot` directory is needed, you can throw the rest away.
+Before running a `Config.py`file must be added in de directory which looks as follows:
 
+```python
+TOKEN = "Discord Bot Token"
+CHANNEL = ID of channel where commands are read
+UPDATE_CHANNEL = ID of channel where the updates are posted
+MODERATOR = ID of moderator role
+DMCHANNEL = ID of the bot's dm channel
+```
+Fill in the correct token and id's.
 
-### Using `GhostFetcherSolo.py`
-
-`GhostFetcherSolo.py` can be used seperately as well to get all ghosts from specified countries starting from a given date.
-The country codes can be found at the beginning of the file, in `COUNTRY_FLAGS`.
-To link a fixed playername to a playerId, add to `PLAYER_NAMES`.
-A text file is produced containing all the found times, including a link to the ghost.
+You can then run the bot by executing the `run.sh` script.
+`Python3`, `pip3` and `virtualenv` must be installed in order to run this properly.
+If there is no database present add argument `-db`.
 
 Example:
-```python
-countries_to_check = [67, 88, 94]
-date_str = "2019-03-13"
 ```
-
-This code checks for ghosts set in countries [Belgium, Luxembourg, Netherlands].
-It also only searches for ghosts that are set after 2019-03-13
-
-Keep in mind that a player can be from one country, but set a time for another. This is **not** accounted for.
+> chmod +x ./run.sh
+> ./run.sh -db
+```
