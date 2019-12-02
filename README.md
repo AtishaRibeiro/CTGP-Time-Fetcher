@@ -4,8 +4,8 @@ Currently configured to track the BNL tops.
 
 ### Usage
 
-For using the bot only the `TT Bot` directory is needed, you can throw the rest away.
-Before running a `Config.py`file must be added in de directory which looks as follows:
+When using the bot only the `TT Bot` directory is needed, you can throw the rest away.
+Before running a `Config.py`file must be added in de directory which looks like this:
 
 ```python
 TOKEN = "Discord Bot Token"
