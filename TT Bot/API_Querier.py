@@ -158,6 +158,8 @@ class Ghost:
         self.name = name
         self.time = FinishTime(time)
         self.ghost = ghost
+        # this is only used to update tops
+        self.new = False
 
     def __lt__(self, other):
         return self.time.ms_total < other.time.ms_total
@@ -179,15 +181,20 @@ class Ghost:
 
     def to_str(self, markdown=False):
         if markdown:
-            return "{} {}: [{}]({})".format(self.country, self.name, str(self.time), self.ghost)
+            # check if it is a link
+            if ('.' in self.ghost):
+                return "{} {}: {}".format(self.country, self.name, str(self.time))
+            else:
+                return "{} {}: [{}]({})".format(self.country, self.name, str(self.time), self.ghost)
         return "{} {}: {} ({})".format(self.country, self.name, str(self.time), self.ghost)
 
-class GhostFetcher:
-    """Class used to fetch data from the undocumented API at http://tt.chadsoft.co.uk"""
+class APIQuerier:
+    """Class used to fetch ghosts from the API"""
 
     def __init__(self, countries, client, database):
         self.base_url = "http://tt.chadsoft.co.uk"
         self.leaderboards = "/original-track-leaderboards.json"
+        self.players = "/players.json"
         self.ghost_url = "http://www.chadsoft.co.uk/time-trials"
         self.countries = countries
         self.client = client
@@ -201,7 +208,7 @@ class GhostFetcher:
                 return await response.read()
 
     async def get_ghosts(self):
-        """Looks for times that were set by players from 'countries'"""
+        """Looks for times that were set by players from the database"""
 
         new_ghosts = dict()
 
@@ -239,57 +246,48 @@ class GhostFetcher:
                 if result is not None:
                     new_ghosts[track_name].append(result)
 
-        # look at hidden players (players that have the wrong country set)
-        for player_id, country in self.DB.get_hidden():
-            data_raw = await self.get_json(f"{self.base_url}/players/{player_id[:2]}/{player_id[2:]}.json")
-            if data_raw is None:
-                print("Failed to access database")
-                return new_ghosts
-            data = json.loads(data_raw.decode("utf-8-sig"))
-
-            for ghost in data["ghosts"]:
-                if not ghost["200cc"]:
-                    # construct track name based on category
-                    try:
-                        track_name = ghost["trackName"]
-                    except KeyError:
-                        # track that is not in ctgp anymore
-                        continue
-                    try:
-                        category = ghost["categoryId"]
-                        track_name = track_name + (category == 1)*" (Glitch)" + (category == 16)*" (Shortcut)"
-                    except KeyError:
-                        pass
-
-                    if self.DB.track_exists(track_name):
-                        result = await self.analyse_ghost(track_name, ghost, player_id, int(country))
-                        if result is not None:
-                            new_ghosts[track_name].append(result)
-
         return new_ghosts
 
     async def analyse_ghost(self, track, ghost, player_id=None, country=""):
         """check if a ghost matches the criteria"""
-
         ghost_obj = None
 
         if ghost["playersFastest"] == True:
+            player_id = ghost["playerId"]
 
-            try:
-                player_id = ghost["playerId"]
-                country = ghost["country"]
-            except KeyError:
-                if country == "":
-                    # some players don't have a country set so these will throw a KeyError for ghost["Country"]
-                    return ghost_obj
-
-            if country in self.countries:
-                country_flag = COUNTRY_FLAGS[country]
+            if self.DB.player_exists(player_id):
                 #check if the ghost is already in our database
-                if self.DB.insert_pb(country_flag, player_id, track, ghost["hash"], ghost["finishTimeSimple"]):
-                    if player_id is None:
-                        self.DB.set_player_if_not_exists(player_id, ghost["player"])
-                    player_name = self.DB.get_player_name(player_id)
-                    ghost_obj = Ghost(country_flag, player_name, ghost["finishTimeSimple"], self.ghost_url + ghost["href"][:-3] + "html")
+                if self.DB.insert_pb(player_id, track, ghost["hash"], ghost["finishTimeSimple"]):
+                    country, player_name = self.DB.get_player_info(player_id)
+                    ghost_obj = Ghost(country, player_name, ghost["finishTimeSimple"], self.ghost_url + ghost["href"][:-3] + "html")
 
         return ghost_obj
+
+    async def get_players(self):
+        """Gets all players from from 'countries'"""
+
+        print("trying to fetch players")
+        data_raw = None
+        # try max 5 times
+        tries = 5
+        while tries > 0:
+            print("{} tries left".format(tries))
+            data_raw = await self.get_json(self.base_url + self.players)
+            if data_raw is not None:
+                tries = 0
+            tries -= 1
+
+        if data_raw is None:
+            print("Failed to access database")
+            return False
+        data = json.loads(data_raw.decode("utf-8-sig"))
+
+        for player in data["players"]:
+            country = player["country"]
+            if country in self.countries:
+                country_flag = COUNTRY_FLAGS[country]
+                if self.DB.set_player(player["playerId"], player["miiName"], country_flag):
+                    print("Added player {}".format(player["miiName"]))
+
+
+

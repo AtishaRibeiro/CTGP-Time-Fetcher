@@ -1,7 +1,9 @@
 BeNeLux Leaderboards - Glitch.csv
 BeNeLux-Leaderboards-No-Glitch.csv
 __pycache__/
-updated_tops/
 csv_reader.py
 ./TT\ Bot/Config.py
 ./TT\ Bot/tt_bot_db.db
+./TT\ Bot/bot_log.db
+./TT\ Bot/venv/
+./TT\ Bot/venv/__pycache/

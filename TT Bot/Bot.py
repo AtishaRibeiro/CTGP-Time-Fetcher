@@ -1,15 +1,15 @@
 import discord
 import Config
 import asyncio
-import datetime
+# import datetime not needed?
 import aiohttp
+import urllib
+import logging
+from bs4 import BeautifulSoup as BS
 from DB import DB
 from TopsUpdater import Tops, ImprovementType
-from GhostFetcher import Ghost, FinishTime
-from bs4 import BeautifulSoup as BS
-import urllib
-import sys
-import logging
+from API_Querier import Ghost, FinishTime
+
 
 COMMAND_PREFIX = '!'
 
@@ -20,16 +20,18 @@ class Bot(discord.Client):
         super().__init__()
 
         self.DB = DB("tt_bot_db.db")
-        self.bnl = Tops(self.DB)
         self.bg_task = self.loop.create_task(self.auto_update(3600))
+        self.player_update_timer = 0
         self.client = aiohttp.ClientSession()
+        self.tops = Tops(self.DB, self.client)
         # True if auto_update has to show all times, False if it only has to show top10 times
         self.show_all = True
 
         logging.basicConfig(filename="bot_log.log",
                             filemode='a',
-                            format='%(asctime)s,%(msecs)d %(name)s %(levelname)s %(message)s',
-                            datefmt='%H:%M:%S',
+                            format="+++++++++++++++++++++++++++++++++++++++\n"\
+                            "%(asctime)s,%(msecs)d %(name)s %(levelname)s %(message)s",
+                            datefmt='%Y-%m-%d %H:%M:%S',
                             level=logging.ERROR)
 
         logging.info("Runing Bot")
@@ -63,7 +65,7 @@ class Bot(discord.Client):
                 if split_msg[1] == "help":
                     await self.command_info(msg, split_msg[0])
                 elif command == "tops":
-                    await self.tops(msg, split_msg[1])
+                    await self.get_tops(msg, split_msg[1])
                 elif command == "count":
                     await self.count(msg, split_msg[1])
                 elif command == "pb":
@@ -71,15 +73,15 @@ class Bot(discord.Client):
                 elif command == "show_all":
                     if self.check_role(msg):
                         await self.set_show_all(msg, split_msg[1])
-                elif command == "set_player":
+                elif command == "set_name":
                     if self.check_role(msg):
-                        await self.set_player(msg, split_msg[1].split())
+                        await self.set_name(msg, split_msg[1].split())
+                elif command == "add_player":
+                    if self.check_role(msg):
+                        await self.add_player(msg, split_msg[1].split())
                 elif command == "reset_track":
                     if self.check_role(msg):
                         await self.reset_track(msg, split_msg[1])
-                elif command == "add_hidden":
-                    if self.check_role(msg):
-                        await self.add_hidden(msg, split_msg[1].split())
                 elif command == "remove_time":
                     if self.check_role(msg):
                         await self.remove_time(msg, split_msg[1])
@@ -127,26 +129,27 @@ class Bot(discord.Client):
             self.show_all = False
             await msg.channel.send("Set `show_all` to False")
 
-    async def set_player(self, msg, args):
-        self.DB.set_player(args[0], args[1])
-        await msg.channel.send("`Player set`")
+    async def set_name(self, msg, args):
+        if self.DB.set_player_name(args[0], args[1]):
+            await msg.channel.send("`Name set`")
+        else:
+            await msg.channel.send("`Unknown player`")
+
+    async def add_player(self, msg, args):
+        self.DB.set_player()
 
     async def reset_track(self, msg, track):
         full_track = self.DB.get_track_name(track.upper())[0]
         times = self.DB.reset_track(full_track)
         for time in times:
-            self.bnl.add_time(Ghost(time[0], time[1], time[2], self.get_ghost_link(time[3])), full_track)
+            self.tops.add_time(Ghost(time[0], time[1], time[2], self.get_ghost_link(time[3])), full_track)
         await msg.channel.send(f"`reset {full_track}`")
-
-    async def add_hidden(self, msg, args):
-        self.DB.set_hidden(args[0], args[1])
-        await msg.channel.send("`added`")
 
     async def remove_time(self, msg, ghost_hash):
         self.DB.ban_time(ghost_hash)
         await msg.channel.send("`removed`")
 
-    async def tops(self, msg, args):
+    async def get_tops(self, msg, args):
         """tops command"""
 
         if args.lower() == "all":
@@ -161,7 +164,7 @@ class Bot(discord.Client):
 
         try:
             full_track = self.DB.get_track_name(args.upper())[0]
-            tops = self.bnl.get_top_10(full_track)
+            tops = self.tops.get_top_10(full_track)
             await msg.channel.send(embed=self.create_tops_embed(full_track, tops))
         except (IndexError, TypeError):
             await msg.channel.send("Sorry, I don't know that track :disappointed:")
@@ -269,7 +272,6 @@ class Bot(discord.Client):
 
         await msg.channel.send(embed=embed)
 
-
     async def command_info(self, msg, command):
         """Provides info on a command"""
 
@@ -297,7 +299,6 @@ class Bot(discord.Client):
         """attempts to update the tops every (loop_duration) seconds"""
 
         try:
-
             await self.wait_until_ready()
             channel = self.get_channel(Config.UPDATE_CHANNEL)
 
@@ -305,11 +306,16 @@ class Bot(discord.Client):
                 if start_immediately:
                     await self.change_presence(activity=discord.Game(name="Checking Database"), status=discord.Status.idle)
 
+                    if self.player_update_timer == 0:
+                        await self.tops.update_players()
+                        self.player_update_timer = 20
+                    else:
+                        self.player_update_timer -= 1
+
                     try:
                         print("updating")
-                        times, changed = await self.bnl.update_tops(self.client)
-                        print("finished updating")
-                        sys.stdout.flush()
+                        times, changed = await self.tops.update_tops(self.client)
+                        print("finished updating", flush=True)
 
                         for time_info in times:
                             if not self.show_all and time_info[2] == ImprovementType.none:
@@ -364,14 +370,15 @@ class Bot(discord.Client):
 
             for track in cups[cup]:
                 message = ""
-                print(track)
-                tops = self.bnl.get_top_10_no_db(track[1])
+                tops = self.tops.get_top_10_no_db(track[1])
                 for pos, time in tops:
                     pos_str = str(pos)
                     if len(pos_str) == 1:
                         #alignment
                         pos_str = '\u200B ' + pos_str
                     message += "{}. {} {}: {}\n".format(pos_str, time.country, time.name, time.time)
+                if len(message) == 0:
+                    message = "empty tops"
 
                 embed.add_field(name=track[0], value=message, inline=True)
                 

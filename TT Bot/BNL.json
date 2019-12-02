@@ -7,136 +7,126 @@
         ]
     },
     "Players": [
-        ["3AB8188FCD29476E", "Thomas"],
-        ["041537D963CC8023", "Olifré"],
-        ["4516B56851B02E77", "Olifré"],
-        ["E1C66E97144FCC06", "Christan"],
-        ["E1DCACA4DBD2BD98", "Tom"],
-        ["F8AB088AFDDA7189", "Korra"],
-        ["F8AC68D93F4B3B58", "Shiro"],
-        ["CA8F043A3D42FB75", "Dane"],
-        ["AF29D4AFF12749A9", "Leops"],
-        ["912BB947AF9F02FC", "Leops"],
-        ["24906213005B3619", "Dats"],
-        ["125619EC5FBF4DB5", "Loaf"],
-        ["DB503BD3D6030657", "Jeff"],
-        ["D4609DB8549BBAF2", "Enzo"],
-        ["A26C245D836EDDCB", "Enzo"],
-        ["6EE7F206748EF16F", "Sander"],
-        ["C618D6AF6C5CE085", "Miist"],
-        ["821E1146C7A4F5B3", "Kuigl"],
-        ["DF050A811583E0BC", "Weexy"],
-        ["2287EDEF056C2A77", "Nemesis"],
-        ["F6E83B580EE66237", "Apolo"],
-        ["21CEB9A1B8D3CAC5", "Daan"],
-        ["E4FC925132F85873", "The M"],
-        ["F9CB581AF48F0129", "The M"],
-        ["C48B6FC37FAE104D", "Leon"],
-        ["32F7E9E4BFD3A779", "Aiko"],
-        ["9DBAF5D14A2226F9", "Mario"],
-        ["30CD4A1D750A6750", "Jeroen"],
-        ["E4E6C6650E76DB78", "Degausser"],
-        ["62EA84C35DB17FE1", "Degausser"],
-        ["3FC71238A1992027", "Piloco"],
-        ["22C9D360387194B0", "Vincent"],
-        ["A430FE7CC18AAD11", "Reinier"],
-        ["F70D5685084E6D00", "Paris"],
-        ["EF9D40861856D54B", "Joris"],
-        ["1", "Fisico"],
-        ["2", "Niels"],
-        ["3", "RVZ"],
-        ["4", "Alvin"],
-        ["5", "DivX"],
-        ["6", "Jochem"],
-        ["7", "Kim"],
-        ["8", "Negens"],
-        ["9", "Amstel"],
-        ["10", "Luis"],
-        ["11", "Quinten"],
-        ["12", "Cryza"],
-        ["13", "Rorox"],
-        ["14", "Jef"],
-        ["15", "Cees"],
-        ["16", "Thunder"],
-        ["17", "GuiLeC"],
-        ["18", "Evoker"],
-        ["19", "Kuyrem"],
-        ["20", "Genis"],
-        ["21", "Fabe"],
-        ["22", "Robin"],
-        ["23", "Leafeon"],
-        ["24", "Spike"],
-        ["25", "Tonny"],
-        ["26", "Kjeld"],
-        ["27", "Kev"],
-        ["28", "Spear"],
-        ["29", "Gigagia"],
-        ["30", "Sulkun"],
-        ["31", "Tony"],
-        ["32", "Kardo"],
-        ["33", "Tim"],
-        ["34", "Yote"],
-        ["35", "Robert"],
-        ["36", "Gogoku"]
+        ["🇳🇱", "3AB8188FCD29476E", "Thomas"],
+        ["🇧🇪", "041537D963CC8023", "Olifré"],
+        ["🇧🇪", "4516B56851B02E77", "Olifré"],
+        ["🇳🇱", "E1C66E97144FCC06", "Christan"],
+        ["🇳🇱", "E1DCACA4DBD2BD98", "Tom"],
+        ["🇳🇱", "F8AB088AFDDA7189", "Korra"],
+        ["🇳🇱", "F8AC68D93F4B3B58", "Shiro"],
+        ["🇳🇱", "CA8F043A3D42FB75", "Dane"],
+        ["🇳🇱", "AF29D4AFF12749A9", "Leops"],
+        ["🇳🇱", "912BB947AF9F02FC", "Leops"],
+        ["🇳🇱", "24906213005B3619", "Dats"],
+        ["🇧🇪", "125619EC5FBF4DB5", "Loaf"],
+        ["🇱🇺", "DB503BD3D6030657", "Jeff"],
+        ["🇳🇱", "D4609DB8549BBAF2", "Enzo"],
+        ["🇳🇱", "A26C245D836EDDCB", "Enzo"],
+        ["🇳🇱", "6EE7F206748EF16F", "Sander"],
+        ["🇳🇱", "C618D6AF6C5CE085", "Miist"],
+        ["🇱🇺", "821E1146C7A4F5B3", "Kuigl"],
+        ["🇳🇱", "DF050A811583E0BC", "Weexy"],
+        ["🇳🇱", "2287EDEF056C2A77", "Nemesis"],
+        ["🇳🇱", "F6E83B580EE66237", "Apolo"],
+        ["🇳🇱", "21CEB9A1B8D3CAC5", "Daan"],
+        ["🇧🇪", "E4FC925132F85873", "The M"],
+        ["🇧🇪", "F9CB581AF48F0129", "The M"],
+        ["🇳🇱", "C48B6FC37FAE104D", "Leon"],
+        ["🇧🇪", "32F7E9E4BFD3A779", "Aiko"],
+        ["🇳🇱", "9DBAF5D14A2226F9", "Mario"],
+        ["🇳🇱", "30CD4A1D750A6750", "Jeroen"],
+        ["🇧🇪", "E4E6C6650E76DB78", "Degausser"],
+        ["🇧🇪", "62EA84C35DB17FE1", "Degausser"],
+        ["🇳🇱", "3FC71238A1992027", "Piloco"],
+        ["🇳🇱", "22C9D360387194B0", "Vincent"],
+        ["🇳🇱", "A430FE7CC18AAD11", "Reinier"],
+        ["🇳🇱", "F70D5685084E6D00", "Paris"],
+        ["🇳🇱", "EF9D40861856D54B", "Joris"],
+        ["🇧🇪", "1", "Fisico"],
+        ["🇳🇱", "2", "Niels"],
+        ["🇳🇱", "3", "RVZ"],
+        ["🇳🇱", "4", "Alvin"],
+        ["🇳🇱", "5", "DivX"],
+        ["🇳🇱", "6", "Jochem"],
+        ["🇱🇺", "7", "Kim"],
+        ["🇧🇪", "8", "Negens"],
+        ["🇧🇪", "9", "Amstel"],
+        ["🇱🇺", "10", "Luis"],
+        ["🇧🇪", "11", "Quinten"],
+        ["🇱🇺", "12", "Cryza"],
+        ["🇳🇱", "13", "Rorox"],
+        ["🇧🇪", "14", "Jef"],
+        ["🇳🇱", "15", "Cees"],
+        ["🇱🇺", "16", "Thunder"],
+        ["🇧🇪", "17", "GuiLeC"],
+        ["🇱🇺", "18", "Evoker"],
+        ["🇳🇱", "19", "Kuyrem"],
+        ["🇱🇺", "20", "Genis"],
+        ["🇧🇪", "21", "Fabe"],
+        ["🇧🇪", "22", "Robin"],
+        ["🇱🇺", "23", "Leafeon"],
+        ["🇱🇺", "24", "Spike"],
+        ["🇳🇱", "25", "Tonny"],
+        ["🇳🇱", "26", "Kjeld"],
+        ["🇱🇺", "27", "Kev"],
+        ["🇳🇱", "28", "Spear"],
+        ["🇧🇪", "29", "Gigagia"],
+        ["🇳🇱", "30", "Sulkun"],
+        ["🇳🇱", "31", "Tony"],
+        ["🇳🇱", "32", "Kardo"],
+        ["🇳🇱", "33", "Tim"],
+        ["🇳🇱", "34", "Yote"],
+        ["🇳🇱", "35", "Robert"],
+        ["🇳🇱", "36", "Gogoku"]
     ],
     "Tracks": {
         "Luigi Circuit": [
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "3AB8188FCD29476E",
                 "Time": "01:09.348",
                 "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/4D/CD/1513F63C0856BCCAABAEB68307F8C6118447.html"
             },
             {
-                "Country": "\ud83c\udde7\ud83c\uddea",
                 "ID": "E4E6C6650E76DB78",
                 "Time": "01:09.442",
                 "Ghost": "http://www.maschell.de/ghostdatabase/ghostviewer.php?id=4612"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "A430FE7CC18AAD11",
                 "Time": "01:09.559",
                 "Ghost": "http://www.maschell.de/ghostdatabase/ghostviewer.php?id=406"
             },
             {
-                "Country": "\ud83c\udde7\ud83c\uddea",
                 "ID": "041537D963CC8023",
                 "Time": "01:09.571",
                 "Ghost": "http://www.maschell.de/ghostdatabase/ghostviewer.php?id=42509"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "CA8F043A3D42FB75",
                 "Time": "01:09.576",
                 "Ghost": "http://www.maschell.de/ghostdatabase/ghostviewer.php?id=57662"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "30",
                 "Time": "01:09.643",
                 "Ghost": ""
             },
             {
-                "Country": "\ud83c\udde7\ud83c\uddea",
                 "ID": "1",
                 "Time": "01:09.720",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=738"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "2",
                 "Time": "01:09.765",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=758"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "3",
                 "Time": "01:09.779",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=508"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "4",
                 "Time": "01:09.782",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=32"
@@ -144,61 +134,51 @@
         ],
         "Mario Circuit": [
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "CA8F043A3D42FB75",
                 "Time": "01:22.011",
                 "Ghost": "http://www.maschell.de/ghostdatabase/ghostviewer.php?id=58284"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "3",
                 "Time": "01:22.045",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=508"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "3AB8188FCD29476E",
                 "Time": "01:22.120",
                 "Ghost": "http://www.maschell.de/ghostdatabase/ghostviewer.php?id=65162"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "A430FE7CC18AAD11",
                 "Time": "01:22.186",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=247"
             },
             {
-                "Country": "\ud83c\udde7\ud83c\uddea",
                 "ID": "E4E6C6650E76DB78",
                 "Time": "01:22.223",
                 "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/9E/B7/30EAE760FE994F3CBA16B73A2D67327BAD04.html"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "6",
                 "Time": "01:22.327",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=185"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "4",
                 "Time": "01:22.423",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=32"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "D4609DB8549BBAF2",
                 "Time": "01:22.434",
                 "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/29/FC/1B6A09F79697859D7455D4873E4E8C135A1C.html"
             },
             {
-                "Country": "\ud83c\udde7\ud83c\uddea",
                 "ID": "1",
                 "Time": "01:22.493",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=738"
             },
             {
-                "Country": "\ud83c\uddf1\ud83c\uddfa",
                 "ID": "7",
                 "Time": "01:22.604",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=240"
@@ -206,61 +186,51 @@
         ],
         "Daisy Circuit": [
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "4",
                 "Time": "01:29.518",
                 "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/F3/20/21D9D99C7DC7EBC2FEC7802ED0B5FC096D57.html"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "3AB8188FCD29476E",
                 "Time": "01:29.650",
                 "Ghost": "http://ninrankings.org/ghostdatabase/ghostviewer.php?id=60283"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "A430FE7CC18AAD11",
                 "Time": "01:29.828",
                 "Ghost": "http://www.maschell.de/ghostdatabase/ghostviewer.php?id=6747"
             },
             {
-                "Country": "\ud83c\udde7\ud83c\uddea",
                 "ID": "041537D963CC8023",
                 "Time": "01:29.971",
                 "Ghost": "http://www.maschell.de/ghostdatabase/profil.php?id=1367150597"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "F8AC68D93F4B3B58",
                 "Time": "01:30.268",
                 "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/34/E7/971370A405E179206BAA70695BA44DFACF72.html"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "CA8F043A3D42FB75",
                 "Time": "01:30.514",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=1086"
             },
             {
-                "Country": "\ud83c\uddf1\ud83c\uddfa",
                 "ID": "DB503BD3D6030657",
                 "Time": "01:30.613",
                 "Ghost": "http://www.maschell.de/ghostdatabase/profil.php?id=921829334"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "3",
                 "Time": "01:30.687",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=508"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "33",
                 "Time": "01:30.748",
                 "Ghost": ""
             },
             {
-                "Country": "\ud83c\uddf1\ud83c\uddfa",
                 "ID": "7",
                 "Time": "01:30.776",
                 "Ghost": "http://www.maschell.de/ghostdatabase/ghostviewer.php?id=53716"
@@ -268,61 +238,51 @@
         ],
         "Dry Dry Ruins": [
             {
-                "Country": "\ud83c\uddf1\ud83c\uddfa",
                 "ID": "DB503BD3D6030657",
                 "Time": "01:48.225",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=1048"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "3AB8188FCD29476E",
                 "Time": "01:48.310",
                 "Ghost": "http://www.maschell.de/ghostdatabase/ghostviewer.php?id=75518"
             },
             {
-                "Country": "\ud83c\udde7\ud83c\uddea",
                 "ID": "041537D963CC8023",
                 "Time": "01:48.735",
                 "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/A8/CC/27587E051A45E892F54155AD8164234733D8.html"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "2287EDEF056C2A77",
                 "Time": "01:49.945",
                 "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/74/3A/753D0EC2D6D5214A97B9EF8984CD75FB867E.html"
             },
             {
-                "Country": "\ud83c\udde7\ud83c\uddea",
                 "ID": "8",
                 "Time": "01:50.264",
                 "Ghost": "http://ninrankings.org/mkwii/profil.php?id=256780272"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "E1DCACA4DBD2BD98",
                 "Time": "01:50.339",
                 "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/FF/21/589499F692466DCBD43A891927A76D9A9A3F.html"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "2",
                 "Time": "01:51.700",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=758"
             },
             {
-                "Country": "\ud83c\uddf1\ud83c\uddfa",
                 "ID": "7",
                 "Time": "01:51.765",
                 "Ghost": "http://ninrankings.org/mkwii/profil.php?id=197189235"
             },
             {
-                "Country": "\ud83c\udde7\ud83c\uddea",
                 "ID": "9",
                 "Time": "01:51.777",
                 "Ghost": "http://www.mktrial.fr/stats.php?m=853"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "3",
                 "Time": "01:51.787",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=508"
@@ -330,61 +290,51 @@
         ],
         "Moo Moo Meadows": [
             {
-                "Country": "\ud83c\udde7\ud83c\uddea",
                 "ID": "041537D963CC8023",
                 "Time": "01:16.022",
                 "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/9C/53/A864D906D6E5653B5434175D3A76E485DC38.html"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "3AB8188FCD29476E",
                 "Time": "01:16.040",
                 "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/C5/31/AED3C6644CEF557F6BD2CAC1C7AC8171F3DD.html"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "CA8F043A3D42FB75",
                 "Time": "01:16.662",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=1086"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "A430FE7CC18AAD11",
                 "Time": "01:16.725",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=247"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "4",
                 "Time": "01:16.726",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=32"
             },
             {
-                "Country": "\ud83c\udde7\ud83c\uddea",
                 "ID": "1",
                 "Time": "01:16.838",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=738"
             },
             {
-                "Country": "\ud83c\udde7\ud83c\uddea",
                 "ID": "9",
                 "Time": "01:16.879",
                 "Ghost": "http://www.mktrial.fr/temps.php?m=853&idc=126&type=1"
             },
             {
-                "Country": "\ud83c\uddf1\ud83c\uddfa",
                 "ID": "10",
                 "Time": "01:16.931",
                 "Ghost": "http://www.maschell.de/ghostdatabase/ghostviewer.php?id=55230"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "AF29D4AFF12749A9",
                 "Time": "01:16.996",
                 "Ghost": ""
             },
             {
-                "Country": "\ud83c\uddf1\ud83c\uddfa",
                 "ID": "821E1146C7A4F5B3",
                 "Time": "01:16.997",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=448"
@@ -392,61 +342,51 @@
         ],
         "Coconut Mall": [
             {
-                "Country": "\ud83c\uddf1\ud83c\uddfa",
                 "ID": "DB503BD3D6030657",
                 "Time": "01:56.283",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=1048"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "E1DCACA4DBD2BD98",
                 "Time": "01:57.164",
                 "Ghost": "https://www.youtube.com/watch?v=a_kbC8gSsys"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "CA8F043A3D42FB75",
                 "Time": "01:57.568",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=1086"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "3AB8188FCD29476E",
                 "Time": "01:57.750",
                 "Ghost": "http://www.maschell.de/ghostdatabase/ghostviewer.php?id=65163"
             },
             {
-                "Country": "\ud83c\udde7\ud83c\uddea",
                 "ID": "041537D963CC8023",
                 "Time": "01:57.861",
                 "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/D7/9D/56EB6FB6C856B7D2F3B11FDC9BE0E79BCCBC.html"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "A430FE7CC18AAD11",
                 "Time": "01:57.964",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=247"
             },
             {
-                "Country": "\ud83c\udde7\ud83c\uddea",
                 "ID": "9",
                 "Time": "01:58.101",
                 "Ghost": "http://www.mktrial.fr/temps.php?idc=170"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "4",
                 "Time": "01:58.397",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=32"
             },
             {
-                "Country": "\ud83c\udde7\ud83c\uddea",
                 "ID": "8",
                 "Time": "01:58.628",
                 "Ghost": "http://ninrankings.org/mkwii/profil.php?id=211210295"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "6EE7F206748EF16F",
                 "Time": "01:58.648",
                 "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/19/00/A9E2B9D0248E5F0B7C3100F314F50AA6B0C2.html"
@@ -454,61 +394,51 @@
         ],
         "Koopa Cape": [
             {
-                "Country": "\ud83c\udde7\ud83c\uddea",
                 "ID": "041537D963CC8023",
                 "Time": "02:18.420",
                 "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/AF/6E/DBD745DB99D8853C2E21BB83AB13820A35BC.html"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "3AB8188FCD29476E",
                 "Time": "02:19.011",
                 "Ghost": "http://ninrankings.org/ghostdatabase/ghostviewer.php?id=71242"
             },
             {
-                "Country": "\ud83c\uddf1\ud83c\uddfa",
                 "ID": "DB503BD3D6030657",
                 "Time": "02:20.148",
                 "Ghost": "http://www.maschell.de/ghostdatabase/profil.php?id=921829334"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "CA8F043A3D42FB75",
                 "Time": "02:21.689",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=1086"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "2",
                 "Time": "02:21.720",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=758"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "4",
                 "Time": "02:21.927",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=32"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "F8AC68D93F4B3B58",
                 "Time": "02:21.940",
                 "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/43/34/4066F6C52EC77494AF9A1F2B04F52B070CB5.html"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "D4609DB8549BBAF2",
                 "Time": "02:22.042",
                 "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/55/C2/844CCB78AAC6064B35F16E3EEF66E34AA452.html"
             },
             {
-                "Country": "\ud83c\udde7\ud83c\uddea",
                 "ID": "1",
                 "Time": "02:22.338",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=738"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "E1C66E97144FCC06",
                 "Time": "02:22.654",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=1153"
@@ -516,61 +446,51 @@
         ],
         "Moonview Highway": [
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "3AB8188FCD29476E",
                 "Time": "01:43.568",
                 "Ghost": "http://www.maschell.de/ghostdatabase/ghostviewer.php?id=75517"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "CA8F043A3D42FB75",
                 "Time": "01:43.590",
                 "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/06/E7/E2C5576615514DDB2C331B1966BD9425ECE0.html"
             },
             {
-                "Country": "\ud83c\udde7\ud83c\uddea",
                 "ID": "041537D963CC8023",
                 "Time": "01:43.875",
                 "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/87/7A/9D986DAC44BF6A94CB58B05271692FB8ADD9.html"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "F8AC68D93F4B3B58",
                 "Time": "01:44.094",
                 "Ghost": "http://www.maschell.de/ghostdatabase/ghostviewer.php?id=71238"
             },
             {
-                "Country": "\ud83c\uddf1\ud83c\uddfa",
                 "ID": "DB503BD3D6030657",
                 "Time": "01:44.198",
                 "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/25/13/D0464F0ABCB56E89EBDC3C9AA9F8032AE42B.html"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "A430FE7CC18AAD11",
                 "Time": "01:44.382",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=247"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "4",
                 "Time": "01:44.566",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=32"
             },
             {
-                "Country": "\ud83c\udde7\ud83c\uddea",
                 "ID": "1",
                 "Time": "01:44.791",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=738"
             },
             {
-                "Country": "\ud83c\udde7\ud83c\uddea",
                 "ID": "8",
                 "Time": "01:44.821",
                 "Ghost": "http://ninrankings.org/mkwii/profil.php?id=211210295"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "35",
                 "Time": "01:44.990",
                 "Ghost": ""
@@ -578,61 +498,51 @@
         ],
         "Mushroom Gorge": [
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "3AB8188FCD29476E",
                 "Time": "01:41.928",
                 "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/25/32/10556651CC79E0F135064A5A31FEF04BE765.html"
             },
             {
-                "Country": "\ud83c\uddf1\ud83c\uddfa",
                 "ID": "DB503BD3D6030657",
                 "Time": "01:42.216",
                 "Ghost": "http://ninrankings.org/ghostdatabase/ghostviewer.php?id=69589"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "CA8F043A3D42FB75",
                 "Time": "01:42.845",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=1086"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "E1C66E97144FCC06",
                 "Time": "01:43.583",
                 "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/7D/DE/A492A07CF5215B1A52B8009B202339976E8C.html"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "E1DCACA4DBD2BD98",
                 "Time": "01:43.702",
                 "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/A5/DB/AFE0DC98DEA2D03816419D0A2E66AD322F25.html"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "F8AB088AFDDA7189",
                 "Time": "01:43.802",
                 "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/A4/C1/2A132C6CC46861FB3E39498A73BFF6014F3B.html"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "912BB947AF9F02FC",
                 "Time": "01:43.914",
                 "Ghost": ""
             },
             {
-                "Country": "\ud83c\uddf1\ud83c\uddfa",
                 "ID": "821E1146C7A4F5B3",
                 "Time": "01:43.916",
                 "Ghost": "http://www.maschell.de/ghostdatabase/ghostviewer.php?id=24017"
             },
             {
-                "Country": "\ud83c\udde7\ud83c\uddea",
                 "ID": "041537D963CC8023",
                 "Time": "01:43.944",
                 "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/7F/80/EE8428A9FF5073F703EE04155E92CDEE7ECA.html"
             },
             {
-                "Country": "\ud83c\udde7\ud83c\uddea",
                 "ID": "11",
                 "Time": "01:43.952",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=1169"
@@ -640,61 +550,51 @@
         ],
         "DK Summit": [
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "3AB8188FCD29476E",
                 "Time": "01:48.092",
                 "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/1F/61/E141809F9442595EF7088940ACAF2AA007EB.html"
             },
             {
-                "Country": "\ud83c\uddf1\ud83c\uddfa",
                 "ID": "DB503BD3D6030657",
                 "Time": "01:48.611",
                 "Ghost": "https://pbs.twimg.com/media/Dakt2XNX4AA6tKq.jpg:large"
             },
             {
-                "Country": "\ud83c\uddf1\ud83c\uddfa",
                 "ID": "12",
                 "Time": "01:49.458",
                 "Ghost": "http://www.maschell.de/ghostdatabase/profil.php?id=921232304"
             },
             {
-                "Country": "\ud83c\udde7\ud83c\uddea",
                 "ID": "041537D963CC8023",
                 "Time": "01:49.997",
                 "Ghost": "http://www.maschell.de/ghostdatabase/ghostviewer.php?id=17249"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "AF29D4AFF12749A9",
                 "Time": "01:50.331",
                 "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/F6/C2/42D8C1B9D06286F0C5B20B7C685DC693FFD7.html"
             },
             {
-                "Country": "\ud83c\uddf1\ud83c\uddfa",
                 "ID": "821E1146C7A4F5B3",
                 "Time": "01:50.372",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=448"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "13",
                 "Time": "01:50.679",
                 "Ghost": "http://www.maschell.de/ghostdatabase/profil.php?id=1499677098"
             },
             {
-                "Country": "\ud83c\udde7\ud83c\uddea",
                 "ID": "14",
                 "Time": "01:50.841",
                 "Ghost": "http://www.maschell.de/ghostdatabase/profil.php?id=1593329472"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "15",
                 "Time": "01:50.943",
                 "Ghost": "http://www.maschell.de/ghostdatabase/ghostviewer.php?id=20316"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "A430FE7CC18AAD11",
                 "Time": "01:51.512",
                 "Ghost": ""
@@ -702,61 +602,51 @@
         ],
         "Maple Treeway": [
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "3AB8188FCD29476E",
                 "Time": "02:17.827",
                 "Ghost": "http://ninrankings.org/ghostdatabase/ghostviewer.php?id=63232"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "CA8F043A3D42FB75",
                 "Time": "02:19.312",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=1086"
             },
             {
-                "Country": "\ud83c\uddf1\ud83c\uddfa",
                 "ID": "DB503BD3D6030657",
                 "Time": "02:19.496",
                 "Ghost": "http://www.maschell.de/ghostdatabase/profil.php?id=921829334"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "A430FE7CC18AAD11",
                 "Time": "02:19.566",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=247"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "6EE7F206748EF16F",
                 "Time": "02:19.612",
                 "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/BE/AD/790E21351D18709A2620D62A9EBE42528B6D.html"
             },
             {
-                "Country": "\ud83c\udde7\ud83c\uddea",
                 "ID": "041537D963CC8023",
                 "Time": "02:19.773",
                 "Ghost": "http://www.maschell.de/ghostdatabase/ghostviewer.php?id=2142"
             },
             {
-                "Country": "\ud83c\udde7\ud83c\uddea",
                 "ID": "17",
                 "Time": "02:19.880",
                 "Ghost": "http://www.mktrial.fr/temps.php?idc=135"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "4",
                 "Time": "02:19.930",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=32"
             },
             {
-                "Country": "\ud83c\udde7\ud83c\uddea",
                 "ID": "8",
                 "Time": "02:20.177",
                 "Ghost": "http://ninrankings.org/mkwii/profil.php?id=211210295"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "5",
                 "Time": "02:20.334",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=610"
@@ -764,61 +654,51 @@
         ],
         "Bowser's Castle": [
             {
-                "Country": "\ud83c\uddf1\ud83c\uddfa",
                 "ID": "DB503BD3D6030657",
                 "Time": "02:21.923",
                 "Ghost": "https://www.mkleaderboards.com/mkw/players/673"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "3AB8188FCD29476E",
                 "Time": "02:22.544",
                 "Ghost": "http://www.maschell.de/ghostdatabase/ghostviewer.php?id=65167"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "2287EDEF056C2A77",
                 "Time": "02:22.893",
                 "Ghost": ""
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "CA8F043A3D42FB75",
                 "Time": "02:23.105",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=1086"
             },
             {
-                "Country": "\ud83c\udde7\ud83c\uddea",
                 "ID": "14",
                 "Time": "02:23.630",
                 "Ghost": "http://www.maschell.de/ghostdatabase/profil.php?id=1593329472"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "E1C66E97144FCC06",
                 "Time": "02:23.700",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=1153"
             },
             {
-                "Country": "\ud83c\udde7\ud83c\uddea",
                 "ID": "8",
                 "Time": "02:23.954",
                 "Ghost": "http://ninrankings.org/mkwii/profil.php?id=211210295"
             },
             {
-                "Country": "\ud83c\udde7\ud83c\uddea",
                 "ID": "041537D963CC8023",
                 "Time": "02:23.978",
                 "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/C1/8F/9D34F1DEFD9D7BA0EC0CB0538F392D0346F1.html"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "6EE7F206748EF16F",
                 "Time": "02:23.990",
                 "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/CD/C6/106C1D38060420F777EEFA0C50003C216849.html"
             },
             {
-                "Country": "\ud83c\uddf1\ud83c\uddfa",
                 "ID": "7",
                 "Time": "02:24.250",
                 "Ghost": "http://ninrankings.org/mkwii/profil.php?id=344923713"
@@ -826,67 +706,56 @@
         ],
         "Toad's Factory": [
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "CA8F043A3D42FB75",
                 "Time": "01:49.799",
                 "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/9C/BC/CBD0BD209744E69F445BD9252D47ECD698AD.html"
             },
             {
-                "Country": "\ud83c\uddf1\ud83c\uddfa",
                 "ID": "DB503BD3D6030657",
                 "Time": "01:49.959",
                 "Ghost": "http://www.maschell.de/ghostdatabase/ghostviewer.php?id=67626"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "E1C66E97144FCC06",
                 "Time": "01:50.067",
                 "Ghost": "http://www.maschell.de/ghostdatabase/ghostviewer.php?id=66560"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "3AB8188FCD29476E",
                 "Time": "01:50.166",
                 "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/FE/9D/32E4A97B354939924D930974FD6958B1433A.html"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "F8AC68D93F4B3B58",
                 "Time": "01:50.369",
                 "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/5B/C5/1BB2CBDBE5FB2864FB40A8265503450652FD.html"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "AF29D4AFF12749A9",
                 "Time": "01:50.458",
                 "Ghost": "https://www.youtube.com/watch?v=urBRNkBakHY"
             },
             {
-                "Country": "\ud83c\udde7\ud83c\uddea",
                 "ID": "041537D963CC8023",
                 "Time": "01:50.941",
                 "Ghost": "http://www.maschell.de/ghostdatabase/ghostviewer.php?id=67696"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "15",
                 "Time": "01:51.078",
                 "Ghost": "http://www.maschell.de/ghostdatabase/ghostviewer.php?id=53337"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "D4609DB8549BBAF2",
                 "Time": "01:51.254",
                 "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/5D/1C/A685AB338B98C44313912B80C9DFF6512F4C.html"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "F8AB088AFDDA7189",
                 "Time": "01:51.274",
                 "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/D0/D1/9D7840D2969CE202125802FEAE2F31354607.html"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "24906213005B3619",
                 "Time": "01:51.320",
                 "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/A7/F4/B0FD8C6AC0A1D83E7FEC025F2B3488711445.html"
@@ -894,67 +763,56 @@
         ],
         "Wario's Gold Mine": [
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "CA8F043A3D42FB75",
                 "Time": "01:51.135",
                 "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/05/EE/B924193495ECB9804169E514DF709B6E2014.html"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "3AB8188FCD29476E",
                 "Time": "01:51.407",
                 "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/53/09/ADAE8EE3CC06A1B9DB90470D73DB9B98EC9C.html"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "A430FE7CC18AAD11",
                 "Time": "01:51.798",
                 "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/48/6E/867EA40F6B77A5D576C087D0890637010B2B.html"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "E1C66E97144FCC06",
                 "Time": "01:52.782",
                 "Ghost": "http://www.maschell.de/ghostdatabase/ghostviewer.php?id=65405"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "E1DCACA4DBD2BD98",
                 "Time": "01:52.845",
                 "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/45/3A/F1FCD821B3FB65DC2EEFA8405C3AEB6B6D44.html"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "D4609DB8549BBAF2",
                 "Time": "01:52.897",
                 "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/D7/87/23CFC49D2FFAFE1C04F9E9F75948EEC80D68.html"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "4",
                 "Time": "01:53.499",
                 "Ghost": "http://www.maschell.de/ghostdatabase/ghostviewer.php?id=278"
             },
             {
-                "Country": "\ud83c\uddf1\ud83c\uddfa",
                 "ID": "821E1146C7A4F5B3",
                 "Time": "01:53.583",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=448"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "F8AB088AFDDA7189",
                 "Time": "01:53.597",
                 "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/04/51/915B5B087EB5613A58A173FF421EA8AD3989.html"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "3",
                 "Time": "01:53.781",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=508"
             },
             {
-                "Country": "\ud83c\udde7\ud83c\uddea",
                 "ID": "11",
                 "Time": "01:53.852",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=1169"
@@ -962,61 +820,51 @@
         ],
         "Grumble Volcano": [
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "3AB8188FCD29476E",
                 "Time": "01:53.625",
                 "Ghost": "http://www.maschell.de/ghostdatabase/ghostviewer.php?id=59497"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "CA8F043A3D42FB75",
                 "Time": "01:53.789",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=1086"
             },
             {
-                "Country": "\ud83c\udde7\ud83c\uddea",
                 "ID": "041537D963CC8023",
                 "Time": "01:54.467",
                 "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/9C/B5/A8E56FECC2DC7D6F590769EA41CFABB823CC.html"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "F8AB088AFDDA7189",
                 "Time": "01:54.912",
                 "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/EB/E0/3E68D3B94286F03B327D48165890136B9ACC.html"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "F8AC68D93F4B3B58",
                 "Time": "01:55.162",
                 "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/9B/85/AC221702767675A95467C9C58966888E9D00.html"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "DF050A811583E0BC",
                 "Time": "01:55.322",
                 "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/01/BC/CCA6FE35E2AE3909816C31123BF5FF6D5795.html"
             },
             {
-                "Country": "\ud83c\uddf1\ud83c\uddfa",
                 "ID": "DB503BD3D6030657",
                 "Time": "01:55.365",
                 "Ghost": "http://www.maschell.de/ghostdatabase/ghostviewer.php?id=69597"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "E1C66E97144FCC06",
                 "Time": "01:55.455",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=1153"
             },
             {
-                "Country": "\ud83c\uddf1\ud83c\uddfa",
                 "ID": "821E1146C7A4F5B3",
                 "Time": "01:55.915",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=448"
             },
             {
-                "Country": "\ud83c\udde7\ud83c\uddea",
                 "ID": "11",
                 "Time": "01:55.957",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=1169"
@@ -1024,61 +872,51 @@
         ],
         "Rainbow Road": [
             {
-                "Country": "\ud83c\udde7\ud83c\uddea",
                 "ID": "9",
                 "Time": "02:28.159",
                 "Ghost": "http://www.mktrial.fr/stats.php?m=853"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "3AB8188FCD29476E",
                 "Time": "02:28.427",
                 "Ghost": "http://www.maschell.de/ghostdatabase/ghostviewer.php?id=72136"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "5",
                 "Time": "02:28.541",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=610"
             },
             {
-                "Country": "\ud83c\udde7\ud83c\uddea",
                 "ID": "8",
                 "Time": "02:28.718",
                 "Ghost": "http://ninrankings.org/mkwii/profil.php?id=211210295"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "36",
                 "Time": "02:29.904",
                 "Ghost": ""
             },
             {
-                "Country": "\ud83c\udde7\ud83c\uddea",
                 "ID": "041537D963CC8023",
                 "Time": "02:29.917",
                 "Ghost": "http://www.maschell.de/ghostdatabase/profil.php?id=1367150597"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "CA8F043A3D42FB75",
                 "Time": "02:30.031",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=1086"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "3",
                 "Time": "02:30.260",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=508"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "A430FE7CC18AAD11",
                 "Time": "02:30.381",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=247"
             },
             {
-                "Country": "\ud83c\uddf1\ud83c\uddfa",
                 "ID": "821E1146C7A4F5B3",
                 "Time": "02:30.476",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=448"
@@ -1086,61 +924,51 @@
         ],
         "GCN Peach Beach": [
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "CA8F043A3D42FB75",
                 "Time": "01:13.252",
                 "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/DC/F2/3B04D54C82D3BCDD2F8AE9E08532E1A4A000.html"
             },
             {
-                "Country": "\ud83c\udde7\ud83c\uddea",
                 "ID": "E4E6C6650E76DB78",
                 "Time": "01:13.331",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=178"
             },
             {
-                "Country": "\ud83c\udde7\ud83c\uddea",
                 "ID": "1",
                 "Time": "01:13.453",
                 "Ghost": "http://www.maschell.de/ghostdatabase/ghostviewer.php?id=58478"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "22C9D360387194B0",
                 "Time": "01:13.462",
                 "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/EC/19/2C7E174A247245C8244CACA9BA6427CD5DA4.html"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "3AB8188FCD29476E",
                 "Time": "01:13.507",
                 "Ghost": "http://www.maschell.de/ghostdatabase/ghostviewer.php?id=12450"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "4",
                 "Time": "01:13.573",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=32"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "A430FE7CC18AAD11",
                 "Time": "01:13.722",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=247"
             },
             {
-                "Country": "\ud83c\udde7\ud83c\uddea",
                 "ID": "041537D963CC8023",
                 "Time": "01:13.941",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=766"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "3",
                 "Time": "01:14.055",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=508"
             },
             {
-                "Country": "\ud83c\uddf1\ud83c\uddfa",
                 "ID": "7",
                 "Time": "01:14.110",
                 "Ghost": "http://ninrankings.org/mkwii/profil.php?id=299122775"
@@ -1148,61 +976,51 @@
         ],
         "N64 Sherbet Land": [
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "3AB8188FCD29476E",
                 "Time": "02:04.826",
                 "Ghost": "http://ninrankings.org/ghostdatabase/ghostviewer.php?id=62047"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "A430FE7CC18AAD11",
                 "Time": "02:04.832",
                 "Ghost": "https://www.youtube.com/watch?v=wIdeXHJiLOI"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "4",
                 "Time": "02:04.973",
                 "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/49/CE/E97215FFF4DBB76DDFC8A0D33A1C346C1BBD.html"
             },
             {
-                "Country": "\ud83c\uddf1\ud83c\uddfa",
                 "ID": "821E1146C7A4F5B3",
                 "Time": "02:05.551",
                 "Ghost": "http://www.maschell.de/ghostdatabase/ghostviewer.php?id=3123"
             },
             {
-                "Country": "\ud83c\udde7\ud83c\uddea",
                 "ID": "041537D963CC8023",
                 "Time": "02:05.625",
                 "Ghost": "http://www.maschell.de/ghostdatabase/ghostviewer.php?id=67754"
             },
             {
-                "Country": "\ud83c\udde7\ud83c\uddea",
                 "ID": "1",
                 "Time": "02:05.669",
                 "Ghost": "https://www.ninrankings.org/mkwii/profil.php?id=219985945"
             },
             {
-                "Country": "\ud83c\udde7\ud83c\uddea",
                 "ID": "E4E6C6650E76DB78",
                 "Time": "02:05.724",
                 "Ghost": "https://www.ninrankings.org/mkwii/profil.php?id=150673070"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "CA8F043A3D42FB75",
                 "Time": "02:05.761",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=1086"
             },
             {
-                "Country": "\ud83c\uddf1\ud83c\uddfa",
                 "ID": "18",
                 "Time": "02:05.974",
                 "Ghost": "https://www.ninrankings.org/mkwii/profil.php?id=191305509"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "3",
                 "Time": "02:06.001",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=508"
@@ -1210,61 +1028,51 @@
         ],
         "DS Desert Hills": [
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "CA8F043A3D42FB75",
                 "Time": "01:35.676",
                 "Ghost": "http://ninrankings.org/ghostdatabase/ghostviewer.php?id=58143"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "3AB8188FCD29476E",
                 "Time": "01:35.767",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=777"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "A430FE7CC18AAD11",
                 "Time": "01:36.096",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=247"
             },
             {
-                "Country": "\ud83c\udde7\ud83c\uddea",
                 "ID": "041537D963CC8023",
                 "Time": "01:36.323",
                 "Ghost": "http://www.maschell.de/ghostdatabase/ghostviewer.php?id=13275"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "4",
                 "Time": "01:36.337",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=32"
             },
             {
-                "Country": "\ud83c\uddf1\ud83c\uddfa",
                 "ID": "7",
                 "Time": "01:36.346",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=240"
             },
             {
-                "Country": "\ud83c\udde7\ud83c\uddea",
                 "ID": "1",
                 "Time": "01:36.590",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=738"
             },
             {
-                "Country": "\ud83c\uddf1\ud83c\uddfa",
                 "ID": "821E1146C7A4F5B3",
                 "Time": "01:36.691",
                 "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/00/57/204AC9AB9F6F9950034EFC704922754C52F0.html"
             },
             {
-                "Country": "\ud83c\udde7\ud83c\uddea",
                 "ID": "E4E6C6650E76DB78",
                 "Time": "01:36.700",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=178"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "3",
                 "Time": "01:36.728",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=508"
@@ -1272,61 +1080,51 @@
         ],
         "SNES Mario Circuit 3": [
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "CA8F043A3D42FB75",
                 "Time": "01:18.110",
                 "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/E0/DE/835C7476705E2AB2DEC33B1D39D0FC1D4B94.html"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "3AB8188FCD29476E",
                 "Time": "01:18.368",
                 "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/A4/5F/3B8F9CDED1EADEEC4B7F06280A9AC2330FF2.html"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "A430FE7CC18AAD11",
                 "Time": "01:18.369",
                 "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/11/6C/C55A60BD2A36B1F0843DCC786BE777538082.html"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "F6E83B580EE66237",
                 "Time": "01:18.512",
                 "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/35/24/D6681E7354F94BD03B1CE74D451CAF29E081.html"
             },
             {
-                "Country": "\ud83c\udde7\ud83c\uddea",
                 "ID": "041537D963CC8023",
                 "Time": "01:18.729",
                 "Ghost": "http://www.maschell.de/ghostdatabase/profil.php?id=1367150597"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "2",
                 "Time": "01:18.761",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=758"
             },
             {
-                "Country": "\ud83c\uddf1\ud83c\uddfa",
                 "ID": "DB503BD3D6030657",
                 "Time": "01:18.762",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=1048"
             },
             {
-                "Country": "\ud83c\udde7\ud83c\uddea",
                 "ID": "1",
                 "Time": "01:18.887",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=738"
             },
             {
-                "Country": "\ud83c\uddf1\ud83c\uddfa",
                 "ID": "821E1146C7A4F5B3",
                 "Time": "01:18.899",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=448"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "E1C66E97144FCC06",
                 "Time": "01:18.960",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=1153"
@@ -1334,61 +1132,51 @@
         ],
         "DS Yoshi Falls": [
             {
-                "Country": "\ud83c\udde7\ud83c\uddea",
                 "ID": "041537D963CC8023",
                 "Time": "00:59.346",
                 "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/47/F0/4459886BC71FDDBD9A6103B0ADA1737127C9.html"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "3AB8188FCD29476E",
                 "Time": "00:59.376",
                 "Ghost": "http://www.maschell.de/ghostdatabase/ghostviewer.php?id=38686"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "A430FE7CC18AAD11",
                 "Time": "00:59.507",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=247"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "4",
                 "Time": "00:59.635",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=32"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "CA8F043A3D42FB75",
                 "Time": "00:59.662",
                 "Ghost": "http://www.maschell.de/ghostdatabase/ghostviewer.php?id=57684"
             },
             {
-                "Country": "\ud83c\udde7\ud83c\uddea",
                 "ID": "125619EC5FBF4DB5",
                 "Time": "00:59.706",
                 "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/00/96/692A04AF51A16531C1BE7D064F0E15DCA200.html"
             },
             {
-                "Country": "\ud83c\uddf1\ud83c\uddfa",
                 "ID": "DB503BD3D6030657",
                 "Time": "00:59.721",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=1048"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "19",
                 "Time": "00:59.857",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=751"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "5",
                 "Time": "00:59.906",
                 "Ghost": "http://www.maschell.de/ghostdatabase/ghostviewer.php?id=15807"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "F8AC68D93F4B3B58",
                 "Time": "00:59.908",
                 "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/14/47/09BB230A946685184EE0980EDD998E55E924.html"
@@ -1396,61 +1184,51 @@
         ],
         "GBA Shy Guy Beach": [
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "3AB8188FCD29476E",
                 "Time": "01:22.231",
                 "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/A9/85/CF624F6AD7106D7820165ABF72BBD1B16F79.html"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "CA8F043A3D42FB75",
                 "Time": "01:22.627",
                 "Ghost": "http://www.maschell.de/ghostdatabase/ghostviewer.php?id=58445"
             },
             {
-                "Country": "\ud83c\udde7\ud83c\uddea",
                 "ID": "9",
                 "Time": "01:22.698",
                 "Ghost": "http://www.mktrial.fr/temps.php?m=853&idc=146&type=1"
             },
             {
-                "Country": "\ud83c\udde7\ud83c\uddea",
                 "ID": "041537D963CC8023",
                 "Time": "01:22.771",
                 "Ghost": "http://www.maschell.de/ghostdatabase/ghostviewer.php?id=67709"
             },
             {
-                "Country": "\ud83c\udde7\ud83c\uddea",
                 "ID": "1",
                 "Time": "01:22.782",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=738"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "4",
                 "Time": "01:23.069",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=32"
             },
             {
-                "Country": "\ud83c\uddf1\ud83c\uddfa",
                 "ID": "821E1146C7A4F5B3",
                 "Time": "01:23.148",
                 "Ghost": "https://www.ninrankings.org/mkwii/profil.php?id=142482298"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "5",
                 "Time": "01:23.258",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=610"
             },
             {
-                "Country": "\ud83c\udde7\ud83c\uddea",
                 "ID": "E4E6C6650E76DB78",
                 "Time": "01:23.307",
                 "Ghost": "https://www.ninrankings.org/mkwii/profil.php?id=135578859"
             },
             {
-                "Country": "\ud83c\uddf1\ud83c\uddfa",
                 "ID": "7",
                 "Time": "01:23.419",
                 "Ghost": "https://www.ninrankings.org/mkwii/profil.php?id=197189235"
@@ -1458,61 +1236,51 @@
         ],
         "GBA Bowser Castle 3": [
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "E1C66E97144FCC06",
                 "Time": "02:17.801",
                 "Ghost": "http://www.maschell.de/ghostdatabase/ghostviewer.php?id=65962"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "4",
                 "Time": "02:17.916",
                 "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/6B/A9/BC005FAB8D9D64E650B753593B65B2350E2A.html"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "3AB8188FCD29476E",
                 "Time": "02:18.108",
                 "Ghost": "http://www.maschell.de/ghostdatabase/ghostviewer.php?id=58031"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "CA8F043A3D42FB75",
                 "Time": "02:18.493",
                 "Ghost": "http://www.maschell.de/ghostdatabase/ghostviewer.php?id=59329"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "D4609DB8549BBAF2",
                 "Time": "02:18.664",
                 "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/28/73/16ABE9DB8AFE3048DDB82AF9147E662D5F60.html"
             },
             {
-                "Country": "\ud83c\udde7\ud83c\uddea",
                 "ID": "041537D963CC8023",
                 "Time": "02:18.852",
                 "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/B9/85/0BB6C29262B1D71A051EC108EC0B3CD6A39E.html"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "F8AC68D93F4B3B58",
                 "Time": "02:19.024",
                 "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/AB/10/F77B8889B6F981E22D61A775134E2C6BDF72.html"
             },
             {
-                "Country": "\ud83c\udde7\ud83c\uddea",
                 "ID": "11",
                 "Time": "02:19.312",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=1169"
             },
             {
-                "Country": "\ud83c\uddf1\ud83c\uddfa",
                 "ID": "821E1146C7A4F5B3",
                 "Time": "02:19.802",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=448"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "3",
                 "Time": "02:19.890",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=508"
@@ -1520,61 +1288,51 @@
         ],
         "DS Peach Gardens": [
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "A430FE7CC18AAD11",
                 "Time": "01:59.824",
                 "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/D8/3B/1FE13F4A628E88276FF440A443B66157DCE8.html"
             },
             {
-                "Country": "\ud83c\udde7\ud83c\uddea",
                 "ID": "041537D963CC8023",
                 "Time": "01:59.940",
                 "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/3D/50/9E416890200D31381BC5E5B451F014261348.html"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "3AB8188FCD29476E",
                 "Time": "02:00.009",
                 "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/09/A2/04D728049CA3883678CEBC6EC3004EFC1754.html"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "4",
                 "Time": "02:00.662",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=32"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "F8AC68D93F4B3B58",
                 "Time": "02:00.695",
                 "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/19/B2/66A505525ECB2997325B115DB74A09F27928.html"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "22C9D360387194B0",
                 "Time": "02:00.763",
                 "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/A8/E5/431457434BE26BBE2CBCFB364A76760F0EBC.html"
             },
             {
-                "Country": "\ud83c\udde7\ud83c\uddea",
                 "ID": "1",
                 "Time": "02:00.822",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=738"
             },
             {
-                "Country": "\ud83c\udde7\ud83c\uddea",
                 "ID": "9",
                 "Time": "02:01.074",
                 "Ghost": "http://www.mktrial.fr/temps.php?idc=154"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "CA8F043A3D42FB75",
                 "Time": "02:01.248",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=1086"
             },
             {
-                "Country": "\ud83c\uddf1\ud83c\uddfa",
                 "ID": "DB503BD3D6030657",
                 "Time": "02:01.374",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=1048"
@@ -1582,61 +1340,51 @@
         ],
         "SNES Ghost Valley 2": [
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "CA8F043A3D42FB75",
                 "Time": "00:52.947",
                 "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/CD/FF/8C454C25C24270B282F8B8EA1ECB1A02425C.html"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "AF29D4AFF12749A9",
                 "Time": "00:53.186",
                 "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/C2/34/0C5716920D9452EB4166E066FE15D7F4D51C.html"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "F8AC68D93F4B3B58",
                 "Time": "00:53.242",
                 "Ghost": "http://www.maschell.de/ghostdatabase/ghostviewer.php?id=71239"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "A430FE7CC18AAD11",
                 "Time": "00:53.270",
                 "Ghost": "http://www.maschell.de/ghostdatabase/ghostviewer.php?id=29114"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "3AB8188FCD29476E",
                 "Time": "00:53.305",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=777"
             },
             {
-                "Country": "\ud83c\udde7\ud83c\uddea",
                 "ID": "041537D963CC8023",
                 "Time": "00:53.378",
                 "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/C4/A1/46FDCC97D0759B879535FF4BB001872E18D8.html"
             },
             {
-                "Country": "\ud83c\uddf1\ud83c\uddfa",
                 "ID": "DB503BD3D6030657",
                 "Time": "00:53.401",
                 "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/51/DA/22C750A2659099AF93928F0C193FB90DCA5E.html"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "15",
                 "Time": "00:53.563",
                 "Ghost": "http://www.maschell.de/ghostdatabase/ghostviewer.php?id=56341"
             },
             {
-                "Country": "\ud83c\uddf1\ud83c\uddfa",
                 "ID": "821E1146C7A4F5B3",
                 "Time": "00:53.582",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=448"
             },
             {
-                "Country": "\ud83c\uddf1\ud83c\uddfa",
                 "ID": "16",
                 "Time": "00:53.618",
                 "Ghost": "http://ninrankings.org/mkwii/profil.php?id=199466054"
@@ -1644,61 +1392,51 @@
         ],
         "DS Delfino Square": [
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "CA8F043A3D42FB75",
                 "Time": "02:04.982",
                 "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/B9/2F/D3405333B9A35E3932126F4535A2AD46674F.html"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "3AB8188FCD29476E",
                 "Time": "02:05.260",
                 "Ghost": "http://ninrankings.org/ghostdatabase/ghostviewer.php?id=69137"
             },
             {
-                "Country": "\ud83c\udde7\ud83c\uddea",
                 "ID": "041537D963CC8023",
                 "Time": "02:05.381",
                 "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/77/CC/F5EA66020C851D5A93F28C72FC7E2354B9E8.html"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "A430FE7CC18AAD11",
                 "Time": "02:05.495",
                 "Ghost": "http://www.maschell.de/ghostdatabase/ghostviewer.php?id=690"
             },
             {
-                "Country": "\ud83c\uddf1\ud83c\uddfa",
                 "ID": "DB503BD3D6030657",
                 "Time": "02:05.664",
                 "Ghost": "http://www.maschell.de/ghostdatabase/ghostviewer.php?id=69552"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "F8AC68D93F4B3B58",
                 "Time": "02:05.737",
                 "Ghost": "http://www.maschell.de/ghostdatabase/ghostviewer.php?id=71241"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "4",
                 "Time": "02:05.901",
                 "Ghost": "http://www.maschell.de/ghostdatabase/ghostviewer.php?id=67738"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "E1C66E97144FCC06",
                 "Time": "02:05.904",
                 "Ghost": "http://www.maschell.de/ghostdatabase/ghostviewer.php?id=65420"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "912BB947AF9F02FC",
                 "Time": "02:06.278",
                 "Ghost": ""
             },
             {
-                "Country": "\ud83c\uddf1\ud83c\uddfa",
                 "ID": "821E1146C7A4F5B3",
                 "Time": "02:06.285",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=448"
@@ -1706,61 +1444,51 @@
         ],
         "N64 DK's Jungle Parkway": [
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "3AB8188FCD29476E",
                 "Time": "02:11.885",
                 "Ghost": "http://ninrankings.org/ghostdatabase/ghostviewer.php?id=72154"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "A430FE7CC18AAD11",
                 "Time": "02:13.623",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=247"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "CA8F043A3D42FB75",
                 "Time": "02:13.974",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=1086"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "4",
                 "Time": "02:14.087",
                 "Ghost": "http://www.maschell.de/ghostdatabase/ghostviewer.php?id=76169"
             },
             {
-                "Country": "\ud83c\uddf1\ud83c\uddfa",
                 "ID": "821E1146C7A4F5B3",
                 "Time": "02:14.115",
                 "Ghost": "http://www.maschell.de/ghostdatabase/ghostviewer.php?id=2050"
             },
             {
-                "Country": "\ud83c\udde7\ud83c\uddea",
                 "ID": "041537D963CC8023",
                 "Time": "02:14.450",
                 "Ghost": "http://www.maschell.de/ghostdatabase/ghostviewer.php?id=21043"
             },
             {
-                "Country": "\ud83c\udde7\ud83c\uddea",
                 "ID": "1",
                 "Time": "02:14.657",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=738"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "E1C66E97144FCC06",
                 "Time": "02:14.983",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=1153"
             },
             {
-                "Country": "\ud83c\udde7\ud83c\uddea",
                 "ID": "9",
                 "Time": "02:15.041",
                 "Ghost": "http://www.mktrial.fr/temps.php?m=853&idc=151&type=1"
             },
             {
-                "Country": "\ud83c\uddf1\ud83c\uddfa",
                 "ID": "20",
                 "Time": "02:15.077",
                 "Ghost": "http://ninrankings.org/mkwii/profil.php?id=135570825"
@@ -1768,61 +1496,51 @@
         ],
         "GCN DK Mountain": [
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "CA8F043A3D42FB75",
                 "Time": "02:07.229",
                 "Ghost": "http://www.maschell.de/ghostdatabase/ghostviewer.php?id=58543"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "3AB8188FCD29476E",
                 "Time": "02:07.647",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=777"
             },
             {
-                "Country": "\ud83c\udde7\ud83c\uddea",
                 "ID": "041537D963CC8023",
                 "Time": "02:08.582",
                 "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/6C/CD/3211240D3883D28D4C8ABD90AD55D889A79B.html"
             },
             {
-                "Country": "\ud83c\uddf1\ud83c\uddfa",
                 "ID": "821E1146C7A4F5B3",
                 "Time": "02:08.779",
                 "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/DA/98/2D1C136C9FFA92448895F04371BA0E1A8E57.html"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "4",
                 "Time": "02:09.199",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=32"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "A430FE7CC18AAD11",
                 "Time": "02:09.289",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=247"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "F6E83B580EE66237",
                 "Time": "02:09.617",
                 "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/8C/FB/F2BF4BC830B28FEE220B96479047FDC0DDEF.html"
             },
             {
-                "Country": "\ud83c\udde7\ud83c\uddea",
                 "ID": "E4FC925132F85873",
                 "Time": "02:09.647",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=989"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "5",
                 "Time": "02:09.722",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=610"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "C618D6AF6C5CE085",
                 "Time": "02:09.723",
                 "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/BB/8C/97851719544600B63C2E2CC04C36CFA52668.html"
@@ -1830,61 +1548,51 @@
         ],
         "N64 Mario Raceway": [
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "3AB8188FCD29476E",
                 "Time": "01:42.110",
                 "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/AB/D7/13BB22A0B2729DC355629E2C9908D49D7F46.html"
             },
             {
-                "Country": "\ud83c\uddf1\ud83c\uddfa",
                 "ID": "DB503BD3D6030657",
                 "Time": "01:42.148",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=1048"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "A430FE7CC18AAD11",
                 "Time": "01:42.184",
                 "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/08/18/DDFF02EDF80E94FF90ACA71386F43B9951B3.html"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "CA8F043A3D42FB75",
                 "Time": "01:42.343",
                 "Ghost": "http://www.maschell.de/ghostdatabase/ghostviewer.php?id=57677"
             },
             {
-                "Country": "\ud83c\udde7\ud83c\uddea",
                 "ID": "041537D963CC8023",
                 "Time": "01:42.679",
                 "Ghost": "http://www.maschell.de/ghostdatabase/ghostviewer.php?id=67713"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "F8AC68D93F4B3B58",
                 "Time": "01:42.773",
                 "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/7D/48/754105714666BAD6A95A7AE4BE30B2483FEF.html"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "4",
                 "Time": "01:42.943",
                 "Ghost": "http://www.maschell.de/ghostdatabase/ghostviewer.php?id=2422"
             },
             {
-                "Country": "\ud83c\udde7\ud83c\uddea",
                 "ID": "21",
                 "Time": "01:42.972",
                 "Ghost": "http://www.maschell.de/ghostdatabase/ghostviewer.php?id=46667"
             },
             {
-                "Country": "\ud83c\uddf1\ud83c\uddfa",
                 "ID": "10",
                 "Time": "01:43.021",
                 "Ghost": "http://www.maschell.de/ghostdatabase/ghostviewer.php?id=53351"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "3",
                 "Time": "01:43.080",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=508"
@@ -1892,61 +1600,51 @@
         ],
         "GCN Waluigi Stadium": [
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "3AB8188FCD29476E",
                 "Time": "01:49.353",
                 "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/04/F0/2E8A90C2BC9E073E6A299291A6508A90525F.html"
             },
             {
-                "Country": "\ud83c\udde7\ud83c\uddea",
                 "ID": "9",
                 "Time": "01:50.999",
                 "Ghost": "http://www.mktrial.fr/temps.php?m=853&idc=148&type=1"
             },
             {
-                "Country": "\ud83c\udde7\ud83c\uddea",
                 "ID": "041537D963CC8023",
                 "Time": "01:51.293",
                 "Ghost": "http://www.maschell.de/ghostdatabase/ghostviewer.php?id=67718"
             },
             {
-                "Country": "\ud83c\uddf1\ud83c\uddfa",
                 "ID": "DB503BD3D6030657",
                 "Time": "01:52.501",
                 "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/E7/69/F4D0866BA64FF7395790062AA9A7CD993E2F.html"
             },
             {
-                "Country": "\ud83c\udde7\ud83c\uddea",
                 "ID": "14",
                 "Time": "01:53.268",
                 "Ghost": "http://www.maschell.de/ghostdatabase/ghostviewer.php?id=19096"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "C618D6AF6C5CE085",
                 "Time": "01:53.401",
                 "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/4E/28/4793A18DA8772247C6A0F79E6E4B3F2E7A08.html"
             },
             {
-                "Country": "\ud83c\udde7\ud83c\uddea",
                 "ID": "8",
                 "Time": "01:53.694",
                 "Ghost": "http://ninrankings.org/mkwii/profil.php?id=211210295"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "A430FE7CC18AAD11",
                 "Time": "01:53.793",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=247"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "CA8F043A3D42FB75",
                 "Time": "01:53.854",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=1086"
             },
             {
-                "Country": "\ud83c\uddf1\ud83c\uddfa",
                 "ID": "821E1146C7A4F5B3",
                 "Time": "01:53.914",
                 "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/41/3D/B77F471FC08666D55B0F9BC37570CB1CF5F9.html"
@@ -1954,61 +1652,51 @@
         ],
         "GCN Mario Circuit": [
             {
-                "Country": "\ud83c\uddf1\ud83c\uddfa",
                 "ID": "10",
                 "Time": "01:31.337",
                 "Ghost": "https://pbs.twimg.com/media/DvcutnOXcAA-ViV.jpg"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "3AB8188FCD29476E",
                 "Time": "01:31.563",
                 "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/FB/89/996F132BE2A40321DB4F836C460052A14975.html"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "A430FE7CC18AAD11",
                 "Time": "01:31.704",
                 "Ghost": "http://www.maschell.de/ghostdatabase/ghostviewer.php?id=40463"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "CA8F043A3D42FB75",
                 "Time": "01:31.875",
                 "Ghost": "http://www.maschell.de/ghostdatabase/ghostviewer.php?id=57681"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "F8AC68D93F4B3B58",
                 "Time": "01:31.947",
                 "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/18/EF/339C63C244F4EAF16597912B509ABA505AA2.html"
             },
             {
-                "Country": "\ud83c\udde7\ud83c\uddea",
                 "ID": "041537D963CC8023",
                 "Time": "01:31.968",
                 "Ghost": "http://www.maschell.de/ghostdatabase/ghostviewer.php?id=53080"
             },
             {
-                "Country": "\ud83c\uddf1\ud83c\uddfa",
                 "ID": "7",
                 "Time": "01:32.427",
                 "Ghost": "http://ninrankings.org/mkwii/profil.php?id=197189235"
             },
             {
-                "Country": "\ud83c\uddf1\ud83c\uddfa",
                 "ID": "821E1146C7A4F5B3",
                 "Time": "01:32.489",
                 "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/99/DB/4CE239339D205B76EF387E9151ADD4560EF2.html"
             },
             {
-                "Country": "\ud83c\uddf1\ud83c\uddfa",
                 "ID": "DB503BD3D6030657",
                 "Time": "01:32.631",
                 "Ghost": "http://www.maschell.de/ghostdatabase/ghostviewer.php?id=69546"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "DF050A811583E0BC",
                 "Time": "01:32.634",
                 "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/2A/27/527F89F04E807D93A5522DC34F3B1CAC309E.html"
@@ -2016,61 +1704,51 @@
         ],
         "N64 Bowser's Castle": [
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "3AB8188FCD29476E",
                 "Time": "02:31.551",
                 "Ghost": "http://ninrankings.org/ghostdatabase/ghostviewer.php?id=71590"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "CA8F043A3D42FB75",
                 "Time": "02:31.565",
                 "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/8E/BF/61381781CCBF260CC2D1D8EF2754DF0DCE13.html"
             },
             {
-                "Country": "\ud83c\udde7\ud83c\uddea",
                 "ID": "041537D963CC8023",
                 "Time": "02:31.896",
                 "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/E1/AA/AD7F5F774DC14BA6B68C6FAF6C4EC983F07D.html"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "A430FE7CC18AAD11",
                 "Time": "02:31.970",
                 "Ghost": "http://www.maschell.de/ghostdatabase/ghostviewer.php?id=32341"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "F8AC68D93F4B3B58",
                 "Time": "02:32.196",
                 "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/A6/DC/6887294F930686335D5ED7C2C6BB65A74F5A.html"
             },
             {
-                "Country": "\ud83c\uddf1\ud83c\uddfa",
                 "ID": "DB503BD3D6030657",
                 "Time": "02:32.475",
                 "Ghost": "http://www.maschell.de/ghostdatabase/profil.php?id=921829334"
             },
             {
-                "Country": "\ud83c\udde7\ud83c\uddea",
                 "ID": "14 ",
                 "Time": "02:33.030",
                 "Ghost": "http://ninrankings.org/mkwii/profil.php?id=300357345"
             },
             {
-                "Country": "\ud83c\uddf1\ud83c\uddfa",
                 "ID": "821E1146C7A4F5B3",
                 "Time": "02:33.142",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=448"
             },
             {
-                "Country": "\ud83c\uddf1\ud83c\uddfa",
                 "ID": "10",
                 "Time": "02:33.201",
                 "Ghost": "http://www.maschell.de/ghostdatabase/profil.php?id=1498828644"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "3",
                 "Time": "02:33.401",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=508"
@@ -2078,67 +1756,56 @@
         ],
         "Mushroom Gorge (Glitch)": [
             {
-                "Country": "\ud83c\udde7\ud83c\uddea",
                 "ID": "041537D963CC8023",
                 "Time": "00:40.821",
                 "Ghost": "http://www.maschell.de/ghostdatabase/ghostviewer.php?id=38241"
             },
             {
-                "Country": "\ud83c\udde7\ud83c\uddea",
                 "ID": "22",
                 "Time": "00:42.776",
                 "Ghost": "http://www.maschell.de/ghostdatabase/ghostviewer.php?id=45340"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "3AB8188FCD29476E",
                 "Time": "00:42.952",
                 "Ghost": "http://www.maschell.de/ghostdatabase/ghostviewer.php?id=10845"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "5",
                 "Time": "00:43.499",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=610"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "4",
                 "Time": "00:43.906",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=32"
             },
             {
-                "Country": "\ud83c\uddf1\ud83c\uddfa",
                 "ID": "821E1146C7A4F5B3",
                 "Time": "00:44.405",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=448"
             },
             {
-                "Country": "\ud83c\uddf1\ud83c\uddfa",
                 "ID": "12",
                 "Time": "00:44.785",
                 "Ghost": "http://ninrankings.org/mkwii/profil.php?id=142482298"
             },
             {
-                "Country": "\ud83c\uddf1\ud83c\uddfa",
                 "ID": "23",
                 "Time": "00:44.974",
                 "Ghost": "http://ninrankings.org/mkwii/profil.php?id=157676061"
             },
             {
-                "Country": "\ud83c\udde7\ud83c\uddea",
                 "ID": "E4FC925132F85873",
                 "Time": "00:45.176",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=989"
             },
             {
-                "Country": "\ud83c\uddf1\ud83c\uddfa",
                 "ID": "24",
                 "Time": "00:45.176",
                 "Ghost": "http://ninrankings.org/mkwii/profil.php?id=243041466"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "21CEB9A1B8D3CAC5",
                 "Time": "00:45.964",
                 "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/E3/0B/4777153AC418C5C076BDCEFF0E651E0A9A33.html"
@@ -2146,61 +1813,51 @@
         ],
         "Mario Circuit (Glitch)": [
             {
-                "Country": "\ud83c\udde7\ud83c\uddea",
                 "ID": "E4FC925132F85873",
                 "Time": "00:54.981",
                 "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/E5/F1/41A713BBA36F5669A1C4D302DD20C10F1645.html"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "3AB8188FCD29476E",
                 "Time": "00:55.769",
                 "Ghost": "http://ninrankings.org/ghostdatabase/ghostviewer.php?id=71606"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "6EE7F206748EF16F",
                 "Time": "01:01.752",
                 "Ghost": "http://www.maschell.de/ghostdatabase/ghostviewer.php?id=53291"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "D4609DB8549BBAF2",
                 "Time": "01:03.813",
                 "Ghost": ""
             },
             {
-                "Country": "\ud83c\uddf1\ud83c\uddfa",
                 "ID": "10",
                 "Time": "01:03.954",
                 "Ghost": "http://www.maschell.de/ghostdatabase/ghostviewer.php?id=55232"
             },
             {
-                "Country": "\ud83c\udde7\ud83c\uddea",
                 "ID": "041537D963CC8023",
                 "Time": "01:04.468",
                 "Ghost": "http://www.maschell.de/ghostdatabase/ghostviewer.php?id=67697"
             },
             {
-                "Country": "\ud83c\udde7\ud83c\uddea",
                 "ID": "1",
                 "Time": "01:05.157",
                 "Ghost": "http://www.maschell.de/ghostdatabase/ghostviewer.php?id=67728"
             },
             {
-                "Country": "\ud83c\udde7\ud83c\uddea",
                 "ID": "9",
                 "Time": "01:08.745",
                 "Ghost": "http://www.mktrial.fr/temps.php?m=853&idc=129&type=1"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "24906213005B3619",
                 "Time": "01:09.250",
                 "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/9E/B5/C0ABD851BD0386D6D3F0B7DC51829AE6B6CF.html"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "3",
                 "Time": "01:09.319",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=508"
@@ -2208,67 +1865,56 @@
         ],
         "Maple Treeway (Glitch)": [
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "3AB8188FCD29476E",
                 "Time": "02:00.385",
                 "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/19/FF/7B7525FA57639F4ADB2B89B5B844E85C551D.html"
             },
             {
-                "Country": "\ud83c\udde7\ud83c\uddea",
                 "ID": "041537D963CC8023",
                 "Time": "02:05.181",
                 "Ghost": "http://www.maschell.de/ghostdatabase/ghostviewer.php?id=67704"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "E1C66E97144FCC06",
                 "Time": "02:06.332",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=1153"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "24906213005B3619",
                 "Time": "02:07.244",
                 "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/66/47/5EB35F9BF8BD1A736BFA6D8975916F8D4B6A.html"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "3FC71238A1992027",
                 "Time": "02:07.279",
                 "Ghost": "http://www.maschell.de/ghostdatabase/ghostviewer.php?id=33119"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "33",
                 "Time": "02:08.667",
                 "Ghost": ""
             },
             {
-                "Country": "\ud83c\udde7\ud83c\uddea",
                 "ID": "E4FC925132F85873",
                 "Time": "02:09.596",
                 "Ghost": "http://www.maschell.de/ghostdatabase/ghostviewer.php?id=8700"
             },
             {
-                "Country": "\ud83c\udde7\ud83c\uddea",
                 "ID": "1",
                 "Time": "02:10.724",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=738"
             },
             {
-                "Country": "\ud83c\uddf1\ud83c\uddfa",
                 "ID": "7",
                 "Time": "02:11.710",
                 "Ghost": "http://www.maschell.de/ghostdatabase/ghostviewer.php?id=48398"
             },
             {
-                "Country": "\ud83c\udde7\ud83c\uddea",
                 "ID": "9",
                 "Time": "02:15.015",
                 "Ghost": "http://www.mktrial.fr/temps.php?m=853&idc=135&type=1"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "D4609DB8549BBAF2",
                 "Time": "02:16.106",
                 "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/B5/CA/BD617B999007FE8C5D13D261075199C3A666.html"
@@ -2276,61 +1922,51 @@
         ],
         "Bowser's Castle (Shortcut)": [
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "3AB8188FCD29476E",
                 "Time": "02:10.969",
                 "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/7B/B5/9C234D7BC7CA524DA933B2D596577556F67B.html"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "AF29D4AFF12749A9",
                 "Time": "02:11.650",
                 "Ghost": "https://cdn.discordapp.com/attachments/340194976078233612/538750574833958922/JPEG_20190126_170222.jpg"
             },
             {
-                "Country": "\ud83c\udde7\ud83c\uddea",
                 "ID": "041537D963CC8023",
                 "Time": "02:12.178",
                 "Ghost": "http://www.maschell.de/ghostdatabase/ghostviewer.php?id=55843"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "F6E83B580EE66237",
                 "Time": "02:12.574",
                 "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/16/72/739435291D9E8D1D3FE84F6F4EEFE9F615DA.html"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "E1C66E97144FCC06",
                 "Time": "02:12.860",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=1153"
             },
             {
-                "Country": "\ud83c\uddf1\ud83c\uddfa",
                 "ID": "821E1146C7A4F5B3",
                 "Time": "02:12.879",
                 "Ghost": "http://www.maschell.de/ghostdatabase/ghostviewer.php?id=5859"
             },
             {
-                "Country": "\ud83c\udde7\ud83c\uddea",
                 "ID": "9",
                 "Time": "02:13.661",
                 "Ghost": "http://www.mktrial.fr/temps.php?m=853&idc=139&type=1"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "9DBAF5D14A2226F9",
                 "Time": "02:13.844",
                 "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/8B/95/D609E58735D5F73484F65B57786FC2482F9A.html"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "C618D6AF6C5CE085",
                 "Time": "02:14.600",
                 "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/3F/F3/4F1E4660D036F888861F5157B1B14F3BC62F.html"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "CA8F043A3D42FB75",
                 "Time": "02:15.111",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=1086"
@@ -2338,61 +1974,51 @@
         ],
         "Coconut Mall (Glitch)": [
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "3AB8188FCD29476E",
                 "Time": "00:32.803",
                 "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/AD/54/BE9E935777BF0A9DFEA11287487088028575.html"
             },
             {
-                "Country": "\ud83c\udde7\ud83c\uddea",
                 "ID": "E4FC925132F85873",
                 "Time": "00:39.183",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=989"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "D4609DB8549BBAF2",
                 "Time": "00:39.575",
                 "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/57/13/357460B6AD79661946C8DF9FF2B85B603A05.html"
             },
             {
-                "Country": "\ud83c\udde7\ud83c\uddea",
                 "ID": "041537D963CC8023",
                 "Time": "00:39.649",
                 "Ghost": "http://www.maschell.de/ghostdatabase/ghostviewer.php?id=67698"
             },
             {
-                "Country": "\ud83c\udde7\ud83c\uddea",
                 "ID": "1",
                 "Time": "00:39.732",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=738"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "5",
                 "Time": "00:41.788",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=610"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "24906213005B3619",
                 "Time": "00:42.436",
                 "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/63/86/2050FF8CA8DAE3476F40BABA0DEFC325D1CC.html"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "32",
                 "Time": "00:43.170",
                 "Ghost": "1"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "31",
                 "Time": "00:46.120",
                 "Ghost": "2"
             },
             {
-                "Country": "\ud83c\uddf1\ud83c\uddfa",
                 "ID": "12",
                 "Time": "00:46.822",
                 "Ghost": "http://ninrankings.org/mkwii/profil.php?id=134251107"
@@ -2400,61 +2026,51 @@
         ],
         "Grumble Volcano (Glitch)": [
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "D4609DB8549BBAF2",
                 "Time": "00:19.657",
                 "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/DD/CC/E116D45360F0F395046F6AFEB922CE9D7D96.html"
             },
             {
-                "Country": "\ud83c\udde7\ud83c\uddea",
                 "ID": "9",
                 "Time": "00:20.709",
                 "Ghost": "http://www.mktrial.fr/temps.php?m=853&idc=136&type=1"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "3AB8188FCD29476E",
                 "Time": "00:20.847",
                 "Ghost": "http://www.maschell.de/ghostdatabase/ghostviewer.php?id=70268"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "A430FE7CC18AAD11",
                 "Time": "00:21.099",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=247"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "5",
                 "Time": "00:21.308",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=610"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "4",
                 "Time": "00:21.365",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=32"
             },
             {
-                "Country": "\ud83c\uddf1\ud83c\uddfa",
                 "ID": "16",
                 "Time": "00:21.708",
                 "Ghost": "http://ninrankings.org/mkwii/profil.php?id=199466054"
             },
             {
-                "Country": "\ud83c\udde7\ud83c\uddea",
                 "ID": "041537D963CC8023",
                 "Time": "00:21.772",
                 "Ghost": "http://www.maschell.de/ghostdatabase/ghostviewer.php?id=20490"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "26",
                 "Time": "00:21.869",
                 "Ghost": "http://www.maschell.de/ghostdatabase/ghostviewer.php?id=61733"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "34",
                 "Time": "00:21.877",
                 "Ghost": ""
@@ -2462,61 +2078,51 @@
         ],
         "Wario's Gold Mine (Glitch)": [
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "3AB8188FCD29476E",
                 "Time": "00:34.741",
                 "Ghost": "1"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "30",
                 "Time": "00:38.440",
                 "Ghost": "2"
             },
             {
-                "Country": "\ud83c\udde7\ud83c\uddea",
                 "ID": "041537D963CC8023",
                 "Time": "00:38.928",
                 "Ghost": "http://www.maschell.de/ghostdatabase/ghostviewer.php?id=45335"
             },
             {
-                "Country": "\ud83c\uddf1\ud83c\uddfa",
                 "ID": "12",
                 "Time": "00:39.116",
                 "Ghost": "http://ninrankings.org/mkwii/profil.php?id=134251107"
             },
             {
-                "Country": "\ud83c\uddf1\ud83c\uddfa",
                 "ID": "821E1146C7A4F5B3",
                 "Time": "00:39.734",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=448"
             },
             {
-                "Country": "\ud83c\udde7\ud83c\uddea",
                 "ID": "E4FC925132F85873",
                 "Time": "00:42.456",
                 "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/BE/21/7999203987FF219678A23AAD65A8ED110864.html"
             },
             {
-                "Country": "\ud83c\uddf1\ud83c\uddfa",
                 "ID": "16",
                 "Time": "00:43.561",
                 "Ghost": "http://ninrankings.org/mkwii/profil.php?id=199466054"
             },
             {
-                "Country": "\ud83c\udde7\ud83c\uddea",
                 "ID": "9",
                 "Time": "00:44.382",
                 "Ghost": "http://www.mktrial.fr/temps.php?m=853&idc=132&type=1"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "5",
                 "Time": "00:44.443",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=610"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "24906213005B3619",
                 "Time": "00:46.138",
                 "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/76/66/5826D8B7CA5CBB8A864EC84B9F51A137D9F7.html"
@@ -2524,37 +2130,31 @@
         ],
         "GCN Peach Beach (Glitch)": [
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "3AB8188FCD29476E",
                 "Time": "01:07.625",
                 "Ghost": "http://www.maschell.de/ghostdatabase/ghostviewer.php?id=31015"
             },
             {
-                "Country": "\ud83c\udde7\ud83c\uddea",
                 "ID": "E4FC925132F85873",
                 "Time": "01:08.288",
                 "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/BF/B6/242890C3BE89EF587323291E6B80D1D2D1BA.html"
             },
             {
-                "Country": "\ud83c\udde7\ud83c\uddea",
                 "ID": "041537D963CC8023",
                 "Time": "01:08.372",
                 "Ghost": "http://www.maschell.de/ghostdatabase/ghostviewer.php?id=38236"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "6EE7F206748EF16F",
                 "Time": "01:11.168",
                 "Ghost": ""
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "28",
                 "Time": "01:11.338",
                 "Ghost": "http://www.maschell.de/ghostdatabase/profil.php?id=1277369775"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "D4609DB8549BBAF2",
                 "Time": "01:14.522",
                 "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/84/C4/5CDAEC5A38E4CB8493EB4B81D262F51CCC47.html"
@@ -2562,13 +2162,11 @@
         ],
         "N64 Sherbet Land (Glitch)": [
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "3AB8188FCD29476E",
                 "Time": "01:46.745",
                 "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/09/30/405D34D3F9BCDF9E4F737262467E5178A99C.html"
             },
             {
-                "Country": "\ud83c\udde7\ud83c\uddea",
                 "ID": "E4FC925132F85873",
                 "Time": "01:55.250",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=989"
@@ -2576,49 +2174,41 @@
         ],
         "DS Desert Hills (Shortcut)": [
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "3AB8188FCD29476E",
                 "Time": "01:33.732",
                 "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/F1/94/470A190E6555AB6D6E1F7ED4B53B22BDD678.html"
             },
             {
-                "Country": "\ud83c\uddf1\ud83c\uddfa",
                 "ID": "DB503BD3D6030657",
                 "Time": "01:35.896",
                 "Ghost": "http://www.maschell.de/ghostdatabase/ghostviewer.php?id=69550"
             },
             {
-                "Country": "\ud83c\udde7\ud83c\uddea",
                 "ID": "041537D963CC8023",
                 "Time": "01:36.176",
                 "Ghost": "http://www.maschell.de/ghostdatabase/ghostviewer.php?id=67721"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "D4609DB8549BBAF2",
                 "Time": "01:37.083",
                 "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/E5/3C/89EF6CA6FC077B0679CF0963504967ADD4F0.html"
             },
             {
-                "Country": "\ud83c\udde7\ud83c\uddea",
                 "ID": "E4FC925132F85873",
                 "Time": "01:37.726",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=989"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "DF050A811583E0BC",
                 "Time": "01:39.264",
                 "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/1A/3C/D80B1E8C09FA3BA28A161BCDD1A1BEEBC3C7.html"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "C48B6FC37FAE104D",
                 "Time": "01:42.580",
                 "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/94/A0/CC8229519101F76A11E6FB4982428CDEB33D.html"
             },
             {
-                "Country": "\ud83c\udde7\ud83c\uddea",
                 "ID": "32F7E9E4BFD3A779",
                 "Time": "02:14.514",
                 "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/53/15/6CB6DF0DCC0B2E6137C615745922BC6E34B7.html"
@@ -2626,55 +2216,46 @@
         ],
         "GCN DK Mountain (Shortcut)": [
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "3AB8188FCD29476E",
                 "Time": "02:03.525",
                 "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/4D/CE/A42F4213A2E69C057C6981C53177772B5847.html"
             },
             {
-                "Country": "\ud83c\uddf1\ud83c\uddfa",
                 "ID": "821E1146C7A4F5B3",
                 "Time": "02:04.501",
                 "Ghost": "https://www.youtube.com/watch?v=jJQCxJ1WlVg"
             },
             {
-                "Country": "\ud83c\udde7\ud83c\uddea",
                 "ID": "9",
                 "Time": "02:06.599",
                 "Ghost": "http://www.mktrial.fr/temps.php?m=853&idc=155&type=1"
             },
             {
-                "Country": "\ud83c\udde7\ud83c\uddea",
                 "ID": "1",
                 "Time": "02:08.125",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=738"
             },
             {
-                "Country": "\ud83c\udde7\ud83c\uddea",
                 "ID": "041537D963CC8023",
                 "Time": "02:08.227",
                 "Ghost": "http://www.maschell.de/ghostdatabase/ghostviewer.php?id=67719"
             },
             {
-                "Country": "\ud83c\udde7\ud83c\uddea",
                 "ID": "8",
                 "Time": "02:08.677",
                 "Ghost": "http://ninrankings.org/mkwii/profil.php?id=211210295"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "6EE7F206748EF16F",
                 "Time": "02:09.178",
                 "Ghost": "http://www.maschell.de/ghostdatabase/ghostviewer.php?id=46574"
             },
             {
-                "Country": "\ud83c\udde7\ud83c\uddea",
                 "ID": "29",
                 "Time": "02:09.271",
                 "Ghost": ""
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "24906213005B3619",
                 "Time": "02:13.575",
                 "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/5A/00/B1E6DF8454955FB71BB0FDFD2B7C9684C1EA.html"
@@ -2682,55 +2263,46 @@
         ],
         "SNES Ghost Valley 2 (Glitch)": [
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "CA8F043A3D42FB75",
                 "Time": "00:51.927",
                 "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/5B/18/3F71A0A0498FBB66C8F98EBE4F57BE5D5DE6.html"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "3AB8188FCD29476E",
                 "Time": "00:52.502",
                 "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/1E/C1/BD8707F1A615E822A1591FAFB330067FD6DE.html"
             },
             {
-                "Country": "\ud83c\uddf1\ud83c\uddfa",
                 "ID": "821E1146C7A4F5B3",
                 "Time": "00:52.985",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=448"
             },
             {
-                "Country": "\ud83c\udde7\ud83c\uddea",
                 "ID": "041537D963CC8023",
                 "Time": "00:53.117",
                 "Ghost": "http://www.maschell.de/ghostdatabase/ghostviewer.php?id=20043"
             },
             {
-                "Country": "\ud83c\udde7\ud83c\uddea",
                 "ID": "9",
                 "Time": "00:53.871",
                 "Ghost": "http://www.mktrial.fr/temps.php?m=853&idc=143&type=1"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "C48B6FC37FAE104D",
                 "Time": "00:54.839",
                 "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/34/AF/B0242789DC46EE5EFF4961892C661B6F3751.html"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "D4609DB8549BBAF2",
                 "Time": "00:54.877",
                 "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/D3/4F/1A9DEE1CC4043860EDC8E362FCE25895ABEB.html"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "30CD4A1D750A6750",
                 "Time": "00:57.177",
                 "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/41/7A/6A52DA6777380ADF353535451DE3F27D72BB.html"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "DF050A811583E0BC",
                 "Time": "01:06.206",
                 "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/95/A7/C2670D7DBB40C823BB510CE6EB01055B8195.html"
@@ -2738,61 +2310,51 @@
         ],
         "GBA Bowser Castle 3 (Shortcut)": [
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "3AB8188FCD29476E",
                 "Time": "01:59.222",
                 "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/7B/63/5DCB76777ED0F3B49D3684DD75F706323989.html"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "A430FE7CC18AAD11",
                 "Time": "01:59.867",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=247"
             },
             {
-                "Country": "\ud83c\uddf1\ud83c\uddfa",
                 "ID": "821E1146C7A4F5B3",
                 "Time": "02:00.084",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=448"
             },
             {
-                "Country": "\ud83c\udde7\ud83c\uddea",
                 "ID": "041537D963CC8023",
                 "Time": "02:00.331",
                 "Ghost": "http://www.maschell.de/ghostdatabase/ghostviewer.php?id=56667"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "CA8F043A3D42FB75",
                 "Time": "02:00.893",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=1086"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "3",
                 "Time": "02:01.229",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=508"
             },
             {
-                "Country": "\ud83c\uddf1\ud83c\uddfa",
                 "ID": "23",
                 "Time": "02:01.741",
                 "Ghost": "http://ninrankings.org/mkwii/profil.php?id=157676061"
             },
             {
-                "Country": "\ud83c\uddf1\ud83c\uddfa",
                 "ID": "DB503BD3D6030657",
                 "Time": "02:01.753",
                 "Ghost": "http://www.maschell.de/ghostdatabase/ghostviewer.php?id=69540"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "2",
                 "Time": "02:02.210",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=758"
             },
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "E1C66E97144FCC06",
                 "Time": "02:02.342",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=1153"
@@ -2800,7 +2362,6 @@
         ],
         "N64 DK's Jungle Parkway (Glitch)": [
             {
-                "Country": "\ud83c\uddf3\ud83c\uddf1",
                 "ID": "D4609DB8549BBAF2",
                 "Time": "01:47.751",
                 "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/79/AA/5A4773377ABCE817B3BF2BC90246230A1518.html"

@@ -1,5 +1,6 @@
 import sqlite3
 import json
+import logging
 
 TRACKS = [
     ("LC",       "Luigi Circuit", 0),
@@ -57,7 +58,7 @@ def exception_catcher(func):
         try:
             return func(*args, **kwargs)
         except sqlite3.Error as e:
-            print(e)
+            logging.critical("Exception occurred", exc_info=True)
     return wrapper
 
 
@@ -74,13 +75,11 @@ class DB:
         # create tracks table
         curs.execute("create table if not exists tracks(abbrv text, track_name text primary key, category int)")
         # create personal best table
-        curs.execute("create table if not exists personal_bests(country text, player_id text, track text, ghost_hash text, time text, primary key(player_id, track), foreign key(track) references tracks(track_name))")
+        curs.execute("create table if not exists personal_bests(player_id text, track text, ghost_hash text, time text, primary key(player_id, track), foreign key(track) references tracks(track_name))")
         # create top10 table
-        curs.execute("create table if not exists top10(track text, country text, player_id text, time text, ghost text, primary key(track, ghost), foreign key(track) references tracks(track_name))")
+        curs.execute("create table if not exists top10(track text, player_id text, time text, ghost text, primary key(track, ghost), foreign key(track) references tracks(track_name))")
         # create player table
-        curs.execute("create table if not exists players(player_id text primary key, player_name text)")
-        # create hidden players table (for people that don't have their country set up correctly)
-        curs.execute("create table if not exists hidden_players(player_id text primary key, country text, foreign key(player_id) references players(player_id))")
+        curs.execute("create table if not exists players(player_id text primary key, player_name text, country text)")
         # create banned times table
         curs.execute("create table if not exists banned_times(ghost_hash text primary key)")
 
@@ -88,10 +87,10 @@ class DB:
             with open("BNL.json") as file:
                 data = json.load(file)
                 for player in data["Players"]:
-                    curs.execute("insert or replace into players values(?, ?)", [player[0], player[1]])
+                    curs.execute("insert or replace into players values(?, ?, ?)", [player[1], player[2], player[0]])
                 for track in data["Tracks"]:
                     for ghost in data["Tracks"][track]:
-                        curs.execute("insert or replace into top10 values(?, ?, ?, ?, ?)", [track, ghost["Country"], ghost["ID"], ghost["Time"], ghost["Ghost"]])
+                        curs.execute("insert or replace into top10 values(?, ?, ?, ?)", [track, ghost["ID"], ghost["Time"], ghost["Ghost"]])
 
             for track in TRACKS:
                 curs.execute("insert or replace into tracks values(?, ?, ?)", track)
@@ -105,14 +104,12 @@ class DB:
 
         with open("BNL.json") as file:
             data = json.load(file)
-            for player in data["Players"]:
-                    curs.execute("insert or replace into players values(?, ?)", [player[0], player[1]])
             for ghost in data["Tracks"][track_name]:
-                curs.execute("insert or replace into top10 values(?, ?, ?, ?, ?)", [track_name, ghost["Country"], ghost["ID"], ghost["Time"], ghost["Ghost"]])
+                curs.execute("insert or replace into top10 values(?, ?, ?, ?)", [track_name, ghost["ID"], ghost["Time"], ghost["Ghost"]])
 
         self.conn.commit()
-
-        curs.execute("select country, player_name, time, ghost_hash from players natural join (select country, player_id, time, ghost_hash from personal_bests where track = ?)", [track_name])
+        print(curs.execute("select track, player_id, time, ghost from top10 where track = ?", ["Moo Moo Meadows"]).fetchall())
+        curs.execute("select country, player_name, time, ghost_hash from players natural join (select player_id, time, ghost_hash from personal_bests where track = ?)", [track_name])
         return curs.fetchall()
 
     @exception_catcher
@@ -122,22 +119,22 @@ class DB:
         return curs.fetchone()[0]
 
     @exception_catcher
-    def insert_pb(self, country, player_id, track_name, ghost_hash, time):
+    def insert_pb(self, player_id, track_name, ghost_hash, time):
         curs = self.cursor()
 
         #if the ghost is already in the table
         if curs.execute("select exists(select 1 from personal_bests where ghost_hash = ?)", [ghost_hash]).fetchone()[0]:
             return False
 
-        curs.execute("insert or replace into personal_bests values(?, ?, ?, ?, ?)", [country, player_id, track_name, ghost_hash, time])
+        curs.execute("insert or replace into personal_bests values(?, ?, ?, ?)", [player_id, track_name, ghost_hash, time])
         self.conn.commit()
-        print("inserted {} - {} - {} - {} - {}".format(country, player_id, track_name, ghost_hash, time))
+        print("inserted {} - {} - {} - {}".format(track_name, player_id, ghost_hash, time))
         return True
 
     @exception_catcher
     def get_top10(self, track_name):
         curs = self.cursor()
-        curs.execute("select country, player_name, time, ghost from players natural join (select country, player_id, time, ghost from top10 where track = ?)", [track_name])
+        curs.execute("select country, player_name, time, ghost from players natural join (select player_id, time, ghost from top10 where track = ?)", [track_name])
         return curs.fetchall()
 
     @exception_catcher
@@ -148,10 +145,11 @@ class DB:
         self.conn.commit()
 
     @exception_catcher
-    def insert_top_entry(self, track, country, player_name, time, ghost):
+    def insert_top_entry(self, track, player_name, time, ghost):
         curs = self.cursor()
-        player_id = curs.execute("select player_id from players where player_name = ?", [player_name]).fetchone()[0]
-        curs.execute("insert or replace into top10 values(?, ?, ?, ?, ?)", [track, country, player_id, time, ghost])
+        print("inserting top entry {}, {}, {}, {}".format(track, player_name, time, ghost))
+        player_id = self.get_player_id(player_name)[0][0]
+        curs.execute("insert or replace into top10 values(?, ?, ?, ?)", [track, player_id, time, ghost])
         self.conn.commit()
 
     @exception_catcher
@@ -161,29 +159,24 @@ class DB:
         return curs.fetchone()
 
     @exception_catcher
-    def set_player(self, player_id, player_name):
-        curs = self.cursor()
-        curs.execute("insert or replace into players values(?, ?)", [player_id, player_name])
-        self.conn.commit()
-
-    @exception_catcher
-    def set_hidden(self, player_id, country):
-        curs = self.cursor()
-        curs.execute("insert or replace into hidden_players values(?, ?)", [player_id, country])
-        self.conn.commit()
-
-    @exception_catcher
-    def get_hidden(self):
-        curs = self.cursor()
-        curs.execute("select player_id, country from hidden_players")
-        return curs.fetchall()
-
-    @exception_catcher
-    def set_player_if_not_exists(self, player_id, player_name):
+    def set_player(self, player_id, player_name, country):
         """Adds the player to the players table only if it is not yet in the table"""
         curs = self.cursor()
         if not curs.execute("select exists(select 1 from players where player_id = ?)", [player_id]).fetchone()[0]:
-            self.set_player(player_id, player_name)
+            curs.execute("insert or replace into players values(?, ?, ?)", [player_id, player_name, country])
+            self.conn.commit()
+            return True
+        return False
+
+    @exception_catcher
+    def set_player_name(self, player_id, player_name):
+        """Sets the name for an existing player"""
+        if self.player_exists(player_id):
+            curs = self.cursor()
+            curs.execute("update players set player_name = ? where player_id = ?", [player_name, player_id])
+            self.conn.commit()
+            return True
+        return False
 
     @exception_catcher
     def get_player_count(self, player_name):
@@ -221,20 +214,25 @@ class DB:
         return player_name, total_count, ng_count, glitch_count, alt_count
 
     @exception_catcher
-    def get_player_name(self, player_id):
+    def get_player_info(self, player_id):
         curs = self.cursor()
-        curs.execute("select player_name from players where player_id = ?", [player_id])
+        curs.execute("select country, player_name from players where player_id = ?", [player_id])
         result = curs.fetchone()
         if result is None:
             return None
         else:
-            return result[0]
+            return result
 
     @exception_catcher
     def get_player_id(self, player_name):
         curs = self.cursor()
         curs.execute("select player_id from players where lower(player_name) = lower(?)", [player_name])
         return curs.fetchall()
+
+    @exception_catcher
+    def player_exists(self, player_id):
+        curs = self.cursor()
+        return curs.execute("select exists(select 1 from players where player_id = ?)", [player_id]).fetchone()[0]
 
     @exception_catcher
     def get_player_pb(self, player_id, track):
@@ -289,7 +287,7 @@ class DB:
             elif i == 35:
                 cup = "Leaf Cup"
                 cups[cup] = [(track[1], top10)]
-            elif i == 42:
+            elif i == 43:
                 cup = "Lightning Cup"
                 cups[cup] = [(track[1], top10)]
             else:
@@ -301,4 +299,4 @@ class DB:
 
 if __name__ == "__main__":
     database = DB("tt_bot_db.db")
-    database.create_db()
+    database.create_db(True)
