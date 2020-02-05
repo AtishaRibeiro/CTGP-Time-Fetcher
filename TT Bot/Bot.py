@@ -48,11 +48,14 @@ class Bot(discord.Client):
         if msg.author == self.user:
             return
 
-        if msg.channel.id == Config.DMCHANNEL:
-            await self.get_channel(Config.CHANNEL).send(f"```{msg.content}```")
-            return
+        admin = self.check_role(msg)
 
-        if msg.channel.id != Config.CHANNEL:
+        if msg.channel.id == Config.DMCHANNEL:
+            admin = True
+            if msg.content[0] != COMMAND_PREFIX:
+                await self.get_channel(Config.CHANNEL).send(f"```{msg.content}```")
+                return
+        elif msg.channel.id != Config.CHANNEL:
             return
 
         contents = msg.content
@@ -70,37 +73,30 @@ class Bot(discord.Client):
                     await self.count(msg, split_msg[1])
                 elif command == "pb":
                     await self.pb(msg, split_msg[1].split())
-                elif command == "show_all":
-                    if self.check_role(msg):
+                elif admin:
+                    if command == "show_all":
                         await self.set_show_all(msg, split_msg[1])
-                elif command == "set_name":
-                    if self.check_role(msg):
+                    elif command == "set_name":
                         await self.set_name(msg, split_msg[1].split())
-                elif command == "set_player":
-                    if self.check_role(msg):
+                    elif command == "set_player":
                         await self.set_player(msg, split_msg[1].split())
-                elif command == "remove_player":
-                    if self.check_role(msg):
+                    elif command == "remove_player":
                         await self.remove_player(msg, split_msg[1])
-                elif command == "reset_track":
-                    if self.check_role(msg):
+                    elif command == "reset_track":
                         await self.reset_track(msg, split_msg[1])
-                elif command == "remove_time":
-                    if self.check_role(msg):
+                    elif command == "remove_time":
                         await self.remove_time(msg, split_msg[1])
 
             elif command == "help":
                 await self.help(msg)
             elif command == "links":
                 await self.links(msg)
-            elif command == "reset":
-                if self.check_role(msg):
+            elif admin:
+                if command == "reset":
                     await self.reset(msg)
-            elif command == "cancel":
-                if self.check_role(msg):
+                elif command == "cancel":
                     await self.cancel(msg)
-            elif command == "test":
-                if self.check_role(msg):
+                elif command == "test":
                     await self.test(msg)
         else:
             return
@@ -110,7 +106,7 @@ class Bot(discord.Client):
             for role in msg.author.roles:
                 if role >= msg.guild.get_role(Config.MODERATOR):
                     return True
-        except TypeError as e:
+        except (TypeError, AttributeError) as e:
             return False
         return False
 
@@ -468,13 +464,8 @@ class Bot(discord.Client):
 
     async def test(self, msg):
         """For testing purposes"""
-        channel = msg.channel
-        times = [("Koopa Cape", Ghost('🇧🇪', "Joris", "01:59.669", "http://www.chadsoft.co.uk/time-trials/rkgd/E4/7B/97C4E27C6AA1A5ECC33DF5F70501CD33F92.html"), ImprovementType.improvement_1st, 1),
-                    ("Koopa Cape", Ghost('🇧🇪', "AHHa", "01:59.420", "http://www.chadsoft.co.uk/time-trials/rkgd/E4/7B/97C4E27C6AA1A5ECC33DF5F70501CD33F925.html"), ImprovementType.tie_1st, 2),
-                    ("Koopa Cape", Ghost('🇧🇪', "zzz", "01:59.666", "http://www.chadsoft.co.uk/time-trials/rkgd/E4/7B/97C4E27C6AA1A5ECC33DF5F70501CD33F925.html"), ImprovementType.none, 3),
-                     ("Koopa Cape", Ghost('🇧🇪', "boo", "99:59.777", "http://www.chadsoft.co.uk/time-trials/rkgd/E4/7B/97C4E27C6AA1A5ECC33DF5F70501CD33F925.html"), ImprovementType.none, 4) ]
-        for time in times:
-            await channel.send(embed=(self.create_update_embed(time)))
+        result = self.tops.add_time(Ghost('🇧🇪', "Olifré", "01:09.000", "http://www.chadsoft.co.uk/time-trials/rkgd/E4/7B/97C4E27C6AA1A5ECC33DF5F70501CD33F92.html"), "Luigi Circuit")
+        print(result)
 
 
 if __name__ == "__main__":
