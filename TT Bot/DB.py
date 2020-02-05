@@ -158,8 +158,11 @@ class DB:
         return curs.fetchone()
 
     @exception_catcher
-    def set_player(self, player_id, player_name, country):
+    def set_player(self, player_id, player_name, country, overwrite=True):
         """Adds or updates the player to the players table"""
+        if not overwrite:
+            if self.player_exists(player_id):
+                return False
         curs = self.cursor()
         curs.execute("insert or replace into players values(?, ?, ?)", [player_id, player_name, country])
         self.conn.commit()

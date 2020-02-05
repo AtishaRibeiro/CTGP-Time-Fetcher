@@ -286,7 +286,7 @@ class APIQuerier:
             country = player["country"]
             if country in self.countries:
                 country_flag = COUNTRY_FLAGS[country]
-                if self.DB.set_player(player["playerId"], player["miiName"], country_flag):
+                if self.DB.set_player(player["playerId"], player["miiName"], country_flag, False):
                     print("Added player {}".format(player["miiName"]))
 
 

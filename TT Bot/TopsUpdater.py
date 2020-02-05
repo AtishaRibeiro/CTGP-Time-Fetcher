@@ -30,7 +30,7 @@ class Tops:
 
         action = ImprovementType.new
         new_time.new = True
-        top10 = [Ghost(x[0], x[1], x[2], x[3]) for x in self.DB.get_top10(track)]
+        top10 = sorted([Ghost(x[0], x[1], x[2], x[3]) for x in self.DB.get_top10(track)])
         if len(top10) == 0:
             self.DB.insert_top_entry(track, new_time.name, str(new_time.time), new_time.ghost)
             return ImprovementType.new_1st, 1
