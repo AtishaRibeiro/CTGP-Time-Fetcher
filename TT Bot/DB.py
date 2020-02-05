@@ -108,7 +108,6 @@ class DB:
                 curs.execute("insert or replace into top10 values(?, ?, ?, ?)", [track_name, ghost["ID"], ghost["Time"], ghost["Ghost"]])
 
         self.conn.commit()
-        print(curs.execute("select track, player_id, time, ghost from top10 where track = ?", ["Moo Moo Meadows"]).fetchall())
         curs.execute("select country, player_name, time, ghost_hash from players natural join (select player_id, time, ghost_hash from personal_bests where track = ?)", [track_name])
         return curs.fetchall()
 
@@ -160,10 +159,18 @@ class DB:
 
     @exception_catcher
     def set_player(self, player_id, player_name, country):
-        """Adds the player to the players table only if it is not yet in the table"""
+        """Adds or updates the player to the players table"""
         curs = self.cursor()
-        if not curs.execute("select exists(select 1 from players where player_id = ?)", [player_id]).fetchone()[0]:
-            curs.execute("insert or replace into players values(?, ?, ?)", [player_id, player_name, country])
+        curs.execute("insert or replace into players values(?, ?, ?)", [player_id, player_name, country])
+        self.conn.commit()
+        return True
+
+    @exception_catcher
+    def remove_player(self, player_id):
+        """Remove a player from the the players table if it exists"""
+        if self.player_exists(player_id):
+            curs = self.cursor()
+            curs.execute("delete from players where player_id = ?", [player_id])
             self.conn.commit()
             return True
         return False
