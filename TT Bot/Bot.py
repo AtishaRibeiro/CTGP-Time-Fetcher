@@ -76,9 +76,12 @@ class Bot(discord.Client):
                 elif command == "set_name":
                     if self.check_role(msg):
                         await self.set_name(msg, split_msg[1].split())
-                elif command == "add_player":
+                elif command == "set_player":
                     if self.check_role(msg):
-                        await self.add_player(msg, split_msg[1].split())
+                        await self.set_player(msg, split_msg[1].split())
+                elif command == "remove_player":
+                    if self.check_role(msg):
+                        await self.remove_player(msg, split_msg[1])
                 elif command == "reset_track":
                     if self.check_role(msg):
                         await self.reset_track(msg, split_msg[1])
@@ -135,8 +138,16 @@ class Bot(discord.Client):
         else:
             await msg.channel.send("`Unknown player`")
 
-    async def add_player(self, msg, args):
-        self.DB.set_player()
+    async def set_player(self, msg, args):
+        print(args[0], args[1], args[2])
+        self.DB.set_player(args[0], args[1], args[2])
+        await msg.channel.send("`player set`")
+
+    async def remove_player(self, msg, player_id):
+        if self.DB.remove_player(player_id):
+            await msg.channel.send("`player removed`")
+        else:
+            await msg.channel.send("`player doesn't exist`")
 
     async def reset_track(self, msg, track):
         full_track = self.DB.get_track_name(track.upper())[0]
