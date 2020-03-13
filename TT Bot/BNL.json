@@ -300,6 +300,11 @@
                 "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/C5/31/AED3C6644CEF557F6BD2CAC1C7AC8171F3DD.html"
             },
             {
+                "ID": "DB503BD3D6030657",
+                "Time": "01:16.587",
+                "Ghost": "http://www.maschell.de/ghostdatabase/ghostviewer.php?id=79265"
+            },
+            {
                 "ID": "CA8F043A3D42FB75",
                 "Time": "01:16.662",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=1086"
@@ -333,11 +338,6 @@
                 "ID": "AF29D4AFF12749A9",
                 "Time": "01:16.996",
                 "Ghost": ""
-            },
-            {
-                "ID": "821E1146C7A4F5B3",
-                "Time": "01:16.997",
-                "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=448"
             }
         ],
         "Coconut Mall": [
@@ -707,8 +707,8 @@
             },
             {
                 "ID": "DB503BD3D6030657",
-                "Time": "01:49.959",
-                "Ghost": "http://www.maschell.de/ghostdatabase/ghostviewer.php?id=67626"
+                "Time": "01:49.870",
+                "Ghost": "http://www.maschell.de/ghostdatabase/ghostviewer.php?id=79248"
             },
             {
                 "ID": "E1C66E97144FCC06",
@@ -1095,6 +1095,11 @@
                 "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/35/24/D6681E7354F94BD03B1CE74D451CAF29E081.html"
             },
             {
+                "ID": "DB503BD3D6030657",
+                "Time": "01:18.695",
+                "Ghost": "http://www.maschell.de/ghostdatabase/ghostviewer.php?id=79258"
+            },
+            {
                 "ID": "041537D963CC8023",
                 "Time": "01:18.729",
                 "Ghost": "http://www.maschell.de/ghostdatabase/profil.php?id=1367150597"
@@ -1103,11 +1108,6 @@
                 "ID": "2",
                 "Time": "01:18.761",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=758"
-            },
-            {
-                "ID": "DB503BD3D6030657",
-                "Time": "01:18.762",
-                "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=1048"
             },
             {
                 "ID": "1",
@@ -1303,6 +1303,11 @@
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=32"
             },
             {
+                "ID": "DB503BD3D6030657",
+                "Time": "02:00.667",
+                "Ghost": "http://www.maschell.de/ghostdatabase/ghostviewer.php?id=79268"
+            },
+            {
                 "ID": "F8AC68D93F4B3B58",
                 "Time": "02:00.695",
                 "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/19/B2/66A505525ECB2997325B115DB74A09F27928.html"
@@ -1326,11 +1331,6 @@
                 "ID": "CA8F043A3D42FB75",
                 "Time": "02:01.248",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=1086"
-            },
-            {
-                "ID": "DB503BD3D6030657",
-                "Time": "02:01.374",
-                "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=1048"
             }
         ],
         "SNES Ghost Valley 2": [
@@ -1500,6 +1500,12 @@
                 "Time": "02:07.647",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=777"
             },
+            ,
+            {
+                "ID": "DB503BD3D6030657",
+                "Time": "02:08.504",
+                "Ghost": "http://www.maschell.de/ghostdatabase/ghostviewer.php?id=79266"
+            }
             {
                 "ID": "041537D963CC8023",
                 "Time": "02:08.582",
@@ -1534,11 +1540,6 @@
                 "ID": "5",
                 "Time": "02:09.722",
                 "Ghost": "http://www.mariokart64.com/mkw/profile.php?pid=610"
-            },
-            {
-                "ID": "C618D6AF6C5CE085",
-                "Time": "02:09.723",
-                "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/BB/8C/97851719544600B63C2E2CC04C36CFA52668.html"
             }
         ],
         "N64 Mario Raceway": [
@@ -1600,6 +1601,11 @@
                 "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/04/F0/2E8A90C2BC9E073E6A299291A6508A90525F.html"
             },
             {
+                "ID": "DB503BD3D6030657",
+                "Time": "01:50.947",
+                "Ghost": "http://www.maschell.de/ghostdatabase/ghostviewer.php?id=79265"
+            },
+            {
                 "ID": "9",
                 "Time": "01:50.999",
                 "Ghost": "http://www.mktrial.fr/temps.php?m=853&idc=148&type=1"
@@ -1608,11 +1614,6 @@
                 "ID": "041537D963CC8023",
                 "Time": "01:51.293",
                 "Ghost": "http://www.maschell.de/ghostdatabase/ghostviewer.php?id=67718"
-            },
-            {
-                "ID": "DB503BD3D6030657",
-                "Time": "01:52.501",
-                "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/E7/69/F4D0866BA64FF7395790062AA9A7CD993E2F.html"
             },
             {
                 "ID": "14",
@@ -1662,6 +1663,11 @@
                 "Ghost": "http://www.maschell.de/ghostdatabase/ghostviewer.php?id=40463"
             },
             {
+                "ID": "DB503BD3D6030657",
+                "Time": "01:31.806",
+                "Ghost": "http://www.maschell.de/ghostdatabase/ghostviewer.php?id=79264"
+            },
+            {
                 "ID": "CA8F043A3D42FB75",
                 "Time": "01:31.875",
                 "Ghost": "http://www.maschell.de/ghostdatabase/ghostviewer.php?id=57681"
@@ -1685,11 +1691,6 @@
                 "ID": "821E1146C7A4F5B3",
                 "Time": "01:32.489",
                 "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/99/DB/4CE239339D205B76EF387E9151ADD4560EF2.html"
-            },
-            {
-                "ID": "DB503BD3D6030657",
-                "Time": "01:32.631",
-                "Ghost": "http://www.maschell.de/ghostdatabase/ghostviewer.php?id=69546"
             },
             {
                 "ID": "DF050A811583E0BC",
@@ -2074,8 +2075,8 @@
         "Wario's Gold Mine (Glitch)": [
             {
                 "ID": "3AB8188FCD29476E",
-                "Time": "00:34.741",
-                "Ghost": "1"
+                "Time": "00:34.948",
+                "Ghost": "https://www.youtube.com/watch?v=NMX_KdC06P4"
             },
             {
                 "ID": "30",
@@ -2362,7 +2363,12 @@
                 "Ghost": "http://www.chadsoft.co.uk/time-trials/rkgd/79/AA/5A4773377ABCE817B3BF2BC90246230A1518.html"
             }
         ],
-        "Grumble Volcano (Shortcut)": [
+        "Grumble Volcano (Shortcut)": [  
+            {
+                "ID": "DB503BD3D6030657",
+                "Time": "01:38.592",
+                "Ghost": "http://www.maschell.de/ghostdatabase/ghostviewer.php?id=79276"
+            }
         ],
         "N64 DK's Jungle Parkway (Shortcut)": [
         ]
