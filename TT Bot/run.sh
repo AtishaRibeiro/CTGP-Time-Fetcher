@@ -1,11 +1,9 @@
-#!/bin/bash
+#!/bin/sh
 
 virtualenv venv
-source venv/bin/activate
+. venv/bin/activate
 pip3 install -r requirements.txt
 
-if [ "$1" = "-db" ]; then
-    python3 DB.py
-fi
+[ "$1" = "-db" ] && python3 DB.py
 
 python3 Bot.py
